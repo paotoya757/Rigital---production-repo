@@ -1,0 +1,9 @@
+{
+    "displayName" : "BaseDeDatos",
+    "name" : "baseDeDatos",
+    "templateName" : "baseDeDatos",
+    "url" : "user.html",
+    "server": "localhost:8080",
+    "context": "/RigitalApp.web/webresources/BaseDeDatos",
+    "el" : "#main"
+}

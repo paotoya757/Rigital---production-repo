@@ -1,0 +1,9 @@
+{
+    "displayName" : "CMS",
+    "name" : "cMS",
+    "templateName" : "cMS",
+    "url" : "user.html",
+    "server": "localhost:8080",
+    "context": "/RigitalApp.web/webresources/CMS",
+    "el" : "#main"
+}

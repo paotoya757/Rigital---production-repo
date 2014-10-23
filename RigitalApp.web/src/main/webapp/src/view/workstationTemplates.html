@@ -1,0 +1,25 @@
+<script type="text/template" id="workstation">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-workstationForm">
+    <% if(workstation.id) {%>
+    <input type="hidden" name="id" value="<%= workstation.id %>"/>
+    <% }%>
+		<div class="form-group" >
+		<label for="name">Name</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= workstation.get('name') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="duenio">Duenio</label>
+    	<input type="text" class="form-control" id="duenio" name="duenio" placeholder="Enter value" value="<%= workstation.get('duenio') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="destino">Destino</label>
+    	<input type="text" class="form-control" id="destino" name="destino" placeholder="Enter value" value="<%= workstation.get('destino') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="sistemaOperativo">Sistema Operativo</label>
+    	<input type="text" class="form-control" id="sistemaOperativo" name="sistemaOperativo" placeholder="Enter value" value="<%= workstation.get('sistemaOperativo') %>"/>	
+		</div>
+    </form>
+    </div>
+</script> 

@@ -1,0 +1,125 @@
+<script type="text/template" id="problema">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-problemaForm">
+    <% if(problema.id) {%>
+    <input type="hidden" name="id" value="<%= problema.id %>"/>
+    <% }%>
+		<div class="form-group" >
+		<label for="name">Name</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= problema.get('name') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="descripcion">Descripcion</label>
+    	<input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Enter value" value="<%= problema.get('descripcion') %>"/>	
+		</div>
+		<div class="form-group" >
+			<label for="fechaDeOcurrencia">Fecha De Ocurrencia</label>
+    		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaDeOcurrencia"  name="fechaDeOcurrencia" placeholder="Enter value" />
+    		<%= '<scr'+'ipt>' %>
+        	$('#fechaDeOcurrencia').datepicker({autoclose:true});
+        	$('#fechaDeOcurrencia').datepicker('setDate',App.Utils.Converter.date.toDate("<%= problema.get('fechaDeOcurrencia') %>"));
+    		<%= '</scr'+'ipt>' %>
+		</div>
+		<div class="form-group" >
+ 
+			<label for="empleadoidId">Empleado Id</label> 
+            <select class="form-control" id="empleadoId" name="empleadoId">
+			  <option value="">None</option>
+            <% empleado.each(function(empleadoid) { %> 
+              <option value="<%=empleadoid.get('id')%>" <% if(problema.get('empleadoId')==empleadoid.get('id')) {%>selected<%}%> ><%=empleadoid.get('name')%></option>
+            <% }); %>                
+            </select>  
+		</div>
+		<div class="form-group" >
+ 
+			<label for="sqldevidId">Sqldev Id</label> 
+            <select class="form-control" id="sqldevId" name="sqldevId">
+			  <option value="">None</option>
+            <% sQLDev.each(function(sqldevid) { %> 
+              <option value="<%=sqldevid.get('id')%>" <% if(problema.get('sqldevId')==sqldevid.get('id')) {%>selected<%}%> ><%=sqldevid.get('name')%></option>
+            <% }); %>                
+            </select>  
+		</div>
+		<div class="form-group" >
+ 
+			<label for="mysqlidId">Mysql Id</label> 
+            <select class="form-control" id="mysqlId" name="mysqlId">
+			  <option value="">None</option>
+            <% mySQL.each(function(mysqlid) { %> 
+              <option value="<%=mysqlid.get('id')%>" <% if(problema.get('mysqlId')==mysqlid.get('id')) {%>selected<%}%> ><%=mysqlid.get('name')%></option>
+            <% }); %>                
+            </select>  
+		</div>
+		<div class="form-group" >
+ 
+			<label for="paginawebidId">Paginaweb Id</label> 
+            <select class="form-control" id="paginawebId" name="paginawebId">
+			  <option value="">None</option>
+            <% paginaWeb.each(function(paginawebid) { %> 
+              <option value="<%=paginawebid.get('id')%>" <% if(problema.get('paginawebId')==paginawebid.get('id')) {%>selected<%}%> ><%=paginawebid.get('name')%></option>
+            <% }); %>                
+            </select>  
+		</div>
+		<div class="form-group" >
+ 
+			<label for="wikiidId">Wiki Id</label> 
+            <select class="form-control" id="wikiId" name="wikiId">
+			  <option value="">None</option>
+            <% wiki.each(function(wikiid) { %> 
+              <option value="<%=wikiid.get('id')%>" <% if(problema.get('wikiId')==wikiid.get('id')) {%>selected<%}%> ><%=wikiid.get('name')%></option>
+            <% }); %>                
+            </select>  
+		</div>
+		<div class="form-group" >
+ 
+			<label for="maquinavirtualidId">Maquinavirtual Id</label> 
+            <select class="form-control" id="maquinavirtualId" name="maquinavirtualId">
+			  <option value="">None</option>
+            <% maquinaVirtual.each(function(maquinavirtualid) { %> 
+              <option value="<%=maquinavirtualid.get('id')%>" <% if(problema.get('maquinavirtualId')==maquinavirtualid.get('id')) {%>selected<%}%> ><%=maquinavirtualid.get('name')%></option>
+            <% }); %>                
+            </select>  
+		</div>
+		<div class="form-group" >
+ 
+			<label for="unidadderedidId">Unidaddered Id</label> 
+            <select class="form-control" id="unidadderedId" name="unidadderedId">
+			  <option value="">None</option>
+            <% unidadDeRed.each(function(unidadderedid) { %> 
+              <option value="<%=unidadderedid.get('id')%>" <% if(problema.get('unidadderedId')==unidadderedid.get('id')) {%>selected<%}%> ><%=unidadderedid.get('name')%></option>
+            <% }); %>                
+            </select>  
+		</div>
+		<div class="form-group" >
+ 
+			<label for="repositorioidId">Repositorio Id</label> 
+            <select class="form-control" id="repositorioId" name="repositorioId">
+			  <option value="">None</option>
+            <% repositorio.each(function(repositorioid) { %> 
+              <option value="<%=repositorioid.get('id')%>" <% if(problema.get('repositorioId')==repositorioid.get('id')) {%>selected<%}%> ><%=repositorioid.get('name')%></option>
+            <% }); %>                
+            </select>  
+		</div>
+		<div class="form-group" >
+ 
+			<label for="contenedorwebidId">Contenedorweb Id</label> 
+            <select class="form-control" id="contenedorwebId" name="contenedorwebId">
+			  <option value="">None</option>
+            <% contenedorWeb.each(function(contenedorwebid) { %> 
+              <option value="<%=contenedorwebid.get('id')%>" <% if(problema.get('contenedorwebId')==contenedorwebid.get('id')) {%>selected<%}%> ><%=contenedorwebid.get('name')%></option>
+            <% }); %>                
+            </select>  
+		</div>
+		<div class="form-group" >
+ 
+			<label for="softwaresalasidId">Softwaresalas Id</label> 
+            <select class="form-control" id="softwaresalasId" name="softwaresalasId">
+			  <option value="">None</option>
+            <% softwareSalas.each(function(softwaresalasid) { %> 
+              <option value="<%=softwaresalasid.get('id')%>" <% if(problema.get('softwaresalasId')==softwaresalasid.get('id')) {%>selected<%}%> ><%=softwaresalasid.get('name')%></option>
+            <% }); %>                
+            </select>  
+		</div>
+    </form>
+    </div>
+</script> 
