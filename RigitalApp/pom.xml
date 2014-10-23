@@ -1,0 +1,16 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>co.edu.uniandes.csw.grupo</groupId>
+  <artifactId>RigitalApp</artifactId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+  <name>RigitalApp</name>
+    <modules>
+    	  <module>../RigitalApp.web</module>
+    	  <module>../RigitalApp.api</module>
+		  <module>../RigitalApp.logic</module>
+		  <module>../RigitalApp.mock</module>	
+		  <module>../crudmaker.web</module>
+    </modules>
+</project>
