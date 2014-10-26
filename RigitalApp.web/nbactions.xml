@@ -15,4 +15,13 @@
                 <skipTests>true</skipTests>
             </properties>
         </action>
+        <action>
+            <actionName>CUSTOM-correr sin pruebas</actionName>
+            <displayName>correr sin pruebas</displayName>
+            <goals>
+                <goal>clean:clean</goal>
+                <goal>compiler:compile</goal>
+                <goal>install</goal>
+            </goals>
+        </action>
     </actions>
