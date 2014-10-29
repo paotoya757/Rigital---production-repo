@@ -56,7 +56,10 @@
 </script> 
 
 <script type="text/template" id="wikiSearchTemplate">
-            <div class="form-group">
+    
+            
+    <% /* copiar del template default que arma el CRUD */%>        
+    <div class="form-group">
     <form role="form" id="<%= componentId %>-wikiForm">
     <% if(wiki.id) {%>
     <input type="hidden" name="id" value="<%= wiki.id %>"/>
