@@ -62,6 +62,13 @@
     <input type="hidden" name="id" value="<%= wiki.id %>"/>
     <% }%>
 	
+            <div class="form-group" >
+            <input id="btn_name" class="btn btn-primary" value="Name" type="submit" onclick="Backbone.trigger('<%= componentId %>-wiki-display-textfield',{textInputId:'#name' }); return false;" />
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= wiki.get('name') %>"
+                   style = "visibility: hidden" />	
+            </div>
+	
+    
                 
             <div class="form-group" >        
         <input id="btn_servidor_host" class="btn btn-primary" value="Servidor Host" type="submit" 
@@ -77,12 +84,6 @@
                 value="<%= wiki.get('rutaServidor') %>" style="visibility: hidden"/>
             </div>
     
-            <div class="form-group" >
-            <input id="btn_name" class="btn btn-primary" value="Name" type="submit" onclick="Backbone.trigger('<%= componentId %>-wiki-display-textfield',{textInputId:'#name' }); return false;" />
-            <input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= wiki.get('name') %>"
-                   style = "visibility: hidden" />	
-            </div>
-		     	
             <div class="form-group" >
             <input id="btn_fechasTable" class="btn btn-primary" value="Fecha de creacion" type="submit" 
                     onclick="Backbone.trigger('<%= componentId %>-wiki-display-textfield',{textInputId:'#fechasTable' }); return false;" />                
