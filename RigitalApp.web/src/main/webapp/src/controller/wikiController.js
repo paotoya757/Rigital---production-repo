@@ -52,6 +52,7 @@ define(['controller/_wikiController','delegate/wikiDelegate'], function() {
         },
         _render:function(){
             var self = this;
+            // ojo: aqui hay que cambiar !
             this.$el.slideUp("fast", function() {
                 self.$el.html(self.currentTemplate({wiki: self.currentModel, componentId: self.componentId , showEdit : self.showEdit , showDelete : self.showDelete
 				    ,encargado: self.encargadoComponent
@@ -69,18 +70,8 @@ define(['controller/_wikiController','delegate/wikiDelegate'], function() {
                 this._render();
                 Backbone.trigger(this.componentId + '-' + 'post-wiki-create', {view: this});
             }
-        },wikiSearch: function (callback,context) {
-            var self = this;
-          var model = $('#' + this.componentId + '-wikiForm').serializeObject();
-           this.currentModel.set(model);
-             var delegate = new App.Delegate.WikiDelegate;
-            delegate.search(self.currentModel, function (data) {
-                self.currentList.reset(data.records);
-               callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght})
-            }, function (data) {
-                Backbone.trigger(self.componentId + '-' + 'error', {event: 'wiki-search', view: self, id: '', data: data, error: 'Error in wiki search'});
-            });
-         }
+        }
+    
      });
     return App.Controller.WikiController;
    });
