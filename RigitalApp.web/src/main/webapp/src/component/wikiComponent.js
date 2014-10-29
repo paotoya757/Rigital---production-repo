@@ -31,7 +31,7 @@ define(['component/_wikiComponent'], function() {
     App.Component.WikiComponent = App.Component._WikiComponent.extend({
         postInit: function(){
             var self = this; 
-            
+            // cambia en la siguiente linea
             Backbone.on(self.componentId + '-wiki-display-textfield', function(params) {
                 self.componentController.setVisibility(params);
             });
@@ -74,7 +74,7 @@ define(['component/_wikiComponent'], function() {
 			this.toolbarComponent.showButton('exec-search');
 			this.toolbarComponent.showButton('cancel-search');
 			this.toolbarComponent.render();
-                        this.componentController.setCurrentTemplate('wikiSearchTemplate');
+                        this.componentController.setCurrentTemplate('wikiSearchTemplate'); // cambia aquii
                         this.componentController.search();
 		},
 		execSearch: function(){
