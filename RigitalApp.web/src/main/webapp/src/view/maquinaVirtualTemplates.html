@@ -86,3 +86,179 @@
     </form>
     </div>
 </script> 
+<script type="text/template" id="maquinaVirtualSearchTemplate">
+    <div class="form-group">
+    <% /* copiar del template default que arma el CRUD */%>  
+        <form role="form" id="<%= componentId %>-maquinaVirtualForm">
+        <% if(maquinaVirtual.id) {%>
+        <input type="hidden" name="id" value="<%= maquinaVirtual.id %>"/>
+        <% }%>
+    
+    <%/*Start Copiar #1 : Attr comunes */%>
+        <div class="form-group" >
+                <input id="btn_name" class="btn btn-primary" value="Name" type="submit" 
+              onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#name' }); return false;" />
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= maquinaVirtual.get('name') %>"
+                       style = "visibility: hidden" />	
+        </div>
+
+            <div class="form-group" >
+                <input id="btn_fechasTable" class="btn btn-primary" value="Fecha de creacion" type="submit" 
+                        onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#fechasTable' }); return false;" />                
+                    <table id="fechasTable" style="visibility: hidden" class="table table-bordered">	
+                        <tr>
+                            <td><label for="fechaCreacion">Fecha inicial</label></td>
+
+                            <td>
+                                <input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaCreacion"  name="fechaCreacion" placeholder="Fecha inicial" / >
+                                <%= '<scr'+'ipt>' %>
+                                $('#fechaCreacion').datepicker({autoclose:true});
+                                $('#fechaCreacion').datepicker('setDate',App.Utils.Converter.date.toDate("<%= maquinaVirtual.get('fechaCreacion') %>"));
+                                <%= '</scr'+'ipt>' %>
+                            </td>
+
+                            <td><label for="fechaCreacion2">Fecha final</label></td>
+
+                            <td>
+                                <input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaCreacion2"  name="fechaCreacion2" placeholder="Fecha final" />
+                                <%= '<scr'+'ipt>' %>
+                                $('#fechaCreacion2').datepicker({autoclose:true});
+                                $('#fechaCreacion2').datepicker('setDate',App.Utils.Converter.date.toDate("<%= maquinaVirtual.get('fechaCreacion2') %>"));
+                                <%= '</scr'+'ipt>' %>
+                            </td>
+
+                        </tr>
+                   </table>
+                </div>
+   <% /* JUMP : Este se no siempre se copia. Cuando el recurso tiene fecha de vencimiento, si se COPIA */%>         
+            <div class="form-group" >
+                <input id="btn_fechasTable2" class="btn btn-primary" value="Fecha de vencimiento" type="submit" 
+             onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#fechasTable2' }); return false;" />                
+                    <table id="fechasTable2" style="visibility: hidden" class="table table-bordered">	
+                        <tr>
+                            <td><label for="fechaVencimiento">Fecha inicial</label></td>
+
+                            <td>
+                                <input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaVencimiento"  name="fechaVencimiento" placeholder="Fecha inicial" / >
+                                <%= '<scr'+'ipt>' %>
+                                $('#fechaVencimiento').datepicker({autoclose:true});
+                                $('#fechaVencimiento').datepicker('setDate',App.Utils.Converter.date.toDate("<%= maquinaVirtual.get('fechaVencimiento') %>"));
+                                <%= '</scr'+'ipt>' %>
+                            </td>
+
+                            <td><label for="fechaVencimiento2">Fecha final</label></td>
+
+                            <td>
+                                <input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaVencimiento2"  name="fechaVencimiento2" placeholder="Fecha final" />
+                                <%= '<scr'+'ipt>' %>
+                                $('#fechaVencimiento2').datepicker({autoclose:true});
+                                $('#fechaVencimiento2').datepicker('setDate',App.Utils.Converter.date.toDate("<%= maquinaVirtual.get('fechaVencimiento2') %>"));
+                                <%= '</scr'+'ipt>' %>
+                            </td>
+         
+                        </tr>
+                   </table>
+            </div>
+         <%/*end jump*/%>       
+                <input id="btn_tableDestruido" class="btn btn-primary" value="Filtrar por desactivados" type="submit" 
+                        onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#tableDestruido' }); return false;" /> 
+                <div class="form-group" > 
+                    <table id = "tableDestruido" style="visibility: hidden" > 
+                        <td>
+                            <label>
+                                <input id="destruido" name="destruido" value="true" type="checkbox" 
+                                    <%= maquinaVirtual.get('destruido')?'checked':'' %> />  Desactivado
+                            </label>
+                        </td>
+                    </table>
+                </div>
+
+                    <input id="btn_tableEncargado" class="btn btn-primary" value="Encargado" type="submit" 
+                            onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#tableEncargado' }); return false;" />
+                    <div class="form-group" id = "tableEncargado" style="visibility: hidden">
+
+                        <table class="table table-border" >
+                            <tr>
+                                <td>
+                                    <label for="encargadoidId">Encargado Id</label>
+                                </td>
+                                <td>
+                                    <select class="form-control" id="encargadoId" name="encargadoId">
+                                            <option value="">None</option>
+                                          <% encargado.each(function(encargadoid) { %> 
+                                            <option value="<%=encargadoid.get('id')%>" <% if(maquinaVirtual.get('encargadoId')==encargadoid.get('id')) {%>selected<%}%> ><%=encargadoid.get('name')%></option>
+                                          <% }); %>                
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+            <%/*End Copiar #1 : Attr comunes */%>
+            
+            <input id="btn_ips" class="btn btn-primary" value="IPS" type="submit" 
+             onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#fg-ips' }); return false;" />
+             
+            <div class="form-group" id = "fg-ips" style="visibility: hidden">
+		
+                    <input type="text" class="form-control" id="ips" name="ips" placeholder="Enter value" value="<%= maquinaVirtual.get('ips') %>"/>	
+            </div>
+            
+            
+            <input id="btn_serviciosAsociados" class="btn btn-primary" value="Servicios Asociados" type="submit" 
+                    onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#fg-serviciosAsociados' }); return false;" />
+            <div class="form-group" id = "fg-serviciosAsociados" style="visibility: hidden">
+		
+                    <input type="text" class="form-control" id="serviciosAsociados" name="serviciosAsociados" placeholder="Enter value" value="<%= maquinaVirtual.get('serviciosAsociados') %>"/>	
+            </div>
+    
+    
+            <input id="btn_version" class="btn btn-primary" value="Version" type="submit" 
+       onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#fg-version' }); return false;" />
+            <div class="form-group" id = "fg-version" style="visibility: hidden">
+		
+                    <input type="text" class="form-control" id="version" name="version" placeholder="Enter value" value="<%= maquinaVirtual.get('version') %>"/>	
+            </div>
+    
+    
+    
+	<input id="btn_sistemaOperativo" class="btn btn-primary" value="Sistema Operativo" type="submit" 
+       onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#fg-sistemaOperativo' }); return false;" />
+            <div class="form-group" id = "fg-sistemaOperativo" style="visibility: hidden">
+		
+                    <input type="text" class="form-control" id="sistemaOperativo" name="sistemaOperativo" placeholder="Enter value" value="<%= maquinaVirtual.get('sistemaOperativo') %>"/>	
+            </div>
+    
+        <input id="btn_numDiscos" class="btn btn-primary" value="Numero de discos" type="submit" 
+       onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#fg-numDiscos' }); return false;" />
+            <div class="form-group" id = "fg-numDiscos" style="visibility: hidden">
+		
+                
+                    <input type="text" class="form-control" id="numDiscos" name="numDiscos" placeholder="Enter value" value="<%= maquinaVirtual.get('numDiscos') %>"/>	
+            </div>
+    
+        <input id="btn_capacidadDiscos" class="btn btn-primary" value="Capacidad Discos" type="submit" 
+       onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#fg-capacidadDiscos' }); return false;" />
+            <div class="form-group" id = "fg-capacidadDiscos" style="visibility: hidden">
+		
+                    <input type="text" class="form-control" id="capacidadDiscos" name="capacidadDiscos" placeholder="Enter value" value="<%= maquinaVirtual.get('capacidadDiscos') %>"/>	
+            </div>
+    
+        <input id="btn_ram" class="btn btn-primary" value="RAM" type="submit" 
+       onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#fg-RAM' }); return false;" />
+            <div class="form-group" id = "fg-RAM" style="visibility: hidden">
+		
+                    <input type="text" class="form-control" id="ram" name="ram" placeholder="Enter value" value="<%= maquinaVirtual.get('ram') %>"/>	
+            </div>
+        
+       <input id="btn_numCores" class="btn btn-primary" value="Numero de cores" type="submit" 
+         onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#fg-numCores' }); return false;" />
+            <div class="form-group" id = "fg-numCores" style="visibility: hidden">
+                
+                    <input type="text" class="form-control" id="numCores" name="numCores" placeholder="Enter value" value="<%= maquinaVirtual.get('numCores') %>"/>	
+            </div>
+		
+            
+            
+	</form>
+</div>
+</script>
