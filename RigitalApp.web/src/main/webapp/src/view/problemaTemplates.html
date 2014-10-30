@@ -123,3 +123,276 @@
     </form>
     </div>
 </script> 
+
+<script type="text/template" id="problemaSearchTemplate">
+    <div class="form-group">
+        <form role="form" id="<%= componentId %>-problemaForm">
+            <% if(problema.id) {%>
+            <input type="hidden" name="id" value="<%= problema.id %>"/>
+            <% }%>
+            
+            <div class="form-group" >
+                <input id="btn_name" class="btn btn-primary" value="Name" type="submit" 
+              onclick="Backbone.trigger('<%= componentId %>-problema-display-textfield',{textInputId:'#name' }); return false;" />
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= problema.get('name') %>"
+                       style = "visibility: hidden" />	
+            </div>
+            
+            <div class="form-group" >
+                <input id="btn_fechasTable" class="btn btn-primary" value="Fecha de creacion" type="submit" 
+                        onclick="Backbone.trigger('<%= componentId %>-problema-display-textfield',{textInputId:'#fechasTable' }); return false;" />                
+                    <table id="fechasTable" style="visibility: hidden" class="table table-bordered">	
+                        <tr>
+                            <td><label for="fechaOcurrencia">Fecha inicial</label></td>
+
+                            <td>
+                                <input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaOcurrencia"  name="fechaOcurrencia" placeholder="Fecha inicial" / >
+                                <%= '<scr'+'ipt>' %>
+                                $('#fechaOcurrencia').datepicker({autoclose:true});
+                                $('#fechaOcurrencia').datepicker('getDate',App.Utils.Converter.date.toDate("<%= problema.get('fechaOcurrencia') %>"));
+                                <%= '</scr'+'ipt>' %>
+                            </td>
+
+                            <td><label for="fechaOcurrencia2">Fecha final</label></td>
+
+                            <td>
+                                <input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaOcurrencia2"  name="fechaOcurrencia2" placeholder="Fecha final" />
+                                <%= '<scr'+'ipt>' %>
+                                $('#fechaOcurrencia2').datepicker({autoclose:true});
+                                $('#fechaOcurrencia2').datepicker('getDate',App.Utils.Converter.date.toDate("<%= problema.get('fechaOcurrencia2') %>"));
+                                <%= '</scr'+'ipt>' %>
+                            </td>
+
+                        </tr>
+                   </table>
+            </div>
+    
+    
+                <input id="btn_empleadoid" class="btn btn-primary" value="Empleado" type="submit" 
+                   onclick="Backbone.trigger('<%= componentId %>-problema-display-textfield',{textInputId:'#fg-empleadoid' }); return false;" />
+            <div class="form-group" id = "fg-empleadoid" style="visibility: hidden">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>
+		<label for="empleadoidId">Empleado Id</label>
+                                </td>
+                                <td>
+		
+                        <select class="form-control" id="empleadoId" name="empleadoId">
+			  <option value="">None</option>
+                        <% empleado.each(function(empleadoid) { %> 
+                          <option value="<%=empleadoid.get('id')%>" <% if(problema.get('empleadoId')==empleadoid.get('id')) {%>selected<%}%> ><%=empleadoid.get('name')%></option>
+                        <% }); %>                
+                        </select>  
+                                </td>
+                            </tr>
+                        </table>
+			 
+		</div>
+		
+                <input id="btn_sqldevid" class="btn btn-primary" value="SQL Developer" type="submit" 
+                   onclick="Backbone.trigger('<%= componentId %>-problema-display-textfield',{textInputId:'#fg-sqldevid' }); return false;" />
+            <div class="form-group" id = "fg-sqldevid" style="visibility: hidden">
+                        <table class="table table-bordered">
+                            <tr>
+                                <td>
+		<label for="sqldevidId">Sqldev Id</label> 
+                                </td>
+                                <td>
+		<select class="form-control" id="sqldevId" name="sqldevId">
+                                          <option value="">None</option>
+                            <% sQLDev.each(function(sqldevid) { %> 
+                              <option value="<%=sqldevid.get('id')%>" <% if(problema.get('sqldevId')==sqldevid.get('id')) {%>selected<%}%> ><%=sqldevid.get('name')%></option>
+                            <% }); %>                
+                            </select>
+                                </td>
+                            </tr>
+                        </table>
+			
+                              
+		</div>
+        
+		<input id="btn_mysqlid" class="btn btn-primary" value="mySQL" type="submit" 
+                   onclick="Backbone.trigger('<%= componentId %>-problema-display-textfield',{textInputId:'#fg-mysqlid' }); return false;" />
+            <div class="form-group" id = "fg-mysqlid" style="visibility: hidden">
+                    <table class="table table-bordered">
+                            <tr>
+                                <td>
+                                    <label for="mysqlidId">Mysql Id</label> 
+                                </td>
+                                <td>
+	<select class="form-control" id="mysqlId" name="mysqlId">
+			  <option value="">None</option>
+            <% mySQL.each(function(mysqlid) { %> 
+              <option value="<%=mysqlid.get('id')%>" <% if(problema.get('mysqlId')==mysqlid.get('id')) {%>selected<%}%> ><%=mysqlid.get('name')%></option>
+            <% }); %>                
+            </select>  	
+                                </td>
+                            </tr>
+                        </table>
+	
+            
+		</div>
+        
+		<input id="btn_paginawebid" class="btn btn-primary" value="Pagina Web" type="submit" 
+                   onclick="Backbone.trigger('<%= componentId %>-problema-display-textfield',{textInputId:'#fg-paginawebid' }); return false;" />
+            <div class="form-group" id = "fg-paginawebid" style="visibility: hidden">
+                    <table class="table table-bordered">
+                            <tr>
+                                <td>
+		<label for="paginawebidId">Paginaweb Id</label> 
+                                </td>
+                                <td>
+		
+            <select class="form-control" id="paginawebId" name="paginawebId">
+			  <option value="">None</option>
+            <% paginaWeb.each(function(paginawebid) { %> 
+              <option value="<%=paginawebid.get('id')%>" <% if(problema.get('paginawebId')==paginawebid.get('id')) {%>selected<%}%> ><%=paginawebid.get('name')%></option>
+            <% }); %>                
+            </select>  
+                                </td>
+                            </tr>
+                        </table>
+			
+		</div>
+        
+		<input id="btn_wikiid" class="btn btn-primary" value="Wiki" type="submit" 
+                   onclick="Backbone.trigger('<%= componentId %>-problema-display-textfield',{textInputId:'#fg-wikiid' }); return false;" />
+            <div class="form-group" id = "fg-wikiid" style="visibility: hidden">
+                    <table class="table table-bordered">
+                            <tr>
+                                <td>
+				<label for="wikiidId">Wiki Id</label> 
+                                </td>
+                                <td>
+	<select class="form-control" id="wikiId" name="wikiId">
+			  <option value="">None</option>
+            <% wiki.each(function(wikiid) { %> 
+              <option value="<%=wikiid.get('id')%>" <% if(problema.get('wikiId')==wikiid.get('id')) {%>selected<%}%> ><%=wikiid.get('name')%></option>
+            <% }); %>                
+            </select>  	
+                                </td>
+                            </tr>
+                    </table>
+	
+            
+		</div>
+        
+        
+        <input id="btn_maquinavirualid" class="btn btn-primary" value="Maquina Virtual" type="submit" 
+                   onclick="Backbone.trigger('<%= componentId %>-problema-display-textfield',{textInputId:'#fg-maquinavirualid' }); return false;" />
+            <div class="form-group" id = "fg-maquinavirualid" style="visibility: hidden">
+                    <table class="table table-bordered">
+                            <tr>
+                                <td>
+                                    <label for="maquinavirtualidId">Maquinavirtual Id</label> 
+                                </td>
+                                <td>
+	<select class="form-control" id="maquinavirtualId" name="maquinavirtualId">
+			  <option value="">None</option>
+            <% maquinaVirtual.each(function(maquinavirtualid) { %> 
+              <option value="<%=maquinavirtualid.get('id')%>" <% if(problema.get('maquinavirtualId')==maquinavirtualid.get('id')) {%>selected<%}%> ><%=maquinavirtualid.get('name')%></option>
+            <% }); %>                
+            </select>  	
+                                </td>
+                            </tr>
+                    </table>
+	
+            
+		</div>
+        
+        
+        <input id="btn_unidadderedid" class="btn btn-primary" value="Unidad de red" type="submit" 
+                   onclick="Backbone.trigger('<%= componentId %>-problema-display-textfield',{textInputId:'#fg-unidadderedid' }); return false;" />
+            <div class="form-group" id = "fg-unidadderedid" style="visibility: hidden">                    <table class="table table-bordered">
+                            <tr>
+                                <td>
+					<label for="unidadderedidId">Unidaddered Id</label> 
+                                </td>
+                                <td>
+            <select class="form-control" id="unidadderedId" name="unidadderedId">
+			  <option value="">None</option>
+            <% unidadDeRed.each(function(unidadderedid) { %> 
+              <option value="<%=unidadderedid.get('id')%>" <% if(problema.get('unidadderedId')==unidadderedid.get('id')) {%>selected<%}%> ><%=unidadderedid.get('name')%></option>
+            <% }); %>                
+            </select>  		
+                                </td>
+                            </tr>
+                    </table>
+
+
+		</div>
+        
+        
+	<input id="btn_repositorioid" class="btn btn-primary" value="Repositorio" type="submit" 
+                   onclick="Backbone.trigger('<%= componentId %>-problema-display-textfield',{textInputId:'#fg-repositorioid' }); return false;" />
+            <div class="form-group" id = "fg-repositorioid" style="visibility: hidden">
+                    <table class="table table-bordered">
+                            <tr>
+                                <td>
+		<label for="repositorioidId">Repositorio Id</label> 
+                                </td>
+                                <td>
+	<select class="form-control" id="repositorioId" name="repositorioId">
+			  <option value="">None</option>
+            <% repositorio.each(function(repositorioid) { %> 
+              <option value="<%=repositorioid.get('id')%>" <% if(problema.get('repositorioId')==repositorioid.get('id')) {%>selected<%}%> ><%=repositorioid.get('name')%></option>
+            <% }); %>                
+            </select>  	
+                                </td>
+                            </tr>
+                    </table>
+			
+            
+		</div>
+        
+        
+	<input id="btn_contenedorwebid" class="btn btn-primary" value="Contenedor Web" type="submit" 
+                   onclick="Backbone.trigger('<%= componentId %>-problema-display-textfield',{textInputId:'#fg-contenedorwebid' }); return false;" />
+            <div class="form-group" id = "fg-contenedorwebid" style="visibility: hidden">
+                    <table class="table table-bordered">
+                            <tr>
+                                <td>
+			<label for="contenedorwebidId">Contenedorweb Id</label> 
+                                </td>
+                                <td>
+                        <select class="form-control" id="contenedorwebId" name="contenedorwebId">
+                                                <option value="">None</option>
+                                  <% contenedorWeb.each(function(contenedorwebid) { %> 
+                                    <option value="<%=contenedorwebid.get('id')%>" <% if(problema.get('contenedorwebId')==contenedorwebid.get('id')) {%>selected<%}%> ><%=contenedorwebid.get('name')%></option>
+                                  <% }); %>                  
+                        </select>   
+                                </td>
+                            </tr>
+                    </table>
+		
+              
+		</div>
+        
+        
+		<input id="btn_softwaresalasid" class="btn btn-primary" value="Software de sala" type="submit" 
+                   onclick="Backbone.trigger('<%= componentId %>-problema-display-textfield',{textInputId:'#fg-softwaresalasid' }); return false;" />
+            <div class="form-group" id = "fg-softwaresalasid" style="visibility: hidden">
+                    <table class="table table-bordered">
+                            <tr>
+                                <td>
+                                    <label for="softwaresalasidId">Softwaresalas Id</label>
+                                </td>
+                                <td>
+                                                        <select class="form-control" id="softwaresalasId" name="softwaresalasId">
+                                                  <option value="">None</option>
+                                    <% softwareSalas.each(function(softwaresalasid) { %> 
+                                      <option value="<%=softwaresalasid.get('id')%>" <% if(problema.get('softwaresalasId')==softwaresalasid.get('id')) {%>selected<%}%> ><%=softwaresalasid.get('name')%></option>
+                                    <% }); %>                
+                                    </select>
+                                </td>
+                            </tr>
+                    </table>
+			 
+              
+                </div>
+            
+            
+        </form>
+    </div>
+</script>
