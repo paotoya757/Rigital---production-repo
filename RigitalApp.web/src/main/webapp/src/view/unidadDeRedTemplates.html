@@ -58,3 +58,98 @@
     </form>
     </div>
 </script> 
+<script type="text/template" id="unidadDeRedSearchTemplate">
+     <div class="form-group">
+        <form role="form" id="<%= componentId %>-unidadDeRedForm">
+            <% if(unidadDeRed.id) {%>
+            <input type="hidden" name="id" value="<%= unidadDeRed.id %>"/>
+            <% }%>
+        
+             <%/*Start Copiar #1 : Attr comunes */%>
+        <div class="form-group" >
+                <input id="btn_name" class="btn btn-primary" value="Name" type="submit" 
+              onclick="Backbone.trigger('<%= componentId %>-unidadDeRed-display-textfield',{textInputId:'#name' }); return false;" />
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= unidadDeRed.get('name') %>"
+                       style = "visibility: hidden" />	
+        </div>
+
+            <div class="form-group" >
+                <input id="btn_fechasTable" class="btn btn-primary" value="Fecha de creacion" type="submit" 
+                        onclick="Backbone.trigger('<%= componentId %>-unidadDeRed-display-textfield',{textInputId:'#fechasTable' }); return false;" />                
+                    <table id="fechasTable" style="visibility: hidden" class="table table-bordered">	
+                        <tr>
+                            <td><label for="fechaCreacion">Fecha inicial</label></td>
+
+                            <td>
+                                <input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaCreacion"  name="fechaCreacion" placeholder="Fecha inicial" / >
+                                <%= '<scr'+'ipt>' %>
+                                $('#fechaCreacion').datepicker({autoclose:true});
+                                $('#fechaCreacion').datepicker('getDate',App.Utils.Converter.date.toDate("<%= unidadDeRed.get('fechaCreacion') %>"));
+                                <%= '</scr'+'ipt>' %>
+                            </td>
+
+                            <td><label for="fechaCreacion2">Fecha final</label></td>
+
+                            <td>
+                                <input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaCreacion2"  name="fechaCreacion2" placeholder="Fecha final" />
+                                <%= '<scr'+'ipt>' %>
+                                $('#fechaCreacion2').datepicker({autoclose:true});
+                                $('#fechaCreacion2').datepicker('getDate',App.Utils.Converter.date.toDate("<%= unidadDeRed.get('fechaCreacion2') %>"));
+                                <%= '</scr'+'ipt>' %>
+                            </td>
+
+                        </tr>
+                   </table>
+                </div>
+                
+                <input id="btn_tableDestruido" class="btn btn-primary" value="Filtrar por desactivados" type="submit" 
+                        onclick="Backbone.trigger('<%= componentId %>-unidadDeRed-display-textfield',{textInputId:'#tableDestruido' }); return false;" /> 
+                <div class="form-group" > 
+                    <table id = "tableDestruido" style="visibility: hidden" > 
+                        <td>
+                            <label>
+                                <input id="destruido" name="destruido" value="true" type="checkbox" 
+                                    <%= unidadDeRed.get('destruido')?'checked':'' %> />  Desactivado
+                            </label>
+                        </td>
+                    </table>
+                </div>
+
+                    <input id="btn_tableEncargado" class="btn btn-primary" value="Encargado" type="submit" 
+                            onclick="Backbone.trigger('<%= componentId %>-unidadDeRed-display-textfield',{textInputId:'#tableEncargado' }); return false;" />
+                    <div class="form-group" id = "tableEncargado" style="visibility: hidden">
+
+                        <table class="table table-border" >
+                            <tr>
+                                <td>
+                                    <label for="encargadoidId">Encargado Id</label>
+                                </td>
+                                <td>
+                                    <select class="form-control" id="encargadoId" name="encargadoId">
+                                            <option value="">None</option>
+                                          <% encargado.each(function(encargadoid) { %> 
+                                            <option value="<%=encargadoid.get('id')%>" <% if(unidadDeRed.get('encargadoId')==encargadoid.get('id')) {%>selected<%}%> ><%=encargadoid.get('name')%></option>
+                                          <% }); %>                
+                                    </select>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+            <%/*End Copiar #1 : Attr comunes */%>
+            
+                
+		<input id="btn_servidor" class="btn btn-primary" value="Servidor" type="submit" 
+                    onclick="Backbone.trigger('<%= componentId %>-unidadDeRed-display-textfield',{textInputId:'#fg-servidor' }); return false;" />
+                <div class="form-group" id = "fg-servidor" style="visibility: hidden">
+                    <input type="text" class="form-control" id="servidor" name="servidor" placeholder="Enter value" value="<%= unidadDeRed.get('servidor') %>"/>	
+		</div>
+        
+		 <input id="btn_servidor" class="btn btn-primary" value="URL" type="submit" 
+                    onclick="Backbone.trigger('<%= componentId %>-unidadDeRed-display-textfield',{textInputId:'#fg-servidor' }); return false;" />
+                <div class="form-group" id = "fg-servidor" style="visibility: hidden">
+                    <input type="text" class="form-control" id="url" name="url" placeholder="Enter value" value="<%= unidadDeRed.get('url') %>"/>	
+		</div>
+            
+        </form>
+     </div>
+</script>
