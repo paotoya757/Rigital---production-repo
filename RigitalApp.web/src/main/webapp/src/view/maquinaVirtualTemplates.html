@@ -95,12 +95,12 @@
         <% }%>
     
     <%/*Start Copiar #1 : Attr comunes */%>
-        <div class="form-group" >
-                <input id="btn_name" class="btn btn-primary" value="Name" type="submit" 
-              onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#name' }); return false;" />
-                <input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= maquinaVirtual.get('name') %>"
-                       style = "visibility: hidden" />	
-        </div>
+            <div class="form-group" >
+                    <input id="btn_name" class="btn btn-primary" value="Name" type="submit" 
+                  onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#name' }); return false;" />
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= maquinaVirtual.get('name') %>"
+                           style = "visibility: hidden" />	
+            </div>
 
             <div class="form-group" >
                 <input id="btn_fechasTable" class="btn btn-primary" value="Fecha de creacion" type="submit" 
@@ -213,7 +213,7 @@
     
     
             <input id="btn_version" class="btn btn-primary" value="Version" type="submit" 
-       onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#fg-version' }); return false;" />
+                   onclick="Backbone.trigger('<%= componentId %>-maquinaVirtual-display-textfield',{textInputId:'#fg-version' }); return false;" />
             <div class="form-group" id = "fg-version" style="visibility: hidden">
 		
                     <input type="text" class="form-control" id="version" name="version" placeholder="Enter value" value="<%= maquinaVirtual.get('version') %>"/>	
