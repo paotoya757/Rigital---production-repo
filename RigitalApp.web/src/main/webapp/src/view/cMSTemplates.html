@@ -15,3 +15,24 @@
     </form>
     </div>
 </script> 
+
+<script type="text/template" id="cMSSearchTemplate">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-cMSForm">
+    <% if(cMS.id) {%>
+    <input type="hidden" name="id" value="<%= cMS.id %>"/>
+    <% }%>
+		<input id="btn_name" class="btn btn-primary" value="Name" type="submit" 
+                    onclick="Backbone.trigger('<%= componentId %>-cMS-display-textfield',{textInputId:'#fg-name' }); return false;" />
+            <div class="form-group" id = "fg-name" style="visibility: hidden">
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= cMS.get('name') %>"/>	
+            </div>
+        
+            <input id="btn_version" class="btn btn-primary" value="Version" type="submit" 
+                   onclick="Backbone.trigger('<%= componentId %>-cMS-display-textfield',{textInputId:'#fg-version' }); return false;" />
+            <div class="form-group" id = "fg-version" style="visibility: hidden">
+                    <input type="text" class="form-control" id="version" name="version" placeholder="Enter value" value="<%= cMS.get('version') %>"/>	
+            </div>
+    </form>
+    </div>
+</script>

@@ -19,3 +19,38 @@
     </form>
     </div>
 </script> 
+
+<script type="text/template" id="empleadoSearchTemplate">
+    
+     <div class="form-group">
+    <form role="form" id="<%= componentId %>-empleadoForm">
+    <% if(empleado.id) {%>
+    <input type="hidden" name="id" value="<%= empleado.id %>"/>
+    <% }%>
+
+            <input id="btn_name" class="btn btn-primary" value="Name" type="submit" 
+                    onclick="Backbone.trigger('<%= componentId %>-empleado-display-textfield',{textInputId:'#fg-name' }); return false;" />
+            <div class="form-group" id = "fg-name" style="visibility: hidden">
+		
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= empleado.get('name') %>"/>	
+		</div>
+        
+        
+            <input id="btn_login" class="btn btn-primary" value="Login" type="submit" 
+                    onclick="Backbone.trigger('<%= componentId %>-empleado-display-textfield',{textInputId:'#fg-login' }); return false;" />
+            <div class="form-group" id = "fg-login" style="visibility: hidden">
+		
+    	<input type="text" class="form-control" id="login" name="login" placeholder="Enter value" value="<%= empleado.get('login') %>"/>	
+		</div>
+        
+        
+         <input id="btn_password" class="btn btn-primary" value="Password" type="submit" 
+                    onclick="Backbone.trigger('<%= componentId %>-empleado-display-textfield',{textInputId:'#fg-password' }); return false;" />
+            <div class="form-group" id = "fg-password" style="visibility: hidden">
+		
+    	<input type="text" class="form-control" id="password" name="password" placeholder="Enter value" value="<%= empleado.get('password') %>"/>	
+		</div>
+    </form>
+    </div>
+    
+</script>
