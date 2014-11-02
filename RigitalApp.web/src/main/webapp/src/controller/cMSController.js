@@ -71,9 +71,22 @@ define(['controller/_cMSController','delegate/cMSDelegate'], function() {
                 this._render();
                 Backbone.trigger(this.componentId + '-' + 'post-cMS-create', {view: this});
             }
+        },
+        cMSSearch: function(callback,context){
+            
+            console.log("cMSSearch");
+            
+            var self = this;
+            var model = $('#' + this.componentId + '-cMSForm').serializeObject();
+            this.currentModel.set(model);
+            var delegate = new App.Delegate.CMSDelegate();
+            delegate.search(self.currentModel, function (data) {
+                self.currentList.reset(data.records);
+                callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght})
+            }, function (data) {
+                Backbone.trigger(self.componentId + '-' + 'error', {event: 'cMS-search', view: self, id: '', data: data, error: 'Error in cMS search'});
+            });
         }
-        // end : searchRelated
-        ,
     });
     return App.Controller.CMSController;
 }); 

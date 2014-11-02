@@ -33,7 +33,16 @@ define(['model/_wikiModel'], function() {
                 fechaCreacion2:''
             },
  		validate: function(attrs,options){
+                    
+                        
+                    
             var validationMessage = "";
+            
+//            if((!attrs.fechaCreacion && attrs.fechaCreacion2) || (attrs.fechaCreacion && !attrs.fechaCreacion2))
+//            {
+//                validationMessage = "Tanto la fecha inicial como la fecha final deben tener valores para poder realizar la bpusqueda";
+//            }
+
             if(!attrs.name){
                 validationMessage = "The name can't be empty.";
             }

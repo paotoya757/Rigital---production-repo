@@ -32,7 +32,7 @@ define(['delegate/_wikiDelegate'], function() {
          search: function(user, callback, callbackError) {
               console.log('Wiki Search: ');
              $.ajax({
-                 url: '/wiki.web/webresources/Wiki',
+                 url: '/RigitalApp.web/webresources/Wiki/Search',
                  type: 'GET',
                  data: $.param(user.toJSON()),
                  contentType: 'application/json'

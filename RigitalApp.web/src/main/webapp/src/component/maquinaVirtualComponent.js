@@ -86,6 +86,7 @@ define(['component/_maquinaVirtualComponent'], function() {
 			this.toolbarComponent.showButton('search');
 			this.toolbarComponent.hideButton('cancel-search');
 			this.toolbarComponent.hideButton('exec-search');
+                        this.componentController.maquinavirtualsearch(this.list,this);
 			this.toolbarComponent.render();
 			
 		}

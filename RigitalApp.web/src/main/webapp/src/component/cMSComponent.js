@@ -86,6 +86,7 @@ define(['component/_cMSComponent'], function() {
 			this.toolbarComponent.showButton('search');
 			this.toolbarComponent.hideButton('cancel-search');
 			this.toolbarComponent.hideButton('exec-search');
+                        this.componentController.cMSSearch(this.list,this);
 			this.toolbarComponent.render();
 			
 		}

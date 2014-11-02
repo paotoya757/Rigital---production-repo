@@ -73,9 +73,19 @@ define(['controller/_unidadDeRedController','delegate/unidadDeRedDelegate'], fun
                 this._render();
                 Backbone.trigger(this.componentId + '-' + 'post-unidadDeRed-create', {view: this});
             }
+        },
+        unidadderedsearch: function(callback,context){
+            var self = this;
+            var model = $('#' + this.componentId + '-unidadDeRedForm').serializeObject();
+            this.currentModel.set(model);
+            var delegate = new App.Delegate.UnidadDeRedDelegate();
+            delegate.search(self.currentModel, function (data) {
+                self.currentList.reset(data.records);
+                callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght})
+            }, function (data) {
+                Backbone.trigger(self.componentId + '-' + 'error', {event: 'unidadDeRed-search', view: self, id: '', data: data, error: 'Error in unidadDeRed search'});
+            });
         }
-        // end : searchRelated
-        ,
     });
     return App.Controller.UnidadDeRedController;
 }); 

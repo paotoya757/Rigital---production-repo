@@ -86,6 +86,7 @@ define(['component/_problemaComponent'], function() {
 			this.toolbarComponent.showButton('search');
 			this.toolbarComponent.hideButton('cancel-search');
 			this.toolbarComponent.hideButton('exec-search');
+                        this.componentController.problemasearch(this.list,this);
 			this.toolbarComponent.render();
 			
 		}

@@ -71,9 +71,19 @@ define(['controller/_encargadoController','delegate/encargadoDelegate'], functio
                 this._render();
                 Backbone.trigger(this.componentId + '-' + 'post-encargado-create', {view: this});
             }
+        },
+        encargadosearch: function(callback,context){
+            var self = this;
+            var model = $('#' + this.componentId + '-encargadoForm').serializeObject();
+            this.currentModel.set(model);
+            var delegate = new App.Delegate.EncargadoDelegate();
+            delegate.search(self.currentModel, function (data) {
+                self.currentList.reset(data.records);
+                callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght})
+            }, function (data) {
+                Backbone.trigger(self.componentId + '-' + 'error', {event: 'encargado-search', view: self, id: '', data: data, error: 'Error in Encargado search'});
+            });
         }
-        // end : searchRelated
-        ,
     });
     return App.Controller.EncargadoController;
 }); 

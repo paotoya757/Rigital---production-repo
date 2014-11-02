@@ -74,16 +74,19 @@ define(['component/_wikiComponent'], function() {
 			this.toolbarComponent.showButton('exec-search');
 			this.toolbarComponent.showButton('cancel-search');
 			this.toolbarComponent.render();
-                        this.componentController.setCurrentTemplate('wikiSearchTemplate'); // cambia aquii
                         this.componentController.search();
+                        this.componentController.setCurrentTemplate('wikiSearchTemplate'); // cambia aquii
+                        
 		},
 		execSearch: function(){
+                    console.log("Al menos esta llegando a ---> execSearch: function()");
 			this.toolbarComponent.showButton('create');
 			this.toolbarComponent.showButton('refresh');
 			this.toolbarComponent.showButton('print');
 			this.toolbarComponent.showButton('search');
 			this.toolbarComponent.hideButton('cancel-search');
 			this.toolbarComponent.hideButton('exec-search');
+                        this.componentController.wikisearch(this.list,this);
 			this.toolbarComponent.render();
 			
 		}

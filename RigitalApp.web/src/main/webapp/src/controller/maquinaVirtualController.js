@@ -73,9 +73,19 @@ define(['controller/_maquinaVirtualController','delegate/maquinaVirtualDelegate'
                 this._render();
                 Backbone.trigger(this.componentId + '-' + 'post-maquinaVirtual-create', {view: this});
             }
+        },
+        maquinavirtualsearch: function(callback,context){
+            var self = this;
+            var model = $('#' + this.componentId + '-maquinaVirtualForm').serializeObject();
+            this.currentModel.set(model);
+            var delegate = new App.Delegate.MaquinaVirtualDelegate();
+            delegate.search(self.currentModel, function (data) {
+                self.currentList.reset(data.records);
+                callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght})
+            }, function (data) {
+                Backbone.trigger(self.componentId + '-' + 'error', {event: 'maquinaVirtual-search', view: self, id: '', data: data, error: 'Error in maquinaVirtual search'});
+            });
         }
-        // end : searchRelated
-        ,
         
     });
     return App.Controller.MaquinaVirtualController;

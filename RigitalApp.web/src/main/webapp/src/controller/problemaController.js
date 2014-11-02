@@ -91,9 +91,21 @@ define(['controller/_problemaController','delegate/problemaDelegate'], function(
                 this._render();
                 Backbone.trigger(this.componentId + '-' + 'post-problema-create', {view: this});
             }
+        },
+        problemasearch: function(callback,context){
+            var self = this;
+            var model = $('#' + this.componentId + '-problemaForm').serializeObject();
+            this.currentModel.set(model);
+            var delegate = new App.Delegate.ProblemaDelegate();
+            delegate.search(self.currentModel, function (data) {
+                self.currentList.reset(data.records);
+                callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght})
+            }, function (data) {
+                Backbone.trigger(self.componentId + '-' + 'error', {event: 'user-search', view: self, id: '', data: data, error: 'Error in user search'});
+            });
         }
         // end : searchRelated
-        ,
+        
     });
     return App.Controller.ProblemaController;
 }); 
