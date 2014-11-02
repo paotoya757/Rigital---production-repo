@@ -33,7 +33,12 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.grupo.wiki.logic.api.IWikiLogicService;
+import co.edu.uniandes.csw.grupo.wiki.logic.dto.WikiPageDTO;
 @Singleton
 public class WikiMockLogicService extends _WikiMockLogicService implements IWikiLogicService {
+
+    public WikiPageDTO getWikisByParameters(String servidoHost, String rutaServidor, String name, String descripcion, String proposito, String caracteristicas, String encargadoId, String fechaCreacion1, String fechaCreacion2, String estaDestruido) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

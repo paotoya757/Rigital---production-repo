@@ -33,7 +33,12 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.grupo.encargado.logic.api.IEncargadoLogicService;
+import co.edu.uniandes.csw.grupo.encargado.logic.dto.EncargadoPageDTO;
 @Singleton
 public class EncargadoMockLogicService extends _EncargadoMockLogicService implements IEncargadoLogicService {
+
+    public EncargadoPageDTO getEncargadosByParameters(String name, String login) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

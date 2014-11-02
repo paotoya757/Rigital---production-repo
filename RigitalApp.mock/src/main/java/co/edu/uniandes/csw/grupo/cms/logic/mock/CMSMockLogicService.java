@@ -33,7 +33,12 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.grupo.cms.logic.api.ICMSLogicService;
+import co.edu.uniandes.csw.grupo.cms.logic.dto.CMSPageDTO;
 @Singleton
 public class CMSMockLogicService extends _CMSMockLogicService implements ICMSLogicService {
+
+    public CMSPageDTO getCMSsByParameters(String name, String version) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

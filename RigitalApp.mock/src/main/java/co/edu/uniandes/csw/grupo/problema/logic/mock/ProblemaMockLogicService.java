@@ -33,7 +33,12 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.grupo.problema.logic.api.IProblemaLogicService;
+import co.edu.uniandes.csw.grupo.problema.logic.dto.ProblemaPageDTO;
 @Singleton
 public class ProblemaMockLogicService extends _ProblemaMockLogicService implements IProblemaLogicService {
+
+    public ProblemaPageDTO getProblemasByParameters(String name, String descripcion, String empleadoId, String sqldevId, String mysqlId, String paginawebId, String wikiId, String maquinavirtualId, String unidadderedId, String repositorioId, String contenedorwebId, String softwaresalasId, String fechaDeOcurrencia1, String fechaOcurrencia2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

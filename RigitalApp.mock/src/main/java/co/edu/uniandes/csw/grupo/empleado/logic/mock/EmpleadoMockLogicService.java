@@ -33,7 +33,13 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.grupo.empleado.logic.api.IEmpleadoLogicService;
+import co.edu.uniandes.csw.grupo.empleado.logic.dto.EmpleadoPageDTO;
 @Singleton
 public class EmpleadoMockLogicService extends _EmpleadoMockLogicService implements IEmpleadoLogicService {
+
+    public EmpleadoPageDTO getEmpleadosByParameters(String name, String password, String login) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
+    
 }
