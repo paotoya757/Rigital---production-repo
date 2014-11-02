@@ -38,10 +38,15 @@ import javax.inject.Inject;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.grupo.problema.logic.api.IProblemaLogicService;
+import co.edu.uniandes.csw.grupo.problema.logic.dto.ProblemaPageDTO;
 
 @Default
 @Stateless
 @LocalBean
 public class ProblemaLogicService extends _ProblemaLogicService implements IProblemaLogicService {
 
+    public ProblemaPageDTO getProblemasByParameters(String name,String descripcion,String empleadoId,String sqldevId,String mysqlId,String paginawebId,String wikiId,String maquinavirtualId,String unidadderedId,String repositorioId,String contenedorwebId,String softwaresalasId,String fechaDeOcurrencia1,String fechaOcurrencia2)
+    {
+        return persistance.getProblemasByParameters(name, descripcion, empleadoId, sqldevId, mysqlId, paginawebId, wikiId, maquinavirtualId, unidadderedId, repositorioId, contenedorwebId, softwaresalasId, fechaDeOcurrencia1, fechaOcurrencia2);        
+    }
 }

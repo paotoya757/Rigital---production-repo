@@ -38,10 +38,14 @@ import javax.inject.Inject;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.grupo.unidaddered.logic.api.IUnidadDeRedLogicService;
+import co.edu.uniandes.csw.grupo.unidaddered.logic.dto.UnidadDeRedPageDTO;
 
 @Default
 @Stateless
 @LocalBean
 public class UnidadDeRedLogicService extends _UnidadDeRedLogicService implements IUnidadDeRedLogicService {
 
+    public UnidadDeRedPageDTO getUnidadesDeRedByParameters(String tipos ,String servidor ,String url ,String name ,String descripcion ,String proposito ,String caracteristicas ,String encargadoId,String fechaCreacion1,String fechaCreacion2,String estaDestruido){
+        return persistance.getUnidadesDeRedByParameters(tipos , servidor , url , name , descripcion , proposito , caracteristicas , encargadoId, fechaCreacion1, fechaCreacion2, estaDestruido);
+    }
 }

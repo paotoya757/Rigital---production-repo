@@ -38,10 +38,16 @@ import javax.inject.Inject;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.grupo.encargado.logic.api.IEncargadoLogicService;
+import co.edu.uniandes.csw.grupo.encargado.logic.dto.EncargadoPageDTO;
 
 @Default
 @Stateless
 @LocalBean
 public class EncargadoLogicService extends _EncargadoLogicService implements IEncargadoLogicService {
 
+    
+    public EncargadoPageDTO getEncargadosByParameters(String name,String login) {
+        return persistance.getEncargadosByParameters( name,  login);
+    }
+    
 }

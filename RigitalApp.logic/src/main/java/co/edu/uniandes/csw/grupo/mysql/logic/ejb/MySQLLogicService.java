@@ -38,10 +38,14 @@ import javax.inject.Inject;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.grupo.mysql.logic.api.IMySQLLogicService;
+import co.edu.uniandes.csw.grupo.mysql.logic.dto.MySQLPageDTO;
 
 @Default
 @Stateless
 @LocalBean
 public class MySQLLogicService extends _MySQLLogicService implements IMySQLLogicService {
 
+    public MySQLPageDTO getMySQLsByParameters(String descripcionDestino ,String servidor ,String name ,String descripcion ,String proposito ,String caracteristicas ,String pgwebId ,String paginawebId, String encargadoId ,String fechaCreacion1,String fechaCreacion2,String estaDestruido){
+        return persistance.getMySQLsByParameters(descripcionDestino , servidor , name , descripcion , proposito , caracteristicas , pgwebId , paginawebId, encargadoId , fechaCreacion1, fechaCreacion2, estaDestruido);
+    }
 }

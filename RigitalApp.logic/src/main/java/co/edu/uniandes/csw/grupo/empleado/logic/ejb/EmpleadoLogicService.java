@@ -38,10 +38,15 @@ import javax.inject.Inject;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.grupo.empleado.logic.api.IEmpleadoLogicService;
+import co.edu.uniandes.csw.grupo.empleado.logic.dto.EmpleadoPageDTO;
 
 @Default
 @Stateless
 @LocalBean
 public class EmpleadoLogicService extends _EmpleadoLogicService implements IEmpleadoLogicService {
 
+    public EmpleadoPageDTO getEmpleadosByParameters(String name,String password,String login) {
+        return persistance.getEmpleadosByParameters( name,  password,  login);
+    }
+    
 }

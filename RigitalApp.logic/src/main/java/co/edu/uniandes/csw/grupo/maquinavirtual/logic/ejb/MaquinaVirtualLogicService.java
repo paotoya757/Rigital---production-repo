@@ -38,10 +38,14 @@ import javax.inject.Inject;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.grupo.maquinavirtual.logic.api.IMaquinaVirtualLogicService;
+import co.edu.uniandes.csw.grupo.maquinavirtual.logic.dto.MaquinaVirtualPageDTO;
 
 @Default
 @Stateless
 @LocalBean
 public class MaquinaVirtualLogicService extends _MaquinaVirtualLogicService implements IMaquinaVirtualLogicService {
 
+    public MaquinaVirtualPageDTO getMaquinasVirtualesByParameters(String ips ,String serviciosAsociados ,String version ,String sistemaOperativo ,String numDiscos ,String capacidadDiscos ,String ram ,String numCores ,String name ,String descripcion ,String proposito ,String caracteristicas ,String encargadoId ,String fechaCreacion1,String fechaCreacion2,String fechaVencimiento1,String fechaVencimiento2,String estaDestruido){
+        return persistance.getMaquinasVirtualesByParameters(ips , serviciosAsociados , version , sistemaOperativo , numDiscos , capacidadDiscos , ram , numCores , name , descripcion , proposito , caracteristicas , encargadoId , fechaCreacion1, fechaCreacion2, fechaVencimiento1, fechaVencimiento2, estaDestruido);
+    }
 }

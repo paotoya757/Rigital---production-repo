@@ -38,10 +38,16 @@ import javax.inject.Inject;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.grupo.cms.logic.api.ICMSLogicService;
+import co.edu.uniandes.csw.grupo.cms.logic.dto.CMSPageDTO;
 
 @Default
 @Stateless
 @LocalBean
 public class CMSLogicService extends _CMSLogicService implements ICMSLogicService {
 
+    public CMSPageDTO getCMSsByParameters(String name,String version){
+        return persistance.getCMSsByParameters(name, version);
+    }
+
+ 
 }
