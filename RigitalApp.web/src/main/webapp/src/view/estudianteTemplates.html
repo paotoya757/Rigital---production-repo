@@ -29,3 +29,23 @@
     </form>
     </div>
 </script> 
+<script type="text/template" id="estudianteSearchTemplate">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-estudianteForm">
+    <% if(estudiante.id) {%>
+    <input type="hidden" name="id" value="<%= estudiante.id %>"/>
+    <% }%>
+<div class="form-group" >
+                    <input id="btn_name" class="btn btn-primary" value="Name" type="submit" 
+                  onclick="Backbone.trigger('<%= componentId %>-estudiante-display-textfield',{textInputId:'#name' }); return false;" />
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= estudiante.get('name') %>"
+                           style = "visibility: hidden" />	
+            </div>
+    
+    <input id="btn_login" class="btn btn-primary" value="Login" type="submit" 
+                    onclick="Backbone.trigger('<%= componentId %>-estudiante-display-textfield',{textInputId:'#fg-login' }); return false;" />
+<div class="form-group" >
+    	<input type="text" class="form-control" id="login" name="login" placeholder="Enter value" value="<%= estudiante.get('login') %>"/>	
+		</div>
+</div>
+</script>

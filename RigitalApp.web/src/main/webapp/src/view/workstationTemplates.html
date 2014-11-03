@@ -23,3 +23,28 @@
     </form>
     </div>
 </script> 
+<script type="text/template" id="workstationSearchTemplate">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-workstationForm">
+    <% if(workstation.id) {%>
+    <input type="hidden" name="id" value="<%= workstation.id %>"/>
+    <% }%>
+<div class="form-group" >
+                    <input id="btn_name" class="btn btn-primary" value="Name" type="submit" 
+                  onclick="Backbone.trigger('<%= componentId %>-workstation-display-textfield',{textInputId:'#name' }); return false;" />
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= workstation.get('name') %>"
+                           style = "visibility: hidden" />	
+            </div>
+    
+    <input id="btn_duenio" class="btn btn-primary" value="Dueno" type="submit" 
+             onclick="Backbone.trigger('<%= componentId %>-workstation-display-textfield',{textInputId:'#fg-duenio' }); return false;" />
+                     <div class="form-group" >
+    	<input type="text" class="form-control" id="duenio" name="duenio" placeholder="Enter value" value="<%= workstation.get('duenio') %>"/>	
+		</div>
+        <input id="btn_sistemaOperativo" class="btn btn-primary" value="Sistema Operativo" type="submit" 
+             onclick="Backbone.trigger('<%= componentId %>-workstation-display-textfield',{textInputId:'#fg-sistemaOperativo' }); return false;" />
+                     <div class="form-group" >
+    	<input type="text" class="form-control" id="sistemaOperativo" name="sistemaOperativo" placeholder="Enter value" value="<%= workstation.get('sistemaOperativo') %>"/>	
+		</div>
+</div>
+</script>
