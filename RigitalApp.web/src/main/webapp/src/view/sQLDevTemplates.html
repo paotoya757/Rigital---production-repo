@@ -166,16 +166,15 @@
                             </tr>
                         </table>
                     </div>
+            <div class="form-group" >
             <input id="btn_servidor" class="btn btn-primary" value="Servidor" type="submit" 
-             onclick="Backbone.trigger('<%= componentId %>-sQLDev-display-textfield',{textInputId:'#fg-servidor' }); return false;" />
-                     <div class="form-group" >
-    	<input type="text" class="form-control" id="servidor" name="servidor" placeholder="Enter value" value="<%= sQLDev.get('servidor') %>"/>	
+             onclick="Backbone.trigger('<%= componentId %>-sQLDev-display-textfield',{textInputId:'#servidor' }); return false;" />
+    	<input type="text" class="form-control" id="servidor" name="servidor" placeholder="Enter value" value="<%= sQLDev.get('servidor') %>" style="visibility: hidden"/>	
 		</div>
-        
+          <div class="form-group" >
         <input id="btn_pgwebId" class="btn btn-primary" value="ID Pagina Web" type="submit" 
-             onclick="Backbone.trigger('<%= componentId %>-sQLDev-display-textfield',{textInputId:'#fg-pgwebId' }); return false;" />
-        <div class="form-group" style="visibility: hidden">
-    	<input type="text" class="form-control" id="pgwebId" name="pgwebId" placeholder="Enter value" value="<%= sQLDev.get('pgwebId') %>"/>	
+             onclick="Backbone.trigger('<%= componentId %>-sQLDev-display-textfield',{textInputId:'#pgwebId' }); return false;" />
+    	<input type="text" class="form-control" id="pgwebId" name="pgwebId" placeholder="Enter value" value="<%= sQLDev.get('pgwebId') %>" style="visibility: hidden"/>	
 		</div>
 		<div class="form-group" >
                 </form>

@@ -42,11 +42,12 @@
                            style = "visibility: hidden" />	
             </div>
     
-    <input id="btn_login" class="btn btn-primary" value="Login" type="submit" 
-                    onclick="Backbone.trigger('<%= componentId %>-estudiante-display-textfield',{textInputId:'#fg-login' }); return false;" />
-<div class="form-group" >
-    	<input type="text" class="form-control" id="login" name="login" placeholder="Enter value" value="<%= estudiante.get('login') %>"/>	
-		</div>
+ <div class="form-group" >
+                    <input id="btn_login" class="btn btn-primary" value="Login" type="submit" 
+                  onclick="Backbone.trigger('<%= componentId %>-estudiante-display-textfield',{textInputId:'#login' }); return false;" />
+                   <input type="text" class="form-control" id="login" name="login" placeholder="Enter value" value="<%= estudiante.get('login') %>"
+                           style = "visibility: hidden" />	
+            </div>
         </form>
 </div>
 </script>

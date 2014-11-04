@@ -121,35 +121,40 @@
                     </table>
                 </div>
 
+               <div class="form-group" >
             <input id="btn_tipoMaquina" class="btn btn-primary" value="Tipo de Maquina" type="submit" 
-             onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#fg-tipoMaquina' }); return false;" />
-            <div class="form-group" >
-    	<input type="text" class="form-control" id="tipoMaquina" name="tipoMaquina" placeholder="Enter value" value="<%= softwareSalas.get('tipoMaquina') %>"/>	
+             onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#tipoMaquina' }); return false;" />
+    	<input type="text" class="form-control" id="tipoMaquina" name="tipoMaquina" placeholder="Enter value" value="<%= softwareSalas.get('tipoMaquina') %>" style = "visibility: hidden"/>	
 		</div>
+                <div class="form-group" >
         <input id="btn_software" class="btn btn-primary" value="Software" type="submit" 
-             onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#fg-software' }); return false;" />
-        <div class="form-group" >
-    	<input type="text" class="form-control" id="software" name="software" placeholder="Enter value" value="<%= softwareSalas.get('software') %>"/>	
+             onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#software' }); return false;" />
+    	<input type="text" class="form-control" id="software" name="software" placeholder="Enter value" value="<%= softwareSalas.get('software') %>"style = "visibility: hidden"/>	
 		</div>
+                             <div class="form-group" >
             <input id="btn_version" class="btn btn-primary" value="Version" type="submit" 
-             onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#fg-version' }); return false;" />
-                     <div class="form-group" >
-    	<input type="text" class="form-control" id="version" name="version" placeholder="Enter value" value="<%= softwareSalas.get('version') %>"/>	
+             onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#version' }); return false;" />
+    	<input type="text" class="form-control" id="version" name="version" placeholder="Enter value" value="<%= softwareSalas.get('version') %>"style = "visibility: hidden"/>	
 		</div>
+                <div class="form-group" >
           <input id="btn_solicitante" class="btn btn-primary" value="Solicitante" type="submit" 
-             onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#fg-solicitante' }); return false;" />
-         <div class="form-group" >
-    	<input type="text" class="form-control" id="solicitante" name="solicitante" placeholder="Enter value" value="<%= softwareSalas.get('solicitante') %>"/>	
+             onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#solicitante' }); return false;" />
+    	<input type="text" class="form-control" id="solicitante" name="solicitante" placeholder="Enter value" value="<%= softwareSalas.get('solicitante') %>"style = "visibility: hidden"/>	
 		</div>
-         <input id="btn_workstation" class="btn btn-primary" value="Workstation" type="submit" 
-             onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#fg-workstation' }); return false;" />
         <div class="form-group" >
+        <input id="btn_workstationTable" class="btn btn-primary" value="Workstation" type="submit" 
+                        onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#workstationTable' }); return false;" />                
+                    <table id="workstationTable" style="visibility: hidden" class="table table-bordered">
+                    <td>
             <select class="form-control" id="workstationId" name="workstationId">
 			  <option value="">None</option>
             <% workstation.each(function(workstationid) { %> 
               <option value="<%=workstationid.get('id')%>" <% if(softwareSalas.get('workstationId')==workstationid.get('id')) {%>selected<%}%> ><%=workstationid.get('name')%></option>
-            <% }); %>                
-            </select>  
+            <% }); %> 
+                    </select>  
+        </td>
+         </tr>
+                   </table>
 		</div>
 </form>
 </div>

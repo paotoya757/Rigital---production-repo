@@ -35,17 +35,18 @@
                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= workstation.get('name') %>"
                            style = "visibility: hidden" />	
             </div>
-    
-    <input id="btn_duenio" class="btn btn-primary" value="Dueno" type="submit" 
-             onclick="Backbone.trigger('<%= componentId %>-workstation-display-textfield',{textInputId:'#fg-duenio' }); return false;" />
-                     <div class="form-group" >
-    	<input type="text" class="form-control" id="duenio" name="duenio" placeholder="Enter value" value="<%= workstation.get('duenio') %>"/>	
-		</div>
-        <input id="btn_sistemaOperativo" class="btn btn-primary" value="Sistema Operativo" type="submit" 
-             onclick="Backbone.trigger('<%= componentId %>-workstation-display-textfield',{textInputId:'#fg-sistemaOperativo' }); return false;" />
-                     <div class="form-group" >
-    	<input type="text" class="form-control" id="sistemaOperativo" name="sistemaOperativo" placeholder="Enter value" value="<%= workstation.get('sistemaOperativo') %>"/>	
-		</div>
+                       <div class="form-group" >
+                    <input id="btn_duenio" class="btn btn-primary" value="Duenio" type="submit" 
+                  onclick="Backbone.trigger('<%= componentId %>-workstation-display-textfield',{textInputId:'#duenio' }); return false;" />
+                   <input type="text" class="form-control" id="duenio" name="duenio" placeholder="Enter value" value="<%= workstation.get('duenio') %>"
+                           style = "visibility: hidden" />	
+            </div>
+    <div class="form-group" >
+                    <input id="btn_sistemaOperativo" class="btn btn-primary" value="Sistema Operativo" type="submit" 
+                  onclick="Backbone.trigger('<%= componentId %>-workstation-display-textfield',{textInputId:'#sistemaOperativo' }); return false;" />
+                    <input type="text" class="form-control" id="sistemaOperativo" name="sistemaOperativo" placeholder="Enter value" value="<%= workstation.get('sistemaOperativo') %>"
+                           style = "visibility: hidden" />	
+            </div>
         </form>
 </div>
 </script>

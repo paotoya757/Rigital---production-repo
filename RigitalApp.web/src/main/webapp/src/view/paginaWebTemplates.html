@@ -153,36 +153,51 @@
                             </tr>
                         </table>
                     </div>
-             <input id="btn_ultimaFechaModificacion" class="btn btn-primary" value="Ultima Fecha de Modificacion" type="submit" 
-       onclick="Backbone.trigger('<%= componentId %>-paginaWeb-display-textfield',{textInputId:'#fg-ultimaFechaModificacion' }); return false;" />
-            <div class="form-group" >
-    		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="ultimaFechaModificacion"  name="ultimaFechaModificacion" placeholder="Enter value" />
+           <div class="form-group" >
+                <input id="btn_ultimaFechaModTable" class="btn btn-primary" value="Ultima Fecha de Modificacion" type="submit" 
+                        onclick="Backbone.trigger('<%= componentId %>-paginaWeb-display-textfield',{textInputId:'#ultimaFechaModTable' }); return false;" />                
+                    <table id="ultimaFechaModTable" style="visibility: hidden" class="table table-bordered">	
+                        <tr>
+                          <td>
+                               <input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="ultimaFechaModificacion"  name="ultimaFechaModificacion" placeholder="Enter value" />
     		<%= '<scr'+'ipt>' %>
         	$('#ultimaFechaModificacion').datepicker({autoclose:true});
         	$('#ultimaFechaModificacion').datepicker('setDate',App.Utils.Converter.date.toDate("<%= paginaWeb.get('ultimaFechaModificacion') %>"));
     		<%= '</scr'+'ipt>' %>
-		</div>
-        <input id="btn_url" class="btn btn-primary" value="URL" type="submit" 
-       onclick="Backbone.trigger('<%= componentId %>-paginaWeb-display-textfield',{textInputId:'#fg-url' }); return false;" />
+                            </td>
+                        </tr>
+                   </table>
+                </div>
         <div class="form-group" >
-    	<input type="text" class="form-control" id="url" name="url" placeholder="Enter value" value="<%= paginaWeb.get('url') %>"/>	
-		</div>
-        <input id="btn_alias" class="btn btn-primary" value="Alias" type="submit" 
-       onclick="Backbone.trigger('<%= componentId %>-paginaWeb-display-textfield',{textInputId:'#fg-alias' }); return false;" />
-		<div class="form-group" >
-    	<input type="text" class="form-control" id="alias" name="alias" placeholder="Enter value" value="<%= paginaWeb.get('alias') %>"/>	
-		</div>
+                    <input id="btn_url" class="btn btn-primary" value="URL" type="submit" 
+                  onclick="Backbone.trigger('<%= componentId %>-paginaWeb-display-textfield',{textInputId:'#url' }); return false;" />
+                 <input type="text" class="form-control" id="url" name="url" placeholder="Enter value" value="<%= paginaWeb.get('url') %>"	
+                           style = "visibility: hidden" />	
+            </div>
+        <div class="form-group" >
+                    <input id="btn_alias" class="btn btn-primary" value="Alias" type="submit" 
+                  onclick="Backbone.trigger('<%= componentId %>-paginaWeb-display-textfield',{textInputId:'#alias' }); return false;" />
+                 <input type="text" class="form-control" id="alias" name="alias" placeholder="Enter value" value="<%= paginaWeb.get('alias') %>"	
+                           style = "visibility: hidden" />	
+            </div>
         
-        <input id="btn_cmsId" class="btn btn-primary" value="CMSID" type="submit" 
-       onclick="Backbone.trigger('<%= componentId %>-paginaWeb-display-textfield',{textInputId:'#fg-cmsId' }); return false;" />
-        <div class="form-group" >
+      <input id="btn_tablecmsId" class="btn btn-primary" value="CMSID" type="submit" 
+                            onclick="Backbone.trigger('<%= componentId %>-paginaWeb-display-textfield',{textInputId:'#tablecmsId' }); return false;" />
+                    <div class="form-group" id = "tablecmsId" style="visibility: hidden">
+
+                        <table class="table table-border" >
+                            <tr>
+                                <td>
             <select class="form-control" id="cmsId" name="cmsId">
 			  <option value="">None</option>
             <% cms.each(function(cmsid) { %> 
               <option value="<%=cmsid.get('id')%>" <% if(paginaWeb.get('cmsId')==cmsid.get('id')) {%>selected<%}%> ><%=cmsid.get('name')%></option>
             <% }); %>                
             </select>  
-		</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
         </form>
 </div>
 </script>

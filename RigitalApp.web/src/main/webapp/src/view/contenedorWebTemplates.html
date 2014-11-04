@@ -171,18 +171,19 @@
                             </tr>
                         </table>
                     </div>
-            
-            <input id="btn_servidor" class="btn btn-primary" value="Servidor" type="submit" 
-             onclick="Backbone.trigger('<%= componentId %>-contenedorWeb-display-textfield',{textInputId:'#fg-servidor' }); return false;" />
-                     <div class="form-group" >
-    	<input type="text" class="form-control" id="servidor" name="servidor" placeholder="Enter value" value="<%= contenedorWeb.get('servidor') %>"/>	
-		</div>
+            <div class="form-group" >
+                    <input id="btn_servidor" class="btn btn-primary" value="Servidor" type="submit" 
+                  onclick="Backbone.trigger('<%= componentId %>-contenedorWeb-display-textfield',{textInputId:'#servidor' }); return false;" />
+                  <input type="text" class="form-control" id="servidor" name="servidor" placeholder="Enter value" value="<%= contenedorWeb.get('servidor') %>"	
+                           style = "visibility: hidden" />	
+            </div>
         
-        <input id="btn_url" class="btn btn-primary" value="URL" type="submit" 
-             onclick="Backbone.trigger('<%= componentId %>-contenedorWeb-display-textfield',{textInputId:'#fg-url' }); return false;" />
-                     <div class="form-group" >
-    	<input type="text" class="form-control" id="url" name="url" placeholder="Enter value" value="<%= contenedorWeb.get('url') %>"/>	
-		</div>
+        <div class="form-group" >
+                    <input id="btn_url" class="btn btn-primary" value="URL" type="submit" 
+                  onclick="Backbone.trigger('<%= componentId %>-contenedorWeb-display-textfield',{textInputId:'#url' }); return false;" />
+                 <input type="text" class="form-control" id="url" name="url" placeholder="Enter value" value="<%= contenedorWeb.get('url') %>"	
+                           style = "visibility: hidden" />	
+            </div>
 </form>
 </div>
 </script>
