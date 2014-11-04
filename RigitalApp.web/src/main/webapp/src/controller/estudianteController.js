@@ -71,6 +71,18 @@ postInit:function(){
                 this._render();
                 Backbone.trigger(this.componentId + '-' + 'post-estudiante-create', {view: this});
             }
+        },
+        estudiantesearch: function(callback,context){
+            var self = this;
+            var model = $('#' + this.componentId + '-estudianteForm').serializeObject();
+            this.currentModel.set(model);
+            var delegate = new App.Delegate.EstudianteDelegate();
+            delegate.search(self.currentModel, function (data) {
+                self.currentList.reset(data.records);
+                callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght})
+            }, function (data) {
+                Backbone.trigger(self.componentId + '-' + 'error', {event: 'estudiante-search', view: self, id: '', data: data, error: 'Error in estudiante search'});
+            });
         }
         
     });

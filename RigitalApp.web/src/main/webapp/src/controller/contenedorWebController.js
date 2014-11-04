@@ -58,9 +58,9 @@ define(['controller/_contenedorWebController','delegate/contenedorWebDelegate'],
             this.$el.slideUp("fast", function() {
                 self.$el.html(self.currentTemplate({contenedorWeb: self.currentModel, componentId: self.componentId , showEdit : self.showEdit , showDelete : self.showDelete
  
-   ,encargado: self.encargadoComponent
- 
-}));
+                ,encargado: self.encargadoComponent
+
+             }));
                 self.$el.slideDown("fast");
             });
         },
@@ -73,6 +73,18 @@ define(['controller/_contenedorWebController','delegate/contenedorWebDelegate'],
                 this._render();
                 Backbone.trigger(this.componentId + '-' + 'post-contenedorWeb-create', {view: this});
             }
+        },
+        contenedorwebsearch: function(callback,context){
+            var self = this;
+            var model = $('#' + this.componentId + '-contenedorWebForm').serializeObject();
+            this.currentModel.set(model);
+            var delegate = new App.Delegate.ContenedorWebDelegate();
+            delegate.search(self.currentModel, function (data) {
+                self.currentList.reset(data.records);
+                callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght})
+            }, function (data) {
+                Backbone.trigger(self.componentId + '-' + 'error', {event: 'contenedorWeb-search', view: self, id: '', data: data, error: 'Error in contenedorWeb search'});
+            });
         }
     });
     return App.Controller.ContenedorWebController;
