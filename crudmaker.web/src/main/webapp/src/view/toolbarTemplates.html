@@ -1,5 +1,5 @@
 <script type="text/template" id="toolbar-list-template">
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-inverse" role="navigation">
 	<!-- Brand and toggle get grouped for better mobile display -->
 	<div class="navbar-header">
 	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-tb-collapse">
@@ -27,7 +27,7 @@
 		    <% if(menu.get('show')){ %>
 			<% _.each(menu.get('buttons'), function(btn){ %>
 			    <% if(btn.get('show')){ %>
-				<button id="<%= componentId%>-button-<%= btn.get('name')%>" type="button" class="btn btn-default"
+				<button id="<%= componentId%>-button-<%= btn.get('name')%>" type="button" class="btn btn-success"
 				    onclick="Backbone.trigger('<%= componentId %>-toolbar-button-<%= btn.get('name')%>',{}); return false">
 				    <span class="glyphicon <%= btn.get('icon')%>"></span> <%= btn.get('displayName')%>
 				</button>
