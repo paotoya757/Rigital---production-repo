@@ -33,7 +33,12 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.grupo.contenedorweb.logic.api.IContenedorWebLogicService;
+import co.edu.uniandes.csw.grupo.contenedorweb.logic.dto.ContenedorWebPageDTO;
 @Singleton
 public class ContenedorWebMockLogicService extends _ContenedorWebMockLogicService implements IContenedorWebLogicService {
+
+    public ContenedorWebPageDTO getContenedoresWebByParameters(String puertos, String servidor, String url, String name, String descripcion, String proposito, String caracteristicas, String encargadoId, String fechaCreacion1, String fechaCreacion2, String fechaVencimiento1, String fechaVencimiento2, String estaDestruido) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

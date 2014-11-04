@@ -33,7 +33,12 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.grupo.estudiante.logic.api.IEstudianteLogicService;
+import co.edu.uniandes.csw.grupo.estudiante.logic.dto.EstudiantePageDTO;
 @Singleton
 public class EstudianteMockLogicService extends _EstudianteMockLogicService implements IEstudianteLogicService {
+
+    public EstudiantePageDTO getEstudiantesByParameters(String name, String login, String permisoEscritura, String permisoLectura, String tipoAcceso) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }
