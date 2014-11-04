@@ -38,10 +38,14 @@ import javax.inject.Inject;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.grupo.estudiante.logic.api.IEstudianteLogicService;
+import co.edu.uniandes.csw.grupo.estudiante.logic.dto.EstudiantePageDTO;
 
 @Default
 @Stateless
 @LocalBean
 public class EstudianteLogicService extends _EstudianteLogicService implements IEstudianteLogicService {
 
+    public EstudiantePageDTO getEstudiantesByParameters(String name ,String login ,String permisoEscritura ,String permisoLectura ,String tipoAcceso){
+        return persistance.getEstudiantesByParameters(name , login , permisoEscritura , permisoLectura , tipoAcceso);
+    }
 }

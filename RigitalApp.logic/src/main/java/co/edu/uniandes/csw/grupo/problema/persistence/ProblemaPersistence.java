@@ -123,8 +123,8 @@ public class ProblemaPersistence extends _ProblemaPersistence  implements IProbl
             String[] a1 = fechaDeOcurrencia1.split("-");
             String[] a2 = fechaOcurrencia2.split("-");
             
-            Date fecha1 = new Date(Integer.parseInt(a1[0]), Integer.parseInt(a1[1]),Integer.parseInt(a1[2]));
-            Date fecha2 = new Date(Integer.parseInt(a2[0]), Integer.parseInt(a2[1]),Integer.parseInt(a2[2]));
+            Date fecha1 = new Date(Integer.parseInt(a1[0])-1900, Integer.parseInt(a1[1]),Integer.parseInt(a1[2]));
+            Date fecha2 = new Date(Integer.parseInt(a2[0])-1900, Integer.parseInt(a2[1]),Integer.parseInt(a2[2]));
              
             q.setParameter("fechaDeOcurrencia1", fecha1);
             q.setParameter("fechaOcurrencia2", fecha2);            

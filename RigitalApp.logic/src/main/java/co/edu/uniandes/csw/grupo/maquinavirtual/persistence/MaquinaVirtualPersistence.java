@@ -79,6 +79,7 @@ public class MaquinaVirtualPersistence extends _MaquinaVirtualPersistence  imple
             sql += " AND  u.encargadoId like :encargadoId";
         if(!caracteristicas.isEmpty())
             sql += " AND  u.softwaresalasId like :softwaresalasId";
+        
         if(!estaDestruido.isEmpty())
             sql += " AND  u.destruido = :estaDestruido";
         
@@ -129,6 +130,7 @@ public class MaquinaVirtualPersistence extends _MaquinaVirtualPersistence  imple
             q.setParameter("caracteristicas", "%"+caracteristicas+"%");
         if(!encargadoId.isEmpty())
             q.setParameter("encargadoId", "%"+encargadoId+"%");
+        
         if(!estaDestruido.isEmpty())
             q.setParameter("estaDestruido", destruido);
         
@@ -137,8 +139,8 @@ public class MaquinaVirtualPersistence extends _MaquinaVirtualPersistence  imple
             String[] a1 = fechaCreacion1.split("-");
             String[] a2 = fechaCreacion2.split("-");
             
-            Date fecha1 = new Date(Integer.parseInt(a1[0]), Integer.parseInt(a1[1]),Integer.parseInt(a1[2]));
-            Date fecha2 = new Date(Integer.parseInt(a2[0]), Integer.parseInt(a2[1]),Integer.parseInt(a2[2]));
+            Date fecha1 = new Date(Integer.parseInt(a1[0])-1900, Integer.parseInt(a1[1]),Integer.parseInt(a1[2]));
+            Date fecha2 = new Date(Integer.parseInt(a2[0])-1900, Integer.parseInt(a2[1]),Integer.parseInt(a2[2]));
             
             q.setParameter("fechaCreacion1", fecha1);
             q.setParameter("fechaCreacion2", fecha2);            
@@ -149,8 +151,8 @@ public class MaquinaVirtualPersistence extends _MaquinaVirtualPersistence  imple
             String[] a1 = fechaVencimiento1.split("-");
             String[] a2 = fechaVencimiento2.split("-");
             
-            Date fecha1 = new Date(Integer.parseInt(a1[0]), Integer.parseInt(a1[1]),Integer.parseInt(a1[2]));
-            Date fecha2 = new Date(Integer.parseInt(a2[0]), Integer.parseInt(a2[1]),Integer.parseInt(a2[2]));
+            Date fecha1 = new Date(Integer.parseInt(a1[0])-1900, Integer.parseInt(a1[1]),Integer.parseInt(a1[2]));
+            Date fecha2 = new Date(Integer.parseInt(a2[0])-1900, Integer.parseInt(a2[1]),Integer.parseInt(a2[2]));
             
             q.setParameter("fechaVencimiento1", fecha1);
             q.setParameter("fechaVencimiento2", fecha2);            

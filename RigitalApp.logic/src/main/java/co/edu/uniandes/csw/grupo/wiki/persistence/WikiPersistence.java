@@ -126,8 +126,8 @@ public class WikiPersistence extends _WikiPersistence  implements IWikiPersisten
             String[] a1 = fechaCreacion1.split("-");
             String[] a2 = fechaCreacion2.split("-");
             
-            Date fecha1 = new Date(Integer.parseInt(a1[0]), Integer.parseInt(a1[1]),Integer.parseInt(a1[2]));
-            Date fecha2 = new Date(Integer.parseInt(a2[0]), Integer.parseInt(a2[1]),Integer.parseInt(a2[2]));
+            Date fecha1 = new Date(Integer.parseInt(a1[0])-1900, Integer.parseInt(a1[1]),Integer.parseInt(a1[2]));
+            Date fecha2 = new Date(Integer.parseInt(a2[0])-1900, Integer.parseInt(a2[1]),Integer.parseInt(a2[2]));
             
             q.setParameter("fechaCreacion1", fecha1);
             q.setParameter("fechaCreacion2", fecha2);            
