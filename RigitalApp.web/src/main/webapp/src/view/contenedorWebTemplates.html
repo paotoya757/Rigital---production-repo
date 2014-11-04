@@ -137,7 +137,7 @@
                         </tr>
                    </table>
             </div>
-         <%/*end jump*/%>       
+    
                 <input id="btn_tableDestruido" class="btn btn-primary" value="Filtrar por desactivados" type="submit" 
                         onclick="Backbone.trigger('<%= componentId %>-contenedorWeb-display-textfield',{textInputId:'#tableDestruido' }); return false;" /> 
                 <div class="form-group" > 
@@ -183,5 +183,6 @@
                      <div class="form-group" >
     	<input type="text" class="form-control" id="url" name="url" placeholder="Enter value" value="<%= contenedorWeb.get('url') %>"/>	
 		</div>
+</form>
 </div>
 </script>

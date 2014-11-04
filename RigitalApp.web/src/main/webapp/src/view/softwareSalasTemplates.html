@@ -66,8 +66,7 @@
     </form>
     </div>
 </script> 
-
-<script type="text/template" id="softwareSalasSearchTemplate">
+<script type="text/template" id="softwareSalasSearchTemplate" >
     <div class="form-group">
     <form role="form" id="<%= componentId %>-softwareSalasForm">
     <% if(softwareSalas.id) {%>
@@ -108,6 +107,7 @@
                         </tr>
                    </table>
                 </div>
+        
         <input id="btn_tableDestruido" class="btn btn-primary" value="Filtrar por desactivados" type="submit" 
                         onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#tableDestruido' }); return false;" /> 
                 <div class="form-group" > 
@@ -120,27 +120,29 @@
                         </td>
                     </table>
                 </div>
-        
-        <input id="btn_version" class="btn btn-primary" value="Version" type="submit" 
+
+            <input id="btn_tipoMaquina" class="btn btn-primary" value="Tipo de Maquina" type="submit" 
+             onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#fg-tipoMaquina' }); return false;" />
+            <div class="form-group" >
+    	<input type="text" class="form-control" id="tipoMaquina" name="tipoMaquina" placeholder="Enter value" value="<%= softwareSalas.get('tipoMaquina') %>"/>	
+		</div>
+        <input id="btn_software" class="btn btn-primary" value="Software" type="submit" 
+             onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#fg-software' }); return false;" />
+        <div class="form-group" >
+    	<input type="text" class="form-control" id="software" name="software" placeholder="Enter value" value="<%= softwareSalas.get('software') %>"/>	
+		</div>
+            <input id="btn_version" class="btn btn-primary" value="Version" type="submit" 
              onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#fg-version' }); return false;" />
                      <div class="form-group" >
     	<input type="text" class="form-control" id="version" name="version" placeholder="Enter value" value="<%= softwareSalas.get('version') %>"/>	
 		</div>
-        
-    <input id="btn_solicitante" class="btn btn-primary" value="Solicitante" type="submit" 
+          <input id="btn_solicitante" class="btn btn-primary" value="Solicitante" type="submit" 
              onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#fg-solicitante' }); return false;" />
-    <div class="form-group" >
+         <div class="form-group" >
     	<input type="text" class="form-control" id="solicitante" name="solicitante" placeholder="Enter value" value="<%= softwareSalas.get('solicitante') %>"/>	
 		</div>
-        
-        <input id="btn_numeroMaquina" class="btn btn-primary" value="Numero Maquina" type="submit" 
-             onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#fg-numeroMaquina' }); return false;" />
-        <div class="form-group" >
-    	<input type="text" class="form-control" id="numeroMaquina" name="numeroMaquina" placeholder="Enter value" value="<%= softwareSalas.get('numeroMaquina') %>"/>	
-		</div>
-        
-        <input id="btn_workstationId" class="btn btn-primary" value="ID Workstation" type="submit" 
-             onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#fg-workstationId' }); return false;" />
+         <input id="btn_workstation" class="btn btn-primary" value="Workstation" type="submit" 
+             onclick="Backbone.trigger('<%= componentId %>-softwareSalas-display-textfield',{textInputId:'#fg-workstation' }); return false;" />
         <div class="form-group" >
             <select class="form-control" id="workstationId" name="workstationId">
 			  <option value="">None</option>
@@ -149,5 +151,6 @@
             <% }); %>                
             </select>  
 		</div>
+</form>
 </div>
 </script>
