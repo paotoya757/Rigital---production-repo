@@ -129,7 +129,7 @@ define(['component/_maquinaVirtualComponent'], function() {
             
 			this.toolbarComponent.addButton({
 				name: 'exec-search',
-				displayName: 'Search',
+				displayName: 'Buscar',
 				icon: 'glyphicon-search',
 				show: false
 			},
@@ -137,7 +137,7 @@ define(['component/_maquinaVirtualComponent'], function() {
 			this);
 			this.toolbarComponent.addButton({
 				name: 'cancel-search',
-				displayName: 'Cancel',
+				displayName: 'Cancelar',
 				icon: 'glyphicon-remove-sign',
 				show: false
 			},
