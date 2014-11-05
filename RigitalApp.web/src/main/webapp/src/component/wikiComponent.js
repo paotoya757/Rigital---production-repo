@@ -110,7 +110,7 @@ define(['component/_wikiComponent'], function() {
                 show: true
             },
             this.search,
-            this)
+            this);
             //Desactivar
             this.toolbarComponent.addButton({
                 name: 'desactivar',
