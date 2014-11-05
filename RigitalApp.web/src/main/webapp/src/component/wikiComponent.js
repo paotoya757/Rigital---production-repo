@@ -76,7 +76,7 @@ define(['component/_wikiComponent'], function() {
                 name: 'refresh',
                 icon: 'glyphicon-refresh',
                 displayName: 'Refrescar',
-                show: true,
+                show: true
             },
             this.refresh,
             this);

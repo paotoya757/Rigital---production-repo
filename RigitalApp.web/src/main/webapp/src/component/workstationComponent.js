@@ -31,6 +31,7 @@ define(['component/_workstationComponent'], function() {
     App.Component.WorkstationComponent = App.Component._WorkstationComponent.extend({
         postInit: function(){
             var self = this; 
+            this.listComponent.enableMultipleSelection(true);
             //Utilities
             this.toolbarComponent.removeMenu('utils');
             //Acciones
@@ -44,7 +45,7 @@ define(['component/_workstationComponent'], function() {
             this.toolbarComponent.removeButton('create');
             this.toolbarComponent.addButton({
                 name: 'create',
-                icon: 'fa-plus-circle',
+                icon: 'glyphicon-plus-sign',
                 displayName: 'Agregar',
                 show: true
             },
@@ -76,7 +77,7 @@ define(['component/_workstationComponent'], function() {
                 name: 'refresh',
                 icon: 'glyphicon-refresh',
                 displayName: 'Refrescar',
-                show: true,
+                show: true
             },
             this.refresh,
             this);
@@ -102,10 +103,19 @@ define(['component/_workstationComponent'], function() {
             },
             this.delete,
             this);
+            //Buscar
+            this.toolbarComponent.addButton({
+                name: 'search',
+                icon: 'glyphicon-search',
+                displayName: 'Buscar',
+                show: true
+            },
+            this.search,
+            this);
             //Desactivar
             this.toolbarComponent.addButton({
                 name: 'desactivar',
-                icon: 'fa-toggle-on',
+                icon: 'glyphicon-adjust',
                 displayName: 'Desactivar',
                 show: true
             },
@@ -132,9 +142,9 @@ icon: 'glyphicon-remove-sign',
 show: false
 },
 function(){
+    this.toolbarComponent.showButton('desactivar');
 this.toolbarComponent.showButton('create');
 this.toolbarComponent.showButton('refresh');
-this.toolbarComponent.showButton('print');
 this.toolbarComponent.showButton('search');
 this.toolbarComponent.hideButton('cancel-search');
 this.toolbarComponent.hideButton('exec-search');
@@ -150,7 +160,6 @@ this.toolbarComponent.hideButton('desactivar');
 this.toolbarComponent.hideButton('create');
 this.toolbarComponent.hideButton('save');
 this.toolbarComponent.hideButton('cancel');
-this.toolbarComponent.hideButton('print');
 this.toolbarComponent.hideButton('refresh');
 this.toolbarComponent.hideButton('search');
 this.toolbarComponent.showButton('exec-search');
@@ -164,12 +173,64 @@ execSearch: function(){
 this.toolbarComponent.showButton('desactivar');
 this.toolbarComponent.showButton('create');
 this.toolbarComponent.showButton('refresh');
-this.toolbarComponent.showButton('print');
 this.toolbarComponent.showButton('search');
 this.toolbarComponent.hideButton('cancel-search');
 this.toolbarComponent.hideButton('exec-search');
 this.toolbarComponent.render();
-}
+},
+//Funciones
+        create: function() {
+            this.toolbarComponent.hideButton('search');
+            this.toolbarComponent.hideButton('refresh');
+            this.toolbarComponent.hideButton('desactivar');
+            this.toolbarComponent.showButton('save');
+            this.toolbarComponent.showButton('cancel');
+            this.toolbarComponent.render();
+            this.componentController.create();
+        },
+        save: function(params) {
+            this.componentController.save();
+        },
+        cancel: function(params) {
+            this.toolbarComponent.showButton('search');
+            this.toolbarComponent.showButton('refresh');
+            this.toolbarComponent.showButton('desactivar');
+            this.toolbarComponent.hideButton('save');
+            this.toolbarComponent.hideButton('cancel');
+            this.toolbarComponent.render();
+            this.componentController.list(params, this.list, this);
+        },
+        refresh: function(params) {
+            this.toolbarComponent.showButton('desactivar');
+            this.componentController.setPage(1);
+            this.toolbarComponent.hideButton('save');
+            this.toolbarComponent.hideButton('cancel');
+            this.toolbarComponent.render();
+            this.componentController.list(params, this.list, this);
+            var messagesController = new App.Controller.MessageController({el: '#' + this.messageDomId});
+            messagesController.showMessage('info', 'Data updated', true, 3);
+        },
+        edit: function(params) {
+            this.toolbarComponent.hideButton('refresh');
+            this.toolbarComponent.hideButton('desactivar');
+            this.toolbarComponent.showButton('save');
+            this.toolbarComponent.showButton('cancel');
+            this.toolbarComponent.render();
+            this.componentController.edit(params);
+        },
+        delete: function(params) {
+            this.componentController.destroy(params);
+        },
+        configUI: function(){
+        	this.listComponent.addColumn('name','Nombre');
+        	this.listComponent.addColumn('duenio','Dueño');
+        	this.listComponent.addColumn('destino','Destino');
+        	this.listComponent.addColumn('sistemaOperativo','Sistema Operativo');
+        },
+        desactivar: function() {
+            //Lo que hicieron Alex y Santiago
+            alert('Los recursos seleccionados fueron desactivados');
+        }
     });
     return App.Component.WorkstationComponent;
 });

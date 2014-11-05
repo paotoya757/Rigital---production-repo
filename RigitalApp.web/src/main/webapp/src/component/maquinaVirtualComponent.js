@@ -77,7 +77,7 @@ define(['component/_maquinaVirtualComponent'], function() {
                 name: 'refresh',
                 icon: 'glyphicon-refresh',
                 displayName: 'Refrescar',
-                show: true,
+                show: true
             },
             this.refresh,
             this);
