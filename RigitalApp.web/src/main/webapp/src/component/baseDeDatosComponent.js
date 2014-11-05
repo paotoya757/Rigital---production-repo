@@ -119,64 +119,8 @@ define(['component/_baseDeDatosComponent'], function() {
             },
             this.desactivar,
             this);
-            
-            //Start: searchRelated
-            // Cambio - siguiente linea : '-<miComponente>-display-textfield"'
-            Backbone.on(self.componentId + '-baseDeDatos-display-textfield', function(params) {
-                self.componentController.setVisibility(params);
-            });
-            
-            this.toolbarComponent.addButton({
-                    name: 'exec-search',
-                    displayName: 'Buscar',
-                    icon: 'glyphicon-search',
-                    show: false
-            },
-            this.execSearch,
-            this);
-            this.toolbarComponent.addButton({
-                    name: 'cancel-search',
-                    displayName: 'Cancelar',
-                    icon: 'glyphicon-remove-sign',
-                    show: false
-            },
-            function(){
-                    this.toolbarComponent.showButton('create');
-                    this.toolbarComponent.showButton('refresh');
-                    this.toolbarComponent.showButton('desactivar');
-                    this.toolbarComponent.showButton('search');
-                    this.toolbarComponent.hideButton('cancel-search');
-                    this.toolbarComponent.hideButton('exec-search');
-                    this.toolbarComponent.render();
-                    this.componentController.list(null, this.list, this);
-            },
-            this);
         },
-        search: function(){
-            this.toolbarComponent.hideButton('desactivar');
-            this.toolbarComponent.hideButton('create');
-            this.toolbarComponent.hideButton('save');
-            this.toolbarComponent.hideButton('cancel');
-            this.toolbarComponent.hideButton('refresh');
-            this.toolbarComponent.hideButton('search');
-            this.toolbarComponent.showButton('exec-search');
-            this.toolbarComponent.showButton('cancel-search');
-            this.toolbarComponent.render();
-            // Cambio - siguiente linea : setCurrentTemplate('<miComponente>')
-            this.componentController.setCurrentTemplate('baseDeDatosSearchTemplate'); 
-            this.componentController.search();
-	},
-	execSearch: function(){
-            this.toolbarComponent.showButton('desactivar');
-            this.toolbarComponent.showButton('create');
-            this.toolbarComponent.showButton('refresh');
-            this.toolbarComponent.showButton('search');
-            this.toolbarComponent.hideButton('cancel-search');
-            this.toolbarComponent.hideButton('exec-search');
-            this.componentController.cMSSearch(this.list,this);
-            this.toolbarComponent.render();	
-	},
-        //end : searchRelated
+        
         //Funciones
         create: function() {
             this.toolbarComponent.hideButton('search');
@@ -191,6 +135,7 @@ define(['component/_baseDeDatosComponent'], function() {
             this.componentController.save();
         },
         cancel: function(params) {
+            this.toolbarComponent.showButton('search');
             this.toolbarComponent.showButton('refresh');
             this.toolbarComponent.showButton('desactivar');
             this.toolbarComponent.hideButton('save');
@@ -221,9 +166,6 @@ define(['component/_baseDeDatosComponent'], function() {
         desactivar: function() {
             //Lo que hicieron Alex y Santiago
             alert('Los recursos seleccionados fueron desactivados');
-        },
-        search: function() {
-            //Lo que hicieron Pedro y Eduardo
         }
     });
     return App.Component.BaseDeDatosComponent;
