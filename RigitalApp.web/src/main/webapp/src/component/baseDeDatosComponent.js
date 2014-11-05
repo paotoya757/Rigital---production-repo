@@ -119,7 +119,7 @@ define(['component/_baseDeDatosComponent'], function() {
             this.componentController.create();
         },
         save: function(params) {
-            //Lo que hizo Pedro
+            this.componentController.save();
         },
         cancel: function(params) {
             this.toolbarComponent.hideButton('save');
@@ -136,9 +136,6 @@ define(['component/_baseDeDatosComponent'], function() {
             var messagesController = new App.Controller.MessageController({el: '#' + this.messageDomId});
             messagesController.showMessage('info', 'Data updated', true, 3);
         },
-        search: function() {
-
-        },
         edit: function(params) {
             this.toolbarComponent.showButton('save');
             this.toolbarComponent.showButton('cancel');
@@ -149,7 +146,10 @@ define(['component/_baseDeDatosComponent'], function() {
             this.componentController.destroy(params);
         },
         desactivar: function() {
-            
+            //Lo que hicieron Alex y Santiago
+        },
+        search: function() {
+            //Lo que hicieron Pedro y Eduardo
         }
     });
     return App.Component.BaseDeDatosComponent;
