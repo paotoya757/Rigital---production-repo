@@ -224,7 +224,7 @@ define(['component/_wikiComponent'], function() {
         },
         configUI: function(){
         	this.listComponent.addColumn('name','Nombre');
-        	this.listComponent.addColumn('fechaCreacion','Fecha de Creacion');
+        	this.listComponent.addColumn('fechaCreacion','Fecha de creacion');
         	this.listComponent.addColumn('destruido','Estado');
         	this.listComponent.addColumn('encargadoId','Encargado');
         },

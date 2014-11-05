@@ -145,7 +145,6 @@ define(['component/_maquinaVirtualComponent'], function() {
                                 this.toolbarComponent.showButton('desactivar');
 				this.toolbarComponent.showButton('create');
 				this.toolbarComponent.showButton('refresh');
-				this.toolbarComponent.showButton('print');
 				this.toolbarComponent.showButton('search');
 				this.toolbarComponent.hideButton('cancel-search');
 				this.toolbarComponent.hideButton('exec-search');
@@ -157,10 +156,10 @@ define(['component/_maquinaVirtualComponent'], function() {
         },
 		search: function(){
                     var self = this;
+                    this.toolbarComponent.hideButton('desactivar');
 			this.toolbarComponent.hideButton('create');
 			this.toolbarComponent.hideButton('save');
 			this.toolbarComponent.hideButton('cancel');
-			this.toolbarComponent.hideButton('print');
 			this.toolbarComponent.hideButton('refresh');
 			this.toolbarComponent.hideButton('search');
 			this.toolbarComponent.showButton('exec-search');
@@ -171,9 +170,9 @@ define(['component/_maquinaVirtualComponent'], function() {
                         this.componentController.search();
 		},
 		execSearch: function(){
+                    this.toolbarComponent.showButton('desactivar');
 			this.toolbarComponent.showButton('create');
 			this.toolbarComponent.showButton('refresh');
-			this.toolbarComponent.showButton('print');
 			this.toolbarComponent.showButton('search');
 			this.toolbarComponent.hideButton('cancel-search');
 			this.toolbarComponent.hideButton('exec-search');
@@ -227,7 +226,7 @@ define(['component/_maquinaVirtualComponent'], function() {
         },
         configUI: function(){
         	this.listComponent.addColumn('name','Nombre');
-        	this.listComponent.addColumn('fechaCreacion','Fecha de Creacion');
+        	this.listComponent.addColumn('fechaCreacion','Fecha de creacion');
         	this.listComponent.addColumn('destruido','Estado');
         	this.listComponent.addColumn('encargadoId','Encargado');
         },
