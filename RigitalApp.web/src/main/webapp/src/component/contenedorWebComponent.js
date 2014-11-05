@@ -38,7 +38,7 @@ define(['component/_contenedorWebComponent'], function() {
             
             this.toolbarComponent.addButton({
             name: 'exec-search',
-            displayName: 'Search',
+            displayName: 'Buscar',
             icon: 'glyphicon-search',
             show: false
             },
@@ -46,19 +46,20 @@ define(['component/_contenedorWebComponent'], function() {
             this);
             this.toolbarComponent.addButton({
             name: 'cancel-search',
-            displayName: 'Cancel',
+            displayName: 'Cancelar',
             icon: 'glyphicon-remove-sign',
             show: false
             },
             function(){
-            this.toolbarComponent.showButton('create');
-            this.toolbarComponent.showButton('refresh');
-            this.toolbarComponent.showButton('print');
-            this.toolbarComponent.showButton('search');
-            this.toolbarComponent.hideButton('cancel-search');
-            this.toolbarComponent.hideButton('exec-search');
-            this.toolbarComponent.render();
-            this.componentController.list(null, this.list, this);
+                this.toolbarComponent.showButton('desactivar');
+                this.toolbarComponent.showButton('create');
+                this.toolbarComponent.showButton('refresh');
+                this.toolbarComponent.showButton('print');
+                this.toolbarComponent.showButton('search');
+                this.toolbarComponent.hideButton('cancel-search');
+                this.toolbarComponent.hideButton('exec-search');
+                this.toolbarComponent.render();
+                this.componentController.list(null, this.list, this);
             },
             this);
 
