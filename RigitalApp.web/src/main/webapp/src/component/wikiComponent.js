@@ -144,7 +144,6 @@ define(['component/_wikiComponent'], function() {
                             this.toolbarComponent.showButton('desactivar');
 				this.toolbarComponent.showButton('create');
 				this.toolbarComponent.showButton('refresh');
-				this.toolbarComponent.showButton('print');
 				this.toolbarComponent.showButton('search');
 				this.toolbarComponent.hideButton('cancel-search');
 				this.toolbarComponent.hideButton('exec-search');
@@ -159,7 +158,6 @@ define(['component/_wikiComponent'], function() {
 			this.toolbarComponent.hideButton('create');
 			this.toolbarComponent.hideButton('save');
 			this.toolbarComponent.hideButton('cancel');
-			this.toolbarComponent.hideButton('print');
 			this.toolbarComponent.hideButton('refresh');
 			this.toolbarComponent.hideButton('search');
 			this.toolbarComponent.showButton('exec-search');
@@ -174,7 +172,6 @@ define(['component/_wikiComponent'], function() {
                     this.toolbarComponent.showButton('desactivar');
 			this.toolbarComponent.showButton('create');
 			this.toolbarComponent.showButton('refresh');
-			this.toolbarComponent.showButton('print');
 			this.toolbarComponent.showButton('search');
 			this.toolbarComponent.hideButton('cancel-search');
 			this.toolbarComponent.hideButton('exec-search');
@@ -182,7 +179,7 @@ define(['component/_wikiComponent'], function() {
 			this.toolbarComponent.render();
 			
 		},
-                //Funciones
+        //Funciones
         create: function() {
             this.toolbarComponent.hideButton('search');
             this.toolbarComponent.hideButton('refresh');
