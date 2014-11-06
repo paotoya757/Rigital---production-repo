@@ -75,10 +75,12 @@ public class MaquinaVirtualPersistence extends _MaquinaVirtualPersistence  imple
             sql += " AND  u.descripcion like :descripcion";
         if(!proposito.isEmpty())
             sql += " AND  u.proposito like :proposito";
-        if(!encargadoId.isEmpty())
-            sql += " AND  u.encargadoId like :encargadoId";
         if(!caracteristicas.isEmpty())
             sql += " AND  u.softwaresalasId like :softwaresalasId";
+        
+        
+        if(!encargadoId.isEmpty())
+            sql += " AND  u.encargadoId = :encargadoId";
         
         if(!estaDestruido.isEmpty())
             sql += " AND  u.destruido = :estaDestruido";
@@ -128,8 +130,10 @@ public class MaquinaVirtualPersistence extends _MaquinaVirtualPersistence  imple
             q.setParameter("proposito", "%"+proposito+"%");
         if(!caracteristicas.isEmpty())
             q.setParameter("caracteristicas", "%"+caracteristicas+"%");
+        
+        
         if(!encargadoId.isEmpty())
-            q.setParameter("encargadoId", "%"+encargadoId+"%");
+            q.setParameter("encargadoId", Long.parseLong(encargadoId));
         
         if(!estaDestruido.isEmpty())
             q.setParameter("estaDestruido", destruido);
