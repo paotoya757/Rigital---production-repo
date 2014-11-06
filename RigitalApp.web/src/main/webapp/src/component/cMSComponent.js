@@ -181,6 +181,7 @@ define(['component/_cMSComponent'], function() {
         //end : searchRelated
         //Funciones
         create: function() {
+            this.toolbarComponent.hideButton('create');
             this.toolbarComponent.hideButton('desactivar');
             this.toolbarComponent.showButton('save');
             this.toolbarComponent.showButton('cancel');
@@ -189,8 +190,13 @@ define(['component/_cMSComponent'], function() {
         },
         save: function(params) {
             this.componentController.save();
+            this.toolbarComponent.showButton('create');
+            this.toolbarComponent.showButton('search');
+            this.toolbarComponent.showButton('desactivar');
+            this.toolbarComponent.showButton('refresh');
         },
         cancel: function(params) {
+            this.toolbarComponent.showButton('create');
             this.toolbarComponent.hideButton('save');
             this.toolbarComponent.hideButton('cancel');
             this.toolbarComponent.render();
@@ -203,9 +209,11 @@ define(['component/_cMSComponent'], function() {
             this.toolbarComponent.render();
             this.componentController.list(params, this.list, this);
             var messagesController = new App.Controller.MessageController({el: '#' + this.messageDomId});
-            messagesController.showMessage('info', 'Data updated', true, 3);
+            messagesController.showMessage('info', 'Informacion actualizada', true, 3);
         },
         edit: function(params) {
+            this.toolbarComponent.hideButton('create');
+            this.toolbarComponent.hideButton('search');
             this.toolbarComponent.hideButton('desactivar');
             this.toolbarComponent.showButton('save');
             this.toolbarComponent.showButton('cancel');
