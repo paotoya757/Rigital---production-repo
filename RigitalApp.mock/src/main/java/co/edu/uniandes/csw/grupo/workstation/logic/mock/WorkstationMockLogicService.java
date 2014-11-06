@@ -33,7 +33,12 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.grupo.workstation.logic.api.IWorkstationLogicService;
+import co.edu.uniandes.csw.grupo.workstation.logic.dto.WorkstationPageDTO;
 @Singleton
 public class WorkstationMockLogicService extends _WorkstationMockLogicService implements IWorkstationLogicService {
+
+    public WorkstationPageDTO getWorkStationsByParameters(String name, String duenio, String destino, String sistemaOperativo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

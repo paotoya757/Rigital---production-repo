@@ -33,7 +33,12 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.grupo.softwaresalas.logic.api.ISoftwareSalasLogicService;
+import co.edu.uniandes.csw.grupo.softwaresalas.logic.dto.SoftwareSalasPageDTO;
 @Singleton
 public class SoftwareSalasMockLogicService extends _SoftwareSalasMockLogicService implements ISoftwareSalasLogicService {
+
+    public SoftwareSalasPageDTO getSoftwareSalasByParameters(String tipoMaquina, String software, String version, String solicitante, String numeroMaquina, String name, String descripcion, String proposito, String caracteristicas, String workstationId, String fechaCreacion1, String fechaCreacion2, String estaDestruido) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }
