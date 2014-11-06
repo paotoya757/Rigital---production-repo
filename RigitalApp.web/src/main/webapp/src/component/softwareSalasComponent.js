@@ -152,32 +152,32 @@ define(['component/_softwareSalasComponent'], function() {
                 },
                 this);
                         
-                },
-                search: function(){
-                    var self = this;
-                    this.toolbarComponent.hideButton('desactivar');
-                    this.toolbarComponent.hideButton('create');
-                    this.toolbarComponent.hideButton('save');
-                    this.toolbarComponent.hideButton('cancel');
-                    this.toolbarComponent.hideButton('refresh');
-                    this.toolbarComponent.hideButton('search');
-                    this.toolbarComponent.showButton('exec-search');
-                    this.toolbarComponent.showButton('cancel-search');
-                    this.toolbarComponent.render();
+        },
+        search: function(){
+            var self = this;
+            this.toolbarComponent.hideButton('desactivar');
+            this.toolbarComponent.hideButton('create');
+            this.toolbarComponent.hideButton('save');
+            this.toolbarComponent.hideButton('cancel');
+            this.toolbarComponent.hideButton('refresh');
+            this.toolbarComponent.hideButton('search');
+            this.toolbarComponent.showButton('exec-search');
+            this.toolbarComponent.showButton('cancel-search');
+            this.toolbarComponent.render();           
+            this.componentController.search();
 
-                        
-                        this.componentController.search();
-                    },
-                        execSearch: function(){
-                        this.toolbarComponent.showButton('desactivar');
-                        this.toolbarComponent.showButton('create');
-                        this.toolbarComponent.showButton('refresh');
-                        this.toolbarComponent.showButton('search');
-                        this.toolbarComponent.hideButton('cancel-search');
-                        this.toolbarComponent.hideButton('exec-search');
-                        this.toolbarComponent.render();
-                        },
-                        //Funciones
+        },
+        execSearch: function(){
+            this.toolbarComponent.showButton('desactivar');
+            this.toolbarComponent.showButton('create');
+            this.toolbarComponent.showButton('refresh');
+            this.toolbarComponent.showButton('search');
+            this.toolbarComponent.hideButton('cancel-search');
+            this.toolbarComponent.hideButton('exec-search');
+            this.componentController.softwaresalassearch(this.list,this);
+            this.toolbarComponent.render();
+        },
+        //Funciones---------------------------------------------------------
         create: function() {
             this.toolbarComponent.hideButton('search');
             this.toolbarComponent.hideButton('refresh');

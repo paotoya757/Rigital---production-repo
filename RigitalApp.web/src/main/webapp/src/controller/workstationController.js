@@ -71,6 +71,18 @@ postInit:function(){
                 this._render();
                 Backbone.trigger(this.componentId + '-' + 'post-workstation-create', {view: this});
             }
+        },
+        workstationsearch: function(callback,context){
+            var self = this;
+            var model = $('#' + this.componentId + '-workstationForm').serializeObject();
+            this.currentModel.set(model);
+            var delegate = new App.Delegate.WorkstationDelegate();
+            delegate.search(self.currentModel, function (data) {
+                self.currentList.reset(data.records);
+                callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght})
+            }, function (data) {
+                Backbone.trigger(self.componentId + '-' + 'error', {event: 'workstation-search', view: self, id: '', data: data, error: 'Error in workstation search'});
+            });
         }
         
     });

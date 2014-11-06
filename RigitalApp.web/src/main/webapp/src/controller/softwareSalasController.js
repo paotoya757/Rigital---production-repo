@@ -73,6 +73,18 @@ postInit:function(){
                 this._render();
                 Backbone.trigger(this.componentId + '-' + 'post-softwareSalas-create', {view: this});
             }
+        },
+        softwaresalassearch: function(callback,context){
+            var self = this;
+            var model = $('#' + this.componentId + '-softwareSalasForm').serializeObject();
+            this.currentModel.set(model);
+            var delegate = new App.Delegate.SoftwareSalasDelegate();
+            delegate.search(self.currentModel, function (data) {
+                self.currentList.reset(data.records);
+                callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght})
+            }, function (data) {
+                Backbone.trigger(self.componentId + '-' + 'error', {event: 'softwareSalas-search', view: self, id: '', data: data, error: 'Error in softwareSalas search'});
+            });
         }
         
     });
