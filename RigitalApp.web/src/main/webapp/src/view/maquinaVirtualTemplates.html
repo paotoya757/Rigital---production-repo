@@ -11,11 +11,11 @@
                     <div class="panel-body">
                     <div class="form-group" >
 		<label for="name">Nombre</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= maquinaVirtual.get('name') %>"/>	
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Ej: ISIS2603-37-rcasalla-201420-99.141" value="<%= maquinaVirtual.get('name') %>"/>	
 		</div>
         <div class="form-group" >
 		<label for="descripcion">Descripci&oacuten</label>
-    	<input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Enter value" value="<%= maquinaVirtual.get('descripcion') %>"/>	
+    	<input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ej: Máquina virtual destinada al curso Desarrollo de Software en Equipo" value="<%= maquinaVirtual.get('descripcion') %>"/>	
 		</div>
         <div class="form-group" >
 			<label for="fechaCreacion">Fecha de creaci&oacuten</label>
@@ -29,7 +29,7 @@
  
 			<label for="encargadoidId">Encargado</label> 
             <select class="form-control" id="encargadoId" name="encargadoId">
-			  <option value="">None</option>
+			  <option value="">Ninguno</option>
             <% encargado.each(function(encargadoid) { %> 
               <option value="<%=encargadoid.get('id')%>" <% if(maquinaVirtual.get('encargadoId')==encargadoid.get('id')) {%>selected<%}%> ><%=encargadoid.get('name')%></option>
             <% }); %>                
@@ -64,35 +64,31 @@
 		</div>
 		<div class="form-group" >
 		<label for="ips">IPS</label>
-    	<input type="text" class="form-control" id="ips" name="ips" placeholder="Enter value" value="<%= maquinaVirtual.get('ips') %>"/>	
+    	<input type="text" class="form-control" id="ips" name="ips" placeholder="Ej: 172.24.99.141;157.253.x.x" value="<%= maquinaVirtual.get('ips') %>"/>	
 		</div>
 		<div class="form-group" >
 		<label for="serviciosAsociados">Servicios asociados</label>
-    	<input type="text" class="form-control" id="serviciosAsociados" name="serviciosAsociados" placeholder="Enter value" value="<%= maquinaVirtual.get('serviciosAsociados') %>"/>	
-		</div>
-		<div class="form-group" >
-		<label for="version">Versi&oacuten</label>
-    	<input type="text" class="form-control" id="version" name="version" placeholder="Enter value" value="<%= maquinaVirtual.get('version') %>"/>	
+    	<input type="text" class="form-control" id="serviciosAsociados" name="serviciosAsociados" placeholder="Ej: Servidor web Apache sobre el puerto 8080" value="<%= maquinaVirtual.get('serviciosAsociados') %>"/>	
 		</div>
 		<div class="form-group" >
 		<label for="sistemaOperativo">Sistema Operativo</label>
-    	<input type="text" class="form-control" id="sistemaOperativo" name="sistemaOperativo" placeholder="Enter value" value="<%= maquinaVirtual.get('sistemaOperativo') %>"/>	
+    	<input type="text" class="form-control" id="sistemaOperativo" name="sistemaOperativo" placeholder="Ej: Windows 7 x64" value="<%= maquinaVirtual.get('sistemaOperativo') %>"/>	
 		</div>
 		<div class="form-group" >
 		<label for="numDiscos">N&uacutemero de discos</label>
-    	<input type="text" class="form-control" id="numDiscos" name="numDiscos" placeholder="Enter value" value="<%= maquinaVirtual.get('numDiscos') %>"/>	
+    	<input type="text" class="form-control" id="numDiscos" name="numDiscos" placeholder="Ej: 1" value="<%= maquinaVirtual.get('numDiscos') %>"/>	
 		</div>
 		<div class="form-group" >
 		<label for="capacidadDiscos">Capacidad de discos</label>
-    	<input type="text" class="form-control" id="capacidadDiscos" name="capacidadDiscos" placeholder="Enter value" value="<%= maquinaVirtual.get('capacidadDiscos') %>"/>	
+    	<input type="text" class="form-control" id="capacidadDiscos" name="capacidadDiscos" placeholder="Ej: 80GB" value="<%= maquinaVirtual.get('capacidadDiscos') %>"/>	
 		</div>
 		<div class="form-group" >
 		<label for="ram">Memoria RAM</label>
-    	<input type="text" class="form-control" id="ram" name="ram" placeholder="Enter value" value="<%= maquinaVirtual.get('ram') %>"/>	
+    	<input type="text" class="form-control" id="ram" name="ram" placeholder="Ej: 8GB" value="<%= maquinaVirtual.get('ram') %>"/>	
 		</div>
 		<div class="form-group" >
 		<label for="numCores">N&uacutemero de Cores</label>
-    	<input type="text" class="form-control" id="numCores" name="numCores" placeholder="Enter value" value="<%= maquinaVirtual.get('numCores') %>"/>	
+    	<input type="text" class="form-control" id="numCores" name="numCores" placeholder="Ej: 2" value="<%= maquinaVirtual.get('numCores') %>"/>	
 		</div>
         </div>
 </div>
