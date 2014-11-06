@@ -158,11 +158,20 @@
                         onclick="Backbone.trigger('<%= componentId %>-paginaWeb-display-textfield',{textInputId:'#ultimaFechaModTable' }); return false;" />                
                     <table id="ultimaFechaModTable" style="visibility: hidden" class="table table-bordered">	
                         <tr>
+                        <td><label for="ultimaFechaModificacion">Fecha inicial</label></td>
                           <td>
                                <input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="ultimaFechaModificacion"  name="ultimaFechaModificacion" placeholder="Enter value" />
     		<%= '<scr'+'ipt>' %>
         	$('#ultimaFechaModificacion').datepicker({autoclose:true});
         	$('#ultimaFechaModificacion').datepicker('getDate',App.Utils.Converter.date.toDate("<%= paginaWeb.get('ultimaFechaModificacion') %>"));
+    		<%= '</scr'+'ipt>' %>
+                            </td>
+                     <td><label for="ultimaFechaModificacion2">Fecha final</label></td>
+                     <td>
+                               <input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="ultimaFechaModificacion2"  name="ultimaFechaModificacion2" placeholder="Enter value" />
+    		<%= '<scr'+'ipt>' %>
+        	$('#ultimaFechaModificacion2').datepicker({autoclose:true});
+        	$('#ultimaFechaModificacion2').datepicker('getDate',App.Utils.Converter.date.toDate("<%= paginaWeb.get('ultimaFechaModificacion') %>"));
     		<%= '</scr'+'ipt>' %>
                             </td>
                         </tr>

@@ -32,6 +32,7 @@ define(['model/_paginaWebModel'], function() {
 
                 defaults:{
                 fechaCreacion2:'',
+                ultimaFechaModificacion2:''
             },
  		validate: function(attrs,options){
             var validationMessage = "";
