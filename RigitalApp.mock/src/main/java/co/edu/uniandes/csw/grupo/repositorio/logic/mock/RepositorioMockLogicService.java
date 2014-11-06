@@ -33,7 +33,12 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.grupo.repositorio.logic.api.IRepositorioLogicService;
+import co.edu.uniandes.csw.grupo.repositorio.logic.dto.RepositorioPageDTO;
 @Singleton
 public class RepositorioMockLogicService extends _RepositorioMockLogicService implements IRepositorioLogicService {
+
+    public RepositorioPageDTO getRepositoriosByParameters(String tipo, String servidor, String destino, String tipoAcceso, String ubicacionDelServidor, String url, String name, String descripcion, String proposito, String caracteristicas, String encargadoId, String fechaCreacion1, String fechaCreacion2, String fechaVencimiento1, String fechaVencimiento2, String estaDestruido) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }
