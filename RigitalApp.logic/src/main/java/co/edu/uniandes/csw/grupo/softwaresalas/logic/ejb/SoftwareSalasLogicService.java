@@ -38,10 +38,14 @@ import javax.inject.Inject;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.grupo.softwaresalas.logic.api.ISoftwareSalasLogicService;
+import co.edu.uniandes.csw.grupo.softwaresalas.logic.dto.SoftwareSalasPageDTO;
 
 @Default
 @Stateless
 @LocalBean
 public class SoftwareSalasLogicService extends _SoftwareSalasLogicService implements ISoftwareSalasLogicService {
 
+    public SoftwareSalasPageDTO getSoftwareSalasByParameters(String tipoMaquina ,String software ,String version ,String solicitante ,String numeroMaquina ,String name ,String descripcion ,String proposito ,String caracteristicas ,String workstationId ,String fechaCreacion1,String fechaCreacion2,String estaDestruido){
+        return persistance.getSoftwareSalasByParameters(tipoMaquina , software , version , solicitante , numeroMaquina , name , descripcion , proposito , caracteristicas , workstationId , fechaCreacion1, fechaCreacion2, estaDestruido);
+    }
 }

@@ -38,10 +38,14 @@ import javax.inject.Inject;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.grupo.workstation.logic.api.IWorkstationLogicService;
+import co.edu.uniandes.csw.grupo.workstation.logic.dto.WorkstationPageDTO;
 
 @Default
 @Stateless
 @LocalBean
 public class WorkstationLogicService extends _WorkstationLogicService implements IWorkstationLogicService {
 
+    public WorkstationPageDTO getWorkStationsByParameters(String name ,String duenio ,String destino , String sistemaOperativo ){
+        return persistance.getWorkStationsByParameters(name , duenio , destino , sistemaOperativo );
+    }
 }
