@@ -163,3 +163,69 @@
     </form>
     </div>
 </script>
+<script type="text/template" id="wikiStaticTemplate">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-wikiForm">
+    <% if(wiki.id) {%>
+    <input type="hidden" name="id" value="<%= wiki.id %>"/>
+    <% }%>
+<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Informaci&oacuten b&aacutesica</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group" >
+                            <label for="name">Nombre</label>
+                            <input readonly type="text" class="form-control" id="name" name="name" value="<%= wiki.get('name') %>"/>	
+                        </div>
+                        <div class="form-group" >
+                            <label for="descripcion">Descripci&oacuten</label>
+                            <textarea readonly type="text" class="form-control" id="descripcion" name="descripcion" value="<%= wiki.get('descripcion') %>"/>	
+                        </div>
+                        <div class="form-group" >
+                            <label for="fechaCreacion">Fecha de creaci&oacuten</label>
+                            <input readonly type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaCreacion"  name="fechaCreacion" />
+                            <%= '<scr'+'ipt>' %>
+                            $('#fechaCreacion').datepicker({autoclose:true});
+                            $('#fechaCreacion').datepicker('setDate',App.Utils.Converter.date.toDate("<%= wiki.get('fechaCreacion') %>"));
+                            <%= '</scr'+'ipt>' %>
+                        </div>
+                        <div class="form-group" >
+                            <label for="destruido">Estado
+                            <div class= "onoffswitch">
+                            <input readonly id="destruido" name="destruido" type="checkbox" class= "onoffswitch-checkbox" <%= wiki.get('destruido')?'checked':'' %>>
+                            <label class="onoffswitch-label" for="destruido">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                            </div>
+                            </label>
+                        </div>
+                        <div class="form-group" >
+                            <label for="encargadoidId">Encargado</label> 
+                            <select readonly class="form-control" id="encargadoId" name="encargadoId">
+                                <% encargado.each(function(encargadoid) { %> 
+                                <option value="<%=encargadoid.get('id')%>" <% if(wiki.get('encargadoId')==encargadoid.get('id')) {%>selected<%}%> ><%=encargadoid.get('name')%></option>
+                                <% }); %>                
+                            </select>  
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Informaci&oacuten adicional</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-group" >
+                            <label for="servidor_host">Servidor</label>
+                            <input readonly type="text" class="form-control" id="servidor_host" name="servidor_host" value="<%= wiki.get('servidor_host') %>"/>	
+                        </div>
+                        <div class="form-group" >
+                            <label for="rutaServidor">Ruta del servidor</label>
+                            <input readonly type="text" class="form-control" id="rutaServidor" name="rutaServidor" value="<%= wiki.get('rutaServidor') %>"/>	
+                        </div>
+</div>
+</div>
+    </form>
+    </div>
+</script>

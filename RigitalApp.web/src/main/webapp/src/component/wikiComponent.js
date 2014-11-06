@@ -102,6 +102,24 @@ define(['component/_wikiComponent'], function() {
             },
             this.delete,
             this);
+            //Ver
+            /*this.listComponent.addAction({
+                name: 'see',
+                icon: 'glyphicon-eye-open',
+                displayName: 'Ver todo',
+                show: true
+            },
+            this.see,
+            this);
+            //Volver
+            this.toolbarComponent.addButton({
+                name: 'back',
+                icon: 'glyphicon-arrow-left',
+                displayName: 'Volver',
+                show: false
+            },
+            this.cancel,
+            this);*/
             //Buscar
             this.toolbarComponent.addButton({
                 name: 'search',
@@ -240,6 +258,20 @@ define(['component/_wikiComponent'], function() {
             //Lo que hicieron Alex y Santiago
             alert('Los recursos seleccionados fueron desactivados');
         }
+        /*,
+        see: function(){
+                    this.toolbarComponent.hideButton('desactivar');
+			this.toolbarComponent.hideButton('create');
+			this.toolbarComponent.hideButton('save');
+			this.toolbarComponent.hideButton('cancel');
+			this.toolbarComponent.hideButton('refresh');
+			this.toolbarComponent.hideButton('search');
+			this.toolbarComponent.showButton('back');
+			this.toolbarComponent.render();
+                        this.componentController.search();
+                        this.componentController.setCurrentTemplate('wikiStaticTemplate');
+                        
+		}*/
             
            
             
