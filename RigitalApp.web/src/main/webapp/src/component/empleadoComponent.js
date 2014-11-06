@@ -44,7 +44,7 @@ define(['component/_empleadoComponent'], function() {
             this.toolbarComponent.removeButton('create');
             this.toolbarComponent.addButton({
                 name: 'create',
-                icon: 'fa-plus-circle',
+                icon: 'glyphicon-plus-sign',
                 displayName: 'Agregar',
                 show: true
             },
@@ -194,6 +194,10 @@ define(['component/_empleadoComponent'], function() {
         },
         delete: function(params) {
             this.componentController.destroy(params);
+        },
+        configUI: function() {
+            this.listComponent.addColumn('name','Nombre');
+            this.listComponent.addColumn('login','Login');
         }
     });
     return App.Component.EmpleadoComponent;

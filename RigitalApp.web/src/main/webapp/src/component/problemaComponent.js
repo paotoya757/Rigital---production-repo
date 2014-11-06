@@ -44,7 +44,7 @@ define(['component/_problemaComponent'], function() {
             this.toolbarComponent.removeButton('create');
             this.toolbarComponent.addButton({
                 name: 'create',
-                icon: 'fa-plus-circle',
+                icon: 'glyphicon-plus-sign',
                 displayName: 'Agregar',
                 show: true
             },
@@ -194,6 +194,11 @@ define(['component/_problemaComponent'], function() {
         },
         delete: function(params) {
             this.componentController.destroy(params);
+        },
+        configUI: function(){
+        	this.listComponent.addColumn('name','Nombre');
+        	this.listComponent.addColumn('fechaDeOcurrencia','Fecha de ocurrencia');
+        	this.listComponent.addColumn('empleadoId','Empleado');
         }
     });
     return App.Component.ProblemaComponent;
