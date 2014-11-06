@@ -91,7 +91,7 @@
                                 <input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaCreacion"  name="fechaCreacion" placeholder="Fecha inicial" / >
                                 <%= '<scr'+'ipt>' %>
                                 $('#fechaCreacion').datepicker({autoclose:true});
-                                $('#fechaCreacion').datepicker('setDate',App.Utils.Converter.date.toDate("<%= contenedorWeb.get('fechaCreacion') %>"));
+                                $('#fechaCreacion').datepicker('getDate',App.Utils.Converter.date.toDate("<%= contenedorWeb.get('fechaCreacion') %>"));
                                 <%= '</scr'+'ipt>' %>
                             </td>
 
@@ -101,7 +101,7 @@
                                 <input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaCreacion2"  name="fechaCreacion2" placeholder="Fecha final" />
                                 <%= '<scr'+'ipt>' %>
                                 $('#fechaCreacion2').datepicker({autoclose:true});
-                                $('#fechaCreacion2').datepicker('setDate',App.Utils.Converter.date.toDate("<%= contenedorWeb.get('fechaCreacion2') %>"));
+                                $('#fechaCreacion2').datepicker('getDate',App.Utils.Converter.date.toDate("<%= contenedorWeb.get('fechaCreacion2') %>"));
                                 <%= '</scr'+'ipt>' %>
                             </td>
 
@@ -120,7 +120,7 @@
                                 <input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaVencimiento"  name="fechaVencimiento" placeholder="Fecha inicial" / >
                                 <%= '<scr'+'ipt>' %>
                                 $('#fechaVencimiento').datepicker({autoclose:true});
-                                $('#fechaVencimiento').datepicker('setDate',App.Utils.Converter.date.toDate("<%= contenedorWeb.get('fechaVencimiento') %>"));
+                                $('#fechaVencimiento').datepicker('getDate',App.Utils.Converter.date.toDate("<%= contenedorWeb.get('fechaVencimiento') %>"));
                                 <%= '</scr'+'ipt>' %>
                             </td>
 
@@ -130,7 +130,7 @@
                                 <input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaVencimiento2"  name="fechaVencimiento2" placeholder="Fecha final" />
                                 <%= '<scr'+'ipt>' %>
                                 $('#fechaVencimiento2').datepicker({autoclose:true});
-                                $('#fechaVencimiento2').datepicker('setDate',App.Utils.Converter.date.toDate("<%= contenedorWeb.get('fechaVencimiento2') %>"));
+                                $('#fechaVencimiento2').datepicker('getDate',App.Utils.Converter.date.toDate("<%= contenedorWeb.get('fechaVencimiento2') %>"));
                                 <%= '</scr'+'ipt>' %>
                             </td>
          
