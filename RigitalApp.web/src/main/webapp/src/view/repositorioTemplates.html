@@ -4,32 +4,59 @@
     <% if(repositorio.id) {%>
     <input type="hidden" name="id" value="<%= repositorio.id %>"/>
     <% }%>
-		<div class="form-group" >
-		<label for="tipo">Tipo</label>
-    	<input type="text" class="form-control" id="tipo" name="tipo" placeholder="Enter value" value="<%= repositorio.get('tipo') %>"/>	
+<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Informaci&oacuten b&aacutesica</h3>
+                    </div>
+                    <div class="panel-body">
+                    <div class="form-group" >
+		<label for="name">Nombre</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Ej: Imagine" value="<%= repositorio.get('name') %>"/>	
 		</div>
-		<div class="form-group" >
-		<label for="servidor">Servidor</label>
-    	<input type="text" class="form-control" id="servidor" name="servidor" placeholder="Enter value" value="<%= repositorio.get('servidor') %>"/>	
+        <div class="form-group" >
+		<label for="descripcion">Descripci&oacuten</label>
+    	<textarea type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ej: Repositorio para el grupo Imagine" value="<%= repositorio.get('descripcion') %>"/>	
 		</div>
-		<div class="form-group" >
-		<label for="destino">Destino</label>
-    	<input type="text" class="form-control" id="destino" name="destino" placeholder="Enter value" value="<%= repositorio.get('destino') %>"/>	
+        <div class="form-group" >
+			<label for="fechaCreacion">Fecha de creaci&oacuten</label>
+    		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaCreacion"  name="fechaCreacion" placeholder="Enter value" />
+    		<%= '<scr'+'ipt>' %>
+        	$('#fechaCreacion').datepicker({autoclose:true});
+        	$('#fechaCreacion').datepicker('setDate',App.Utils.Converter.date.toDate("<%= repositorio.get('fechaCreacion') %>"));
+    		<%= '</scr'+'ipt>' %>
 		</div>
-		<div class="form-group" >
-		<label for="tipoAcceso">Tipo Acceso</label>
-    	<input type="text" class="form-control" id="tipoAcceso" name="tipoAcceso" placeholder="Enter value" value="<%= repositorio.get('tipoAcceso') %>"/>	
+        <div class="form-group" >
+                            <label for="destruido">Estado
+                            <div class= "onoffswitch">
+                            <input id="destruido" name="destruido" value="true" type="checkbox" class= "onoffswitch-checkbox" <%= repositorio.get('destruido')?'checked':'' %>>
+                            <label class="onoffswitch-label" for="destruido">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                            </div>
+                            </label>
+                        </div>
+                <div class="form-group" >
+ 
+			<label for="encargadoidId">Encargado</label> 
+            <select class="form-control" id="encargadoId" name="encargadoId">
+			  <option value="">Ninguno</option>
+            <% encargado.each(function(encargadoid) { %> 
+              <option value="<%=encargadoid.get('id')%>" <% if(repositorio.get('encargadoId')==encargadoid.get('id')) {%>selected<%}%> ><%=encargadoid.get('name')%></option>
+            <% }); %>                
+            </select>  
 		</div>
-		<div class="form-group" >
-		<label for="ubicacionDelServidor">Ubicacion Del Servidor</label>
-    	<input type="text" class="form-control" id="ubicacionDelServidor" name="ubicacionDelServidor" placeholder="Enter value" value="<%= repositorio.get('ubicacionDelServidor') %>"/>	
-		</div>
-		<div class="form-group" >
-		<label for="url">Url</label>
-    	<input type="text" class="form-control" id="url" name="url" placeholder="Enter value" value="<%= repositorio.get('url') %>"/>	
-		</div>
-		<div class="form-group" >
-			<label for="fechaVencimiento">Fecha Vencimiento</label>
+                    
+                    
+        </div>
+</div>
+<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Informaci&oacuten adicional</h3>
+                    </div>
+                    <div class="panel-body">
+                    <div class="form-group" >
+			<label for="fechaVencimiento">Fecha de vencimiento</label>
     		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaVencimiento"  name="fechaVencimiento" placeholder="Enter value" />
     		<%= '<scr'+'ipt>' %>
         	$('#fechaVencimiento').datepicker({autoclose:true});
@@ -37,44 +64,28 @@
     		<%= '</scr'+'ipt>' %>
 		</div>
 		<div class="form-group" >
-		<label for="name">Name</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= repositorio.get('name') %>"/>	
+		<label for="tipo">Tipo</label>
+    	<input type="text" class="form-control" id="tipo" name="tipo" placeholder="Ej: SVN" value="<%= repositorio.get('tipo') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="descripcion">Descripcion</label>
-    	<input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Enter value" value="<%= repositorio.get('descripcion') %>"/>	
+		<label for="servidor">Servidor</label>
+    	<input type="text" class="form-control" id="servidor" name="servidor" placeholder="Ej: minsky2.virtual.uniandes.edu.co" value="<%= repositorio.get('servidor') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="proposito">Proposito</label>
-    	<input type="text" class="form-control" id="proposito" name="proposito" placeholder="Enter value" value="<%= repositorio.get('proposito') %>"/>	
+		<label for="tipoAcceso">Tipo de acceso</label>
+    	<input type="text" class="form-control" id="tipoAcceso" name="tipoAcceso" placeholder="Ej: Idap" value="<%= repositorio.get('tipoAcceso') %>"/>	
 		</div>
 		<div class="form-group" >
-			<label for="fechaCreacion">Fecha Creacion</label>
-    		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaCreacion"  name="fechaCreacion" placeholder="Enter value" />
-    		<%= '<scr'+'ipt>' %>
-        	$('#fechaCreacion').datepicker({autoclose:true});
-        	$('#fechaCreacion').datepicker('setDate',App.Utils.Converter.date.toDate("<%= repositorio.get('fechaCreacion') %>"));
-    		<%= '</scr'+'ipt>' %>
+		<label for="ubicacionDelServidor">Ubicacion del Servidor</label>
+    	<input type="text" class="form-control" id="ubicacionDelServidor" name="ubicacionDelServidor" placeholder="Ej: /repositorio/imagine" value="<%= repositorio.get('ubicacionDelServidor') %>"/>	
 		</div>
 		<div class="form-group" >
-	    <label>
-    	  <input id="destruido" name="destruido" value="true" type="checkbox" <%= repositorio.get('destruido')?'checked':'' %>> Destruido
-    	</label>
+		<label for="url">URL</label>
+    	<input type="text" class="form-control" id="url" name="url" placeholder="Ej: minsky2.virtual.uniandes.edu.co/imagine" value="<%= repositorio.get('url') %>"/>	
 		</div>
-		<div class="form-group" >
-		<label for="caracteristicas">Caracteristicas</label>
-    	<input type="text" class="form-control" id="caracteristicas" name="caracteristicas" placeholder="Enter value" value="<%= repositorio.get('caracteristicas') %>"/>	
-		</div>
-		<div class="form-group" >
- 
-			<label for="encargadoidId">Encargado Id</label> 
-            <select class="form-control" id="encargadoId" name="encargadoId">
-			  <option value="">None</option>
-            <% encargado.each(function(encargadoid) { %> 
-              <option value="<%=encargadoid.get('id')%>" <% if(repositorio.get('encargadoId')==encargadoid.get('id')) {%>selected<%}%> ><%=encargadoid.get('name')%></option>
-            <% }); %>                
-            </select>  
-		</div>
+        </div>
+</div>
+		
     </form>
     </div>
 </script> 

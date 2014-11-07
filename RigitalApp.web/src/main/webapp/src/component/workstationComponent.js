@@ -233,8 +233,6 @@ define(['component/_workstationComponent'], function() {
         configUI: function(){
         	this.listComponent.addColumn('name','Nombre');
         	this.listComponent.addColumn('duenio','Dueño');
-        	this.listComponent.addColumn('destino','Destino');
-        	this.listComponent.addColumn('sistemaOperativo','Sistema Operativo');
         },
         desactivar: function() {
             //Lo que hicieron Alex y Santiago

@@ -4,57 +4,69 @@
     <% if(unidadDeRed.id) {%>
     <input type="hidden" name="id" value="<%= unidadDeRed.id %>"/>
     <% }%>
-		<div class="form-group" >
-		<label for="tipos">Tipos</label>
-    	<input type="text" class="form-control" id="tipos" name="tipos" placeholder="Enter value" value="<%= unidadDeRed.get('tipos') %>"/>	
+<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Informaci&oacuten b&aacutesica</h3>
+                    </div>
+                    <div class="panel-body">
+                    <div class="form-group" >
+		<label for="name">Nombre</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Ej: isc2.uniandes.edu.co/profesores" value="<%= unidadDeRed.get('name') %>"/>	
 		</div>
-		<div class="form-group" >
-		<label for="servidor">Servidor</label>
-    	<input type="text" class="form-control" id="servidor" name="servidor" placeholder="Enter value" value="<%= unidadDeRed.get('servidor') %>"/>	
+        <div class="form-group" >
+		<label for="descripcion">Descripci&oacuten</label>
+    	<textarea type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ej: Espacio de unidad de red para profesores" value="<%= unidadDeRed.get('descripcion') %>"/>	
 		</div>
-		<div class="form-group" >
-		<label for="url">Url</label>
-    	<input type="text" class="form-control" id="url" name="url" placeholder="Enter value" value="<%= unidadDeRed.get('url') %>"/>	
-		</div>
-		<div class="form-group" >
-		<label for="name">Name</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= unidadDeRed.get('name') %>"/>	
-		</div>
-		<div class="form-group" >
-		<label for="descripcion">Descripcion</label>
-    	<input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Enter value" value="<%= unidadDeRed.get('descripcion') %>"/>	
-		</div>
-		<div class="form-group" >
-		<label for="proposito">Proposito</label>
-    	<input type="text" class="form-control" id="proposito" name="proposito" placeholder="Enter value" value="<%= unidadDeRed.get('proposito') %>"/>	
-		</div>
-		<div class="form-group" >
-			<label for="fechaCreacion">Fecha Creacion</label>
+        <div class="form-group" >
+			<label for="fechaCreacion">Fecha de creaci&oacuten</label>
     		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaCreacion"  name="fechaCreacion" placeholder="Enter value" />
     		<%= '<scr'+'ipt>' %>
         	$('#fechaCreacion').datepicker({autoclose:true});
         	$('#fechaCreacion').datepicker('setDate',App.Utils.Converter.date.toDate("<%= unidadDeRed.get('fechaCreacion') %>"));
     		<%= '</scr'+'ipt>' %>
 		</div>
-		<div class="form-group" >
-	    <label>
-    	  <input id="destruido" name="destruido" value="true" type="checkbox" <%= unidadDeRed.get('destruido')?'checked':'' %>> Destruido
-    	</label>
-		</div>
-		<div class="form-group" >
-		<label for="caracteristicas">Caracteristicas</label>
-    	<input type="text" class="form-control" id="caracteristicas" name="caracteristicas" placeholder="Enter value" value="<%= unidadDeRed.get('caracteristicas') %>"/>	
-		</div>
-		<div class="form-group" >
- 
-			<label for="encargadoidId">Encargado Id</label> 
+        
+        <div class="form-group" >
+                            <label for="destruido">Estado
+                            <div class= "onoffswitch">
+                            <input id="destruido" name="destruido" value="true" type="checkbox" class= "onoffswitch-checkbox" <%= unidadDeRed.get('destruido')?'checked':'' %>>
+                            <label class="onoffswitch-label" for="destruido">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                            </div>
+                            </label>
+                        </div>
+            <div class="form-group" >
+			<label for="encargadoidId">Encargado</label> 
             <select class="form-control" id="encargadoId" name="encargadoId">
-			  <option value="">None</option>
+			  <option value="">Ninguno</option>
             <% encargado.each(function(encargadoid) { %> 
               <option value="<%=encargadoid.get('id')%>" <% if(unidadDeRed.get('encargadoId')==encargadoid.get('id')) {%>selected<%}%> ><%=encargadoid.get('name')%></option>
             <% }); %>                
             </select>  
 		</div>
+                    
+        </div>
+</div>
+<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Informaci&oacuten adicional</h3>
+                    </div>
+                    <div class="panel-body">
+        
+        <div class="form-group" >
+		<label for="servidor">Servidor</label>
+    	<input type="text" class="form-control" id="servidor" name="servidor" placeholder="Ej: isc2.uniandes.edu.co" value="<%= unidadDeRed.get('servidor') %>"/>	
+		</div>
+		<div class="form-group" >
+		<label for="url">URL</label>
+    	<input type="text" class="form-control" id="url" name="url" placeholder="Ej: isc2.uniandes.edu.co/profesores" value="<%= unidadDeRed.get('url') %>"/>	
+		</div>
+                    
+                    
+        </div>
+</div>
     </form>
     </div>
 </script> 

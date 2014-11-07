@@ -230,7 +230,7 @@ define(['component/_softwareSalasComponent'], function() {
         },
         configUI: function(){
         	this.listComponent.addColumn('name','Nombre');
-        	this.listComponent.addColumn('fechaCreacion','Fecha de creacion');
+        	this.listComponent.addColumn('fechaCreacion','Fecha de instalacion');
         	this.listComponent.addColumn('destruido','Estado');
         	this.listComponent.addColumn('encargadoId','Encargado');
         },

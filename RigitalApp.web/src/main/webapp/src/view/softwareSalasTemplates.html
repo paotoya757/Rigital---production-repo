@@ -4,58 +4,68 @@
     <% if(softwareSalas.id) {%>
     <input type="hidden" name="id" value="<%= softwareSalas.id %>"/>
     <% }%>
-		<div class="form-group" >
-		<label for="tipoMaquina">Tipo Maquina</label>
-    	<input type="text" class="form-control" id="tipoMaquina" name="tipoMaquina" placeholder="Enter value" value="<%= softwareSalas.get('tipoMaquina') %>"/>	
+<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Informaci&oacuten b&aacutesica</h3>
+                    </div>
+                    <div class="panel-body">
+                    <div class="form-group" >
+		<label for="name">Nombre</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Ej: BizAgi Modeler" value="<%= softwareSalas.get('name') %>"/>	
 		</div>
-		<div class="form-group" >
-		<label for="software">Software</label>
-    	<input type="text" class="form-control" id="software" name="software" placeholder="Enter value" value="<%= softwareSalas.get('software') %>"/>	
+        <div class="form-group" >
+		<label for="descripcion">Descripci&oacuten</label>
+    	<textarea type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ej: Software para modelar procesos de negocio en BPMN" value="<%= softwareSalas.get('descripcion') %>"/>	
 		</div>
-		<div class="form-group" >
-		<label for="version">Version</label>
-    	<input type="text" class="form-control" id="version" name="version" placeholder="Enter value" value="<%= softwareSalas.get('version') %>"/>	
+        <div class="form-group" >
+		<label for="caracteristicas">Caracter&iacutesticas</label>
+    	<input type="text" class="form-control" id="caracteristicas" name="caracteristicas" placeholder="Ej: Gratuito" value="<%= softwareSalas.get('caracteristicas') %>"/>	
 		</div>
-		<div class="form-group" >
-		<label for="solicitante">Solicitante</label>
-    	<input type="text" class="form-control" id="solicitante" name="solicitante" placeholder="Enter value" value="<%= softwareSalas.get('solicitante') %>"/>	
+        <div class="form-group" >
+		<label for="proposito">Prop&oacutesito</label>
+    	<input type="text" class="form-control" id="proposito" name="proposito" placeholder="Ej: Destinado para estudiantes de cursos TI en las Organizaciones y Arquitectura empresarial" value="<%= softwareSalas.get('proposito') %>"/>	
 		</div>
-		<div class="form-group" >
-		<label for="numeroMaquina">Numero Maquina</label>
-    	<input type="text" class="form-control" id="numeroMaquina" name="numeroMaquina" placeholder="Enter value" value="<%= softwareSalas.get('numeroMaquina') %>"/>	
-		</div>
-		<div class="form-group" >
-		<label for="name">Name</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= softwareSalas.get('name') %>"/>	
-		</div>
-		<div class="form-group" >
-		<label for="descripcion">Descripcion</label>
-    	<input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Enter value" value="<%= softwareSalas.get('descripcion') %>"/>	
-		</div>
-		<div class="form-group" >
-		<label for="proposito">Proposito</label>
-    	<input type="text" class="form-control" id="proposito" name="proposito" placeholder="Enter value" value="<%= softwareSalas.get('proposito') %>"/>	
-		</div>
-		<div class="form-group" >
-			<label for="fechaCreacion">Fecha Creacion</label>
+        <div class="form-group" >
+			<label for="fechaCreacion">Fecha de instalaci&oacuten</label>
     		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaCreacion"  name="fechaCreacion" placeholder="Enter value" />
     		<%= '<scr'+'ipt>' %>
         	$('#fechaCreacion').datepicker({autoclose:true});
         	$('#fechaCreacion').datepicker('setDate',App.Utils.Converter.date.toDate("<%= softwareSalas.get('fechaCreacion') %>"));
     		<%= '</scr'+'ipt>' %>
 		</div>
-		<div class="form-group" >
-	    <label>
-    	  <input id="destruido" name="destruido" value="true" type="checkbox" <%= softwareSalas.get('destruido')?'checked':'' %>> Destruido
-    	</label>
+        <div class="form-group" >
+                            <label for="destruido">Estado
+                            <div class= "onoffswitch">
+                            <input id="destruido" name="destruido" value="true" type="checkbox" class= "onoffswitch-checkbox" <%= softwareSalas.get('destruido')?'checked':'' %>>
+                            <label class="onoffswitch-label" for="destruido">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                            </div>
+                            </label>
+                        </div>
+            </div>
+    </div>
+    <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Informaci&oacuten adicional</h3>
+                    </div>
+                    <div class="panel-body">
+                    <div class="form-group" >
+		<label for="solicitante">Solicitante</label>
+    	<input type="text" class="form-control" id="solicitante" name="solicitante" placeholder="Ej: Websis" value="<%= softwareSalas.get('solicitante') %>"/>	
 		</div>
-		<div class="form-group" >
-		<label for="caracteristicas">Caracteristicas</label>
-    	<input type="text" class="form-control" id="caracteristicas" name="caracteristicas" placeholder="Enter value" value="<%= softwareSalas.get('caracteristicas') %>"/>	
+        <div class="form-group" >
+		<label for="software">Salas</label>
+    	<input type="text" class="form-control" id="software" name="software" placeholder="Ej: Waira 1, Waira 2 y Alan Turing" value="<%= softwareSalas.get('software') %>"/>	
+		</div>
+        <div class="form-group" >
+		<label for="version">Versi&oacuten</label>
+    	<input type="text" class="form-control" id="version" name="version" placeholder="Ej: 2.7.8" value="<%= softwareSalas.get('version') %>"/>	
 		</div>
 		<div class="form-group" >
  
-			<label for="workstationidId">Workstation Id</label> 
+			<label for="workstationidId">Workstation</label> 
             <select class="form-control" id="workstationId" name="workstationId">
 			  <option value="">None</option>
             <% workstation.each(function(workstationid) { %> 
@@ -63,6 +73,8 @@
             <% }); %>                
             </select>  
 		</div>
+        </div>
+</div>
     </form>
     </div>
 </script> 

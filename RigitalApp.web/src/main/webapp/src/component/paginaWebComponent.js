@@ -215,7 +215,7 @@ define(['component/_paginaWebComponent'], function() {
             messagesController.showMessage('info', 'Informacion actualizada', true, 3);
         },
         edit: function(params) {
-            this.toolbarComponent.hideButton('agregar');
+            this.toolbarComponent.hideButton('create');
             this.toolbarComponent.hideButton('search');
             this.toolbarComponent.hideButton('refresh');
             this.toolbarComponent.hideButton('desactivar');

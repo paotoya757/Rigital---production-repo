@@ -181,6 +181,8 @@ define(['component/_cMSComponent'], function() {
         //end : searchRelated
         //Funciones
         create: function() {
+            this.toolbarComponent.hideButton('search');
+            this.toolbarComponent.hideButton('refresh');
             this.toolbarComponent.hideButton('create');
             this.toolbarComponent.hideButton('desactivar');
             this.toolbarComponent.showButton('save');
@@ -196,6 +198,9 @@ define(['component/_cMSComponent'], function() {
             this.toolbarComponent.showButton('refresh');
         },
         cancel: function(params) {
+            this.toolbarComponent.showButton('search');
+            this.toolbarComponent.showButton('refresh');
+            this.toolbarComponent.showButton('desactivar');
             this.toolbarComponent.showButton('create');
             this.toolbarComponent.hideButton('save');
             this.toolbarComponent.hideButton('cancel');
@@ -212,6 +217,7 @@ define(['component/_cMSComponent'], function() {
             messagesController.showMessage('info', 'Informacion actualizada', true, 3);
         },
         edit: function(params) {
+            this.toolbarComponent.hideButton('refresh');
             this.toolbarComponent.hideButton('create');
             this.toolbarComponent.hideButton('search');
             this.toolbarComponent.hideButton('desactivar');

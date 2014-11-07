@@ -4,14 +4,21 @@
     <% if(cMS.id) {%>
     <input type="hidden" name="id" value="<%= cMS.id %>"/>
     <% }%>
-		<div class="form-group" >
-		<label for="name">Name</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= cMS.get('name') %>"/>	
+<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Informaci&oacuten b&aacutesica</h3>
+                    </div>
+                    <div class="panel-body">
+                    <div class="form-group" >
+		<label for="name">Nombre</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Ingrese el nombre" value="<%= cMS.get('name') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="version">Version</label>
-    	<input type="text" class="form-control" id="version" name="version" placeholder="Enter value" value="<%= cMS.get('version') %>"/>	
+		<label for="version">Versi&oacuten</label>
+    	<input type="text" class="form-control" id="version" name="version" placeholder="Ingrese la version" value="<%= cMS.get('version') %>"/>	
 		</div>
+        </div>
+</div>
     </form>
     </div>
 </script> 

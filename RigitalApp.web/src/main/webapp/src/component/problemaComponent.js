@@ -102,6 +102,15 @@ define(['component/_problemaComponent'], function() {
             },
             this.delete,
             this);
+            //Buscar
+            this.toolbarComponent.addButton({
+                name: 'search',
+                icon: 'glyphicon-search',
+                displayName: 'Buscar',
+                show: true
+            },
+            this.search,
+            this);
             //Start: searchRelated
             // Cambio - siguiente linea : '-<miComponente>-display-textfield"'
             Backbone.on(self.componentId + '-problema-display-textfield', function(params) {
@@ -160,7 +169,9 @@ define(['component/_problemaComponent'], function() {
 		},
                 //end : searchRelated
                 create: function() {
+                    this.toolbarComponent.hideButton('refresh');
                     this.toolbarComponent.hideButton('create');
+                    this.toolbarComponent.hideButton('search');
             this.toolbarComponent.showButton('save');
             this.toolbarComponent.showButton('cancel');
             this.toolbarComponent.render();
@@ -173,6 +184,8 @@ define(['component/_problemaComponent'], function() {
             this.toolbarComponent.showButton('refresh');
         },
         cancel: function(params) {
+            this.toolbarComponent.showButton('search');
+            this.toolbarComponent.showButton('refresh');
             this.toolbarComponent.showButton('create');
             this.toolbarComponent.hideButton('save');
             this.toolbarComponent.hideButton('cancel');
@@ -189,6 +202,7 @@ define(['component/_problemaComponent'], function() {
             messagesController.showMessage('info', 'Informacion actualizada', true, 3);
         },
         edit: function(params) {
+            this.toolbarComponent.hideButton('refresh');
             this.toolbarComponent.hideButton('create');
             this.toolbarComponent.hideButton('search');
             this.toolbarComponent.showButton('save');

@@ -4,22 +4,37 @@
     <% if(workstation.id) {%>
     <input type="hidden" name="id" value="<%= workstation.id %>"/>
     <% }%>
+<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Informaci&oacuten b&aacutesica</h3>
+                    </div>
+                    <div class="panel-body">
 		<div class="form-group" >
-		<label for="name">Name</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= workstation.get('name') %>"/>	
+		<label for="name">Nombre</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Ej: BI-DB2IM" value="<%= workstation.get('name') %>"/>	
 		</div>
-		<div class="form-group" >
-		<label for="duenio">Duenio</label>
-    	<input type="text" class="form-control" id="duenio" name="duenio" placeholder="Enter value" value="<%= workstation.get('duenio') %>"/>	
+        <div class="form-group" >
+		<label for="duenio">Due&ntildeo</label>
+    	<input type="text" class="form-control" id="duenio" name="duenio" placeholder="Ej: Diego Roa" value="<%= workstation.get('duenio') %>"/>	
 		</div>
-		<div class="form-group" >
-		<label for="destino">Destino</label>
-    	<input type="text" class="form-control" id="destino" name="destino" placeholder="Enter value" value="<%= workstation.get('destino') %>"/>	
+        </div>
+</div>
+<div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Informaci&oacuten adicional</h3>
+                    </div>
+                    <div class="panel-body">
+        <div class="form-group" >
+		<label for="destino">Salas</label>
+    	<input type="text" class="form-control" id="destino" name="destino" placeholder="Ej: Waira 1 y Waira 2" value="<%= workstation.get('destino') %>"/>	
 		</div>
+		
 		<div class="form-group" >
 		<label for="sistemaOperativo">Sistema Operativo</label>
-    	<input type="text" class="form-control" id="sistemaOperativo" name="sistemaOperativo" placeholder="Enter value" value="<%= workstation.get('sistemaOperativo') %>"/>	
+    	<input type="text" class="form-control" id="sistemaOperativo" name="sistemaOperativo" placeholder="Ej: Windows Server 2008 R2" value="<%= workstation.get('sistemaOperativo') %>"/>	
 		</div>
+        </div>
+</div>
     </form>
     </div>
 </script> 
