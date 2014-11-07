@@ -235,7 +235,8 @@ define(['component/_cMSComponent'], function() {
         },
         desactivar: function() {
             //Lo que hicieron Alex y Santiago
-            alert("Los recursos seleccionados han sido desactivados");
+            this.componentController.desactivar(this.getSelectedRecords(),this);
+            this.refresh(this);
         }
     });
     return App.Component.CMSComponent;

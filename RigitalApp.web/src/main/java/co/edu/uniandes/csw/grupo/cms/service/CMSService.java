@@ -85,4 +85,18 @@ public class CMSService extends _CMSService {
         return cMSLogicService.getCMSsByParameters(name, version);
     }
 
+    @GET
+    @Path("/Desactivar")
+    public CMSPageDTO desactivarCMSs(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords)
+    {
+        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+        System.out.println(queryParams.keySet());
+        System.out.println(queryParams.values());
+        for(int i=0;i<queryParams.size()-3;i++)
+        {
+            Long id= Long.parseLong(queryParams.getFirst(i+""));
+            cMSLogicService.desactivarRecurso(id);   
+        }
+        return super.getCMSs(page, maxRecords);
+    }
 }
