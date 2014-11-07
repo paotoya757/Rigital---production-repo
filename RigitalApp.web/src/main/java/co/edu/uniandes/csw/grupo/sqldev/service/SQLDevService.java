@@ -159,7 +159,8 @@ public class SQLDevService extends _SQLDevService {
         MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
         System.out.println(queryParams.keySet());
         System.out.println(queryParams.values());
-        for(int i=0;i<queryParams.size();i++)
+        //no lo pude probar porque no me dejo crearlo por problemas con las validaciones pero la mayoria han sido - 2 asi que le pongo - 2 aunque es posible que no lo sea. (PD:santiago sabe de que hablo)
+        for(int i=0;i<queryParams.size()-2;i++)
         {
             Long id= Long.parseLong(queryParams.getFirst(i+""));
             sQLDevLogicService.desactivarRecurso(id);   

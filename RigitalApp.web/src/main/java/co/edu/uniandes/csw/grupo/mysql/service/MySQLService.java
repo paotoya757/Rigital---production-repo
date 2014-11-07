@@ -32,6 +32,7 @@ package co.edu.uniandes.csw.grupo.mysql.service;
 
 import co.edu.uniandes.csw.grupo.maquinavirtual.logic.dto.MaquinaVirtualPageDTO;
 import co.edu.uniandes.csw.grupo.mysql.logic.dto.MySQLPageDTO;
+import co.edu.uniandes.csw.grupo.unidaddered.logic.dto.UnidadDeRedPageDTO;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -139,6 +140,21 @@ public class MySQLService extends _MySQLService {
         
         
         return mySQLLogicService.getMySQLsByParameters(descripcionDestino , servidor , name , descripcion , proposito , caracteristicas , pgwebId , paginawebId, encargadoId , fechaCreacion1, fechaCreacion2, estaDestruido);
+    }
+    
+    @GET
+    @Path("/Desactivar")
+    public MySQLPageDTO desactivarMySQLs(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords)
+    {
+        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+        System.out.println(queryParams.keySet());
+        System.out.println(queryParams.values());
+        for(int i=0;i<queryParams.size()-2;i++)
+        {
+            Long id= Long.parseLong(queryParams.getFirst(i+""));
+            mySQLLogicService.desactivarRecurso(id);   
+        }
+        return super.getMySQLs(page, maxRecords);
     }
 
 }
