@@ -35,5 +35,7 @@ import co.edu.uniandes.csw.grupo.contenedorweb.logic.dto.ContenedorWebPageDTO;
 public interface IContenedorWebLogicService extends _IContenedorWebLogicService {
     
     public ContenedorWebPageDTO getContenedoresWebByParameters(String puertos ,String servidor ,String url ,String name ,String descripcion ,String proposito ,String caracteristicas ,String encargadoId,String fechaCreacion1,String fechaCreacion2,String fechaVencimiento1,String fechaVencimiento2,String estaDestruido);
+    
+    public void desactivarRecurso(Long contenedor);
 
 }

@@ -155,6 +155,22 @@ public class ContenedorWebService extends _ContenedorWebService {
         
         return contenedorWebLogicService.getContenedoresWebByParameters(puertos , servidor , url , name , descripcion , proposito , caracteristicas , encargadoId, fechaCreacion1, fechaCreacion2, fechaVencimiento1, fechaVencimiento2, estaDestruido);
     }
+    
+    @GET
+    @Path("/Desactivar")
+    public ContenedorWebPageDTO desactivarWikis(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords)
+    {
+        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+        System.out.println(queryParams.keySet());
+        System.out.println(queryParams.values());
+        for(int i=0;i<queryParams.size()-3;i++)
+        {
+            Long id= Long.parseLong(queryParams.getFirst(i+""));
+            contenedorWebLogicService.desactivarRecurso(id);   
+        }
+        return super.getContenedorWebs(page, maxRecords);
+    }
+
 
 
 

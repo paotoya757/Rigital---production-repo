@@ -48,4 +48,8 @@ public class ContenedorWebLogicService extends _ContenedorWebLogicService implem
     public ContenedorWebPageDTO getContenedoresWebByParameters(String puertos ,String servidor ,String url ,String name ,String descripcion ,String proposito ,String caracteristicas ,String encargadoId,String fechaCreacion1,String fechaCreacion2,String fechaVencimiento1,String fechaVencimiento2,String estaDestruido){
         return persistance.getContenedoresWebByParameters(puertos , servidor , url , name , descripcion , proposito , caracteristicas , encargadoId, fechaCreacion1, fechaCreacion2, fechaVencimiento1, fechaVencimiento2, estaDestruido);
     }
+
+    public void desactivarRecurso(Long contenedor) {
+        persistance.desactivarRecurso(contenedor);
+    }
 }

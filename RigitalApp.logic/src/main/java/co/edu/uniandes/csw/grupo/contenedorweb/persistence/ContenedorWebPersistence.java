@@ -173,4 +173,11 @@ public class ContenedorWebPersistence extends _ContenedorWebPersistence  impleme
         
             
     }
+
+    public void desactivarRecurso(Long contenedor) {
+        Query query= entityManager.createQuery("UPDATE ContenedorWebEntity c SET c.destruido='false' WHERE c.id = :contenedor");
+        query.setParameter("contenedor", contenedor);
+        query.executeUpdate();
+
+    }
 }
