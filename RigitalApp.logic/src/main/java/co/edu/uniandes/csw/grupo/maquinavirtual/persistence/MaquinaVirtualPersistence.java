@@ -195,4 +195,10 @@ public class MaquinaVirtualPersistence extends _MaquinaVirtualPersistence  imple
         
             
     }
+
+    public void desactivarRecurso(Long maquina) {
+        Query query= entityManager.createQuery("UPDATE MaquinaVirtualEntity m SET m.destruido='false' WHERE m.id = :maquina");
+        query.setParameter("maquina", maquina);
+        query.executeUpdate();
+    }
 }

@@ -171,5 +171,20 @@ public class MaquinaVirtualService extends _MaquinaVirtualService {
         return maquinaVirtualLogicService.getMaquinasVirtualesByParameters(ips , serviciosAsociados , version , sistemaOperativo , numDiscos , capacidadDiscos , ram , numCores , name , descripcion , proposito , caracteristicas , encargadoId , fechaCreacion1, fechaCreacion2, fechaVencimiento1, fechaVencimiento2, estaDestruido);
     }
 
+    @GET
+    @Path("/Desactivar")
+    public MaquinaVirtualPageDTO desactivarMaquinaVirtual(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords)
+    {
+        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+        System.out.println(queryParams.keySet());
+        System.out.println(queryParams.values());
+        for(int i=0;i<queryParams.size()-3;i++)
+        {
+            Long id= Long.parseLong(queryParams.getFirst(i+""));
+            maquinaVirtualLogicService.desactivarRecurso(id);   
+        }
+        return super.getMaquinaVirtuals(page, maxRecords);
+    }
+
 
 }
