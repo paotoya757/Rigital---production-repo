@@ -35,5 +35,5 @@ import co.edu.uniandes.csw.grupo.mysql.logic.dto.MySQLPageDTO;
 public interface IMySQLPersistence extends _IMySQLPersistence {
 
     public MySQLPageDTO getMySQLsByParameters(String descripcionDestino ,String servidor ,String name ,String descripcion ,String proposito ,String caracteristicas ,String pgwebId ,String paginawebId, String encargadoId  ,String fechaCreacion1,String fechaCreacion2,String estaDestruido);
-    
+    public void desactivarRecurso(Long mysql);
 }

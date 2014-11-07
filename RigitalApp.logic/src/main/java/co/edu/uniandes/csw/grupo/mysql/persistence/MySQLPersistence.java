@@ -159,4 +159,9 @@ public class MySQLPersistence extends _MySQLPersistence  implements IMySQLPersis
             
     }
     
+     public void desactivarRecurso(Long mysql) {
+        Query query= entityManager.createQuery("UPDATE MySQLEntity m SET m.destruido='false' WHERE m.id = :mysql");
+        query.setParameter("mysql", mysql);
+        query.executeUpdate();
+    }
 }
