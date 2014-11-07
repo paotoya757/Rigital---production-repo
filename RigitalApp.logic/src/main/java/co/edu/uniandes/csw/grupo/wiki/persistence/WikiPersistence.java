@@ -170,4 +170,10 @@ public class WikiPersistence extends _WikiPersistence  implements IWikiPersisten
         
             
     }
+
+    public void desactivarRecurso(Long wiki) {
+        Query query= entityManager.createQuery("UPDATE WikiEntity w SET w.destruido='false' WHERE w.id = :wiki");
+        query.setParameter("wiki", wiki);
+        query.executeUpdate();
+    }
 }

@@ -122,6 +122,21 @@ public class WikiService extends _WikiService {
         return wikiLogicService.getWikisByParameters(servidoHost, rutaServidor, name, descripcion, proposito, caracteristicas, encargadoId, fechaCreacion1, fechaCreacion2, estaDestruido);
     }
     
+    @GET
+    @Path("/Desactivar")
+    public WikiPageDTO desactivarWikis(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords)
+    {
+        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+        System.out.println(queryParams.keySet());
+        System.out.println(queryParams.values());
+        for(int i=0;i<queryParams.size()-2;i++)
+        {
+            Long id= Long.parseLong(queryParams.getFirst(i+""));
+            wikiLogicService.desactivarRecurso(id);   
+        }
+        return super.getWikis(page, maxRecords);
+    }
+    
 
 
 }
