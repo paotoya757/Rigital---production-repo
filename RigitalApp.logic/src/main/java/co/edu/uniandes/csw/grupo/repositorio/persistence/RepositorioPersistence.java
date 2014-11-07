@@ -183,5 +183,12 @@ public class RepositorioPersistence extends _RepositorioPersistence  implements 
         
             
     }
+
+    public void desactivarRecurso(Long repo) {
+        Query query= entityManager.createQuery("UPDATE RepositorioEntity r SET r.destruido='false' WHERE r.id = :repo");
+        query.setParameter("repo", repo);
+        query.executeUpdate();
+
+    }
     
 }

@@ -48,4 +48,8 @@ public class RepositorioLogicService extends _RepositorioLogicService implements
     public RepositorioPageDTO getRepositoriosByParameters(String tipo ,String servidor ,String destino ,String tipoAcceso ,String ubicacionDelServidor ,String url ,String name ,String descripcion ,String proposito ,String caracteristicas ,String encargadoId ,String fechaCreacion1,String fechaCreacion2,String fechaVencimiento1,String fechaVencimiento2, String estaDestruido){
         return persistance.getRepositoriosByParameters(tipo , servidor , destino , tipoAcceso , ubicacionDelServidor , url , name , descripcion , proposito , caracteristicas , encargadoId , fechaCreacion1, fechaCreacion2, fechaVencimiento1, fechaVencimiento2, estaDestruido);
     }
+
+    public void desactivarRecurso(Long repo) {
+        persistance.desactivarRecurso(repo);
+    }
 }
