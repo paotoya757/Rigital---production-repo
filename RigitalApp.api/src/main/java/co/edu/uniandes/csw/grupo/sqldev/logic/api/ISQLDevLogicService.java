@@ -35,4 +35,5 @@ import co.edu.uniandes.csw.grupo.sqldev.logic.dto.SQLDevPageDTO;
 public interface ISQLDevLogicService extends _ISQLDevLogicService {
 
     public SQLDevPageDTO getSQLDevsByParameters(String servidor ,String name ,String descripcion ,String proposito ,String caracteristicas ,String pgwebId ,String encargadoId ,String fechaCreacion1,String fechaCreacion2,String fechaVencimiento1,String fechaVencimiento2,String estaDestruido);
+    public void desactivarRecurso(Long sqldev);
 }
