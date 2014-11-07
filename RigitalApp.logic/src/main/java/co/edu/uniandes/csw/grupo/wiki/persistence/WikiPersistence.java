@@ -51,16 +51,20 @@ public class WikiPersistence extends _WikiPersistence  implements IWikiPersisten
     public WikiDTO createWiki(WikiDTO wiki) {
                 WikiEntity entity=WikiConverter.persistenceDTO2Entity(wiki);
 		entityManager.persist(entity);
+                
                 WikiDTO rta = WikiConverter.entity2PersistenceDTO(entity);
                 Long id = rta.getId();
                 Long idEncargado = rta.getEncargadoId();
                 
-                System.out.println("ID: " + id);
-                System.out.println("ID Encargado: " + idEncargado);
-                
-                EncargadowikiEntity este = new EncargadowikiEntity(idEncargado, id);
-                
-                entityManager.persist(este);
+                if(idEncargado != 0)
+                {
+                    System.out.println("ID: " + id);
+                    System.out.println("ID Encargado: " + idEncargado);
+
+                    EncargadowikiEntity este = new EncargadowikiEntity(idEncargado, id);  
+                    entityManager.persist(este);
+
+                }
                 
 		return rta;
     }
@@ -92,7 +96,7 @@ public class WikiPersistence extends _WikiPersistence  implements IWikiPersisten
         if(!caracteristicas.isEmpty())
             sql += " AND u.caracteristicas like :caracteristicas";
         if(!encargadoId.isEmpty())
-            sql += " AND  u.encargadoId like :encargadoId";
+            sql += " AND  u.encargadoId = :encargadoId";
         if(!fechaCreacion1.isEmpty() && !fechaCreacion2.isEmpty())
             sql += " AND u.fechaCreacion BETWEEN :fechaCreacion1 and :fechaCreacion2";
         if(!estaDestruido.isEmpty())
@@ -140,7 +144,7 @@ public class WikiPersistence extends _WikiPersistence  implements IWikiPersisten
             q.setParameter("caracteristicas", "%"+caracteristicas+"%");
             
         if(!encargadoId.isEmpty())
-            q.setParameter("encargadoId", "%"+encargadoId+"%");
+            q.setParameter("encargadoId", Long.parseLong(encargadoId));
             
         if(!fechaCreacion1.isEmpty() && !fechaCreacion2.isEmpty())
         {

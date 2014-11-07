@@ -38,10 +38,14 @@ import javax.inject.Inject;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.grupo.sqldev.logic.api.ISQLDevLogicService;
+import co.edu.uniandes.csw.grupo.sqldev.logic.dto.SQLDevPageDTO;
 
 @Default
 @Stateless
 @LocalBean
 public class SQLDevLogicService extends _SQLDevLogicService implements ISQLDevLogicService {
 
+    public SQLDevPageDTO getSQLDevsByParameters(String servidor ,String name ,String descripcion ,String proposito ,String caracteristicas ,String pgwebId ,String encargadoId ,String fechaCreacion1,String fechaCreacion2,String fechaVencimiento1,String fechaVencimiento2,String estaDestruido){
+        return persistance.getSQLDevsByParameters(servidor , name , descripcion , proposito , caracteristicas , pgwebId , encargadoId , fechaCreacion1, fechaCreacion2, fechaVencimiento1, fechaVencimiento2, estaDestruido);
+    }
 }

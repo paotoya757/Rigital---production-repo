@@ -38,10 +38,14 @@ import javax.inject.Inject;
 import javax.enterprise.inject.Default;
 
 import co.edu.uniandes.csw.grupo.paginaweb.logic.api.IPaginaWebLogicService;
+import co.edu.uniandes.csw.grupo.paginaweb.logic.dto.PaginaWebPageDTO;
 
 @Default
 @Stateless
 @LocalBean
 public class PaginaWebLogicService extends _PaginaWebLogicService implements IPaginaWebLogicService {
 
+    public PaginaWebPageDTO getPaginasWebByParameters(String formato ,String url ,String alias ,String name ,String descripcion ,String proposito ,String caracteristicas ,String cmsId ,String encargadoId ,String fechaCreacion1,String fechaCreacion2,String ultimaFechaModificacion1,String ultimaFechaModificacion2,String estaDestruido){
+        return persistance.getPaginasWebByParameters(formato , url , alias , name , descripcion , proposito , caracteristicas , cmsId , encargadoId , fechaCreacion1, fechaCreacion2, ultimaFechaModificacion1, ultimaFechaModificacion2, estaDestruido);
+    }
 }

@@ -71,7 +71,7 @@ public class MySQLPersistence extends _MySQLPersistence  implements IMySQLPersis
         if(!paginawebId.isEmpty())
             sql += " AND  u.paginawebId like :paginawebId";
         if(!encargadoId.isEmpty())
-            sql += " AND  u.encargadoId like :encargadoId";
+            sql += " AND  u.encargadoId = :encargadoId";
         if(!estaDestruido.isEmpty())
             sql += " AND  u.destruido = :estaDestruido";
         
@@ -111,7 +111,7 @@ public class MySQLPersistence extends _MySQLPersistence  implements IMySQLPersis
         if(!paginawebId.isEmpty())
             q.setParameter("paginawebId", "%"+paginawebId+"%");
         if(!encargadoId.isEmpty())
-            q.setParameter("encargadoId", "%"+encargadoId+"%");
+            q.setParameter("encargadoId", Long.parseLong(encargadoId));
         if(!estaDestruido.isEmpty())
             q.setParameter("estaDestruido", destruido);
         

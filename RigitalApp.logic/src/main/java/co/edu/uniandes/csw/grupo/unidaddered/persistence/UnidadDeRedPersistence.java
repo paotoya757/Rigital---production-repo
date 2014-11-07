@@ -68,7 +68,7 @@ public class UnidadDeRedPersistence extends _UnidadDeRedPersistence  implements 
         if(!caracteristicas.isEmpty())
             sql += " AND  u.caracteristicas like :caracteristicas";
         if(!encargadoId.isEmpty())
-            sql += " AND  u.encargadoId like :encargadoId";
+            sql += " AND  u.encargadoId = :encargadoId";
         
         
         if(!fechaCreacion1.isEmpty() && !fechaCreacion2.isEmpty())
@@ -108,7 +108,7 @@ public class UnidadDeRedPersistence extends _UnidadDeRedPersistence  implements 
         if(!caracteristicas.isEmpty())
             q.setParameter("caracteristicas", "%"+caracteristicas+"%");
         if(!encargadoId.isEmpty())
-            q.setParameter("encargadoId", "%"+encargadoId+"%");        
+            q.setParameter("encargadoId", Long.parseLong(encargadoId));       
         if(!estaDestruido.isEmpty())
             q.setParameter("destruido", destruido);
         

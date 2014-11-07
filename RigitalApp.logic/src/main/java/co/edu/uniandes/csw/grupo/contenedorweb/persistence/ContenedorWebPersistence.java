@@ -68,7 +68,7 @@ public class ContenedorWebPersistence extends _ContenedorWebPersistence  impleme
         if(!caracteristicas.isEmpty())
             sql += " AND  u.caracteristicas like :caracteristicas";
         if(!encargadoId.isEmpty())
-            sql += " AND  u.encargadoId like :encargadoId";
+            sql += " AND  u.encargadoId = :encargadoId";
         
         if(!estaDestruido.isEmpty())
             sql += " AND  u.destruido = :estaDestruido";
@@ -109,7 +109,7 @@ public class ContenedorWebPersistence extends _ContenedorWebPersistence  impleme
         if(!caracteristicas.isEmpty())
             q.setParameter("caracteristicas", "%"+caracteristicas+"%");
         if(!encargadoId.isEmpty())
-            q.setParameter("numCores", "%"+encargadoId+"%");
+            q.setParameter("numCores", Long.parseLong(encargadoId));
         
         if(!estaDestruido.isEmpty())
             q.setParameter("estaDestruido", destruido);
