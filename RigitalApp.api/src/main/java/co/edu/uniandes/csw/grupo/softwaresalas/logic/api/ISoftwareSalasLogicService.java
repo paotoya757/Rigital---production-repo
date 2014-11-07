@@ -35,4 +35,6 @@ import co.edu.uniandes.csw.grupo.softwaresalas.logic.dto.SoftwareSalasPageDTO;
 public interface ISoftwareSalasLogicService extends _ISoftwareSalasLogicService {
 
     public SoftwareSalasPageDTO getSoftwareSalasByParameters(String tipoMaquina ,String software ,String version ,String solicitante ,String numeroMaquina ,String name ,String descripcion ,String proposito ,String caracteristicas ,String workstationId ,String fechaCreacion1,String fechaCreacion2,String estaDestruido);
+    
+    public void desactivarRecurso(Long software);
 }

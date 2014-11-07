@@ -141,5 +141,21 @@ public class SoftwareSalasService extends _SoftwareSalasService {
         
         return softwareSalasLogicService.getSoftwareSalasByParameters(tipoMaquina , software , version , solicitante , numeroMaquina , name , descripcion , proposito , caracteristicas , workstationId , fechaCreacion1, fechaCreacion2, estaDestruido);
     }
+    
+    @GET
+    @Path("/Desactivar")
+    public SoftwareSalasPageDTO desactivarSoftwares(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords)
+    {
+        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+        System.out.println(queryParams.keySet());
+        System.out.println(queryParams.values());
+        for(int i=0;i<queryParams.size()-2;i++)
+        {
+            Long id= Long.parseLong(queryParams.getFirst(i+""));
+            softwareSalasLogicService.desactivarRecurso(id);   
+        }
+        return super.getSoftwareSalass(page, maxRecords);
+    }
+
 
 }

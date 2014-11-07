@@ -174,4 +174,10 @@ public class SoftwareSalasPersistence extends _SoftwareSalasPersistence  impleme
         
             
     }
+
+    public void desactivarRecurso(Long software) {
+        Query query= entityManager.createQuery("UPDATE SoftwareSalasEntity s SET s.destruido='false' WHERE s.id = :software");
+        query.setParameter("software", software);
+        query.executeUpdate();
+    }
 }

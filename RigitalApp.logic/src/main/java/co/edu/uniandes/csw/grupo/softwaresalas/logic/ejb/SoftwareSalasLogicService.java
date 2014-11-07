@@ -48,4 +48,8 @@ public class SoftwareSalasLogicService extends _SoftwareSalasLogicService implem
     public SoftwareSalasPageDTO getSoftwareSalasByParameters(String tipoMaquina ,String software ,String version ,String solicitante ,String numeroMaquina ,String name ,String descripcion ,String proposito ,String caracteristicas ,String workstationId ,String fechaCreacion1,String fechaCreacion2,String estaDestruido){
         return persistance.getSoftwareSalasByParameters(tipoMaquina , software , version , solicitante , numeroMaquina , name , descripcion , proposito , caracteristicas , workstationId , fechaCreacion1, fechaCreacion2, estaDestruido);
     }
+
+    public void desactivarRecurso(Long software) {
+        persistance.desactivarRecurso(software);
+    }
 }

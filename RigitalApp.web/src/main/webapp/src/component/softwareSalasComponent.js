@@ -236,7 +236,9 @@ define(['component/_softwareSalasComponent'], function() {
         },
         desactivar: function() {
             //Lo que hicieron Alex y Santiago
-            alert('Los recursos seleccionados fueron desactivados');
+            this.componentController.desactivar(this.getSelectedRecords(),this);
+            this.refresh(this);
+
         }
     });
     return App.Component.SoftwareSalasComponent;
