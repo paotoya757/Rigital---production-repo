@@ -40,5 +40,9 @@ public class SQLDevMockLogicService extends _SQLDevMockLogicService implements I
     public SQLDevPageDTO getSQLDevsByParameters(String servidor, String name, String descripcion, String proposito, String caracteristicas, String pgwebId, String encargadoId, String fechaCreacion1, String fechaCreacion2, String fechaVencimiento1, String fechaVencimiento2, String estaDestruido) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public void desactivarRecurso(Long sqldev) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }
