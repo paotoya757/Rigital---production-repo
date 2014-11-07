@@ -48,4 +48,7 @@ public class SQLDevLogicService extends _SQLDevLogicService implements ISQLDevLo
     public SQLDevPageDTO getSQLDevsByParameters(String servidor ,String name ,String descripcion ,String proposito ,String caracteristicas ,String pgwebId ,String encargadoId ,String fechaCreacion1,String fechaCreacion2,String fechaVencimiento1,String fechaVencimiento2,String estaDestruido){
         return persistance.getSQLDevsByParameters(servidor , name , descripcion , proposito , caracteristicas , pgwebId , encargadoId , fechaCreacion1, fechaCreacion2, fechaVencimiento1, fechaVencimiento2, estaDestruido);
     }
+     public void desactivarRecurso(Long sqldev) {
+        persistance.desactivarRecurso(sqldev);
+    }
 }

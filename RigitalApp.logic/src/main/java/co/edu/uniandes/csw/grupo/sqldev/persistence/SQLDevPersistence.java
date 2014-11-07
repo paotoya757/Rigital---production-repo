@@ -176,5 +176,9 @@ public class SQLDevPersistence extends _SQLDevPersistence  implements ISQLDevPer
             
     }
     
-    
+     public void desactivarRecurso(Long sqldev) {
+        Query query= entityManager.createQuery("UPDATE SQLDevEntity s SET s.destruido='false' WHERE s.id = :sqldev");
+        query.setParameter("sqldev", sqldev);
+        query.executeUpdate();
+    }
 }
