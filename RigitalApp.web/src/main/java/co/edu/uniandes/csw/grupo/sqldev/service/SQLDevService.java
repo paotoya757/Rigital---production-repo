@@ -32,6 +32,7 @@ package co.edu.uniandes.csw.grupo.sqldev.service;
 
 import co.edu.uniandes.csw.grupo.maquinavirtual.logic.dto.MaquinaVirtualPageDTO;
 import co.edu.uniandes.csw.grupo.sqldev.logic.dto.SQLDevPageDTO;
+import co.edu.uniandes.csw.grupo.unidaddered.logic.dto.UnidadDeRedPageDTO;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -149,6 +150,21 @@ public class SQLDevService extends _SQLDevService {
         
         
         return sQLDevLogicService.getSQLDevsByParameters(servidor , name , descripcion , proposito , caracteristicas , pgwebId , encargadoId , fechaCreacion1, fechaCreacion2, fechaVencimiento1, fechaVencimiento2, estaDestruido);
+    }
+
+    @GET
+    @Path("/Desactivar")
+    public SQLDevPageDTO desactivarSQLDevs(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords)
+    {
+        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+        System.out.println(queryParams.keySet());
+        System.out.println(queryParams.values());
+        for(int i=0;i<queryParams.size();i++)
+        {
+            Long id= Long.parseLong(queryParams.getFirst(i+""));
+            sQLDevLogicService.desactivarRecurso(id);   
+        }
+        return super.getSQLDevs(page, maxRecords);
     }
 
 }
