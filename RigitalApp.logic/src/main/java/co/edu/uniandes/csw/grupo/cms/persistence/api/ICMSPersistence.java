@@ -35,5 +35,7 @@ import co.edu.uniandes.csw.grupo.cms.logic.dto.CMSPageDTO;
 public interface ICMSPersistence extends _ICMSPersistence {
     
     public CMSPageDTO getCMSsByParameters(String name,String version);
+    
+     public void desactivarRecurso(Long cms);
 
 }

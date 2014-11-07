@@ -49,5 +49,7 @@ public class CMSLogicService extends _CMSLogicService implements ICMSLogicServic
         return persistance.getCMSsByParameters(name, version);
     }
 
- 
+    public void desactivarRecurso(Long cms) {
+        persistance.desactivarRecurso(cms);
+    }
 }

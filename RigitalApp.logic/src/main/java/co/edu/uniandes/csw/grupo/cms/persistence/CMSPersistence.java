@@ -82,5 +82,10 @@ public class CMSPersistence extends _CMSPersistence  implements ICMSPersistence 
         
             
     }
-    
+ 
+      public void desactivarRecurso(Long cms) {
+        Query query= entityManager.createQuery("UPDATE CMSEntity c SET c.destruido='false' WHERE c.id = :cms");
+        query.setParameter("cms", cms);
+        query.executeUpdate();
+    }
 }
