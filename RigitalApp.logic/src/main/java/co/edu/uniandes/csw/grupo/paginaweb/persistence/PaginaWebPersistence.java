@@ -176,4 +176,11 @@ public class PaginaWebPersistence extends _PaginaWebPersistence  implements IPag
         return response;
     }
 
+    public void desactivarRecurso(Long pagina) {
+        Query query= entityManager.createQuery("UPDATE PaginaWebEntity p SET p.destruido='false' WHERE p.id = :pagina");
+        query.setParameter("pagina", pagina);
+        query.executeUpdate();
+
+    }
+
 }

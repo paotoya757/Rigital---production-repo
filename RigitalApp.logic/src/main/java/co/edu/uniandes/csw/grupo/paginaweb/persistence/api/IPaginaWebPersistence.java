@@ -35,4 +35,6 @@ import co.edu.uniandes.csw.grupo.paginaweb.logic.dto.PaginaWebPageDTO;
 public interface IPaginaWebPersistence extends _IPaginaWebPersistence {
 
     public PaginaWebPageDTO getPaginasWebByParameters(String formato ,String url ,String alias ,String name ,String descripcion ,String proposito ,String caracteristicas ,String cmsId ,String encargadoId ,String fechaCreacion1,String fechaCreacion2,String ultimaFechaModificacion1,String ultimaFechaModificacion2,String estaDestruido);
+    
+    public void desactivarRecurso(Long pagina);
 }

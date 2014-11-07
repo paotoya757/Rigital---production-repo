@@ -40,5 +40,9 @@ public class PaginaWebMockLogicService extends _PaginaWebMockLogicService implem
     public PaginaWebPageDTO getPaginasWebByParameters(String formato, String url, String alias, String name, String descripcion, String proposito, String caracteristicas, String cmsId, String encargadoId, String fechaCreacion1, String fechaCreacion2, String ultimaFechaModificacion1, String ultimaFechaModificacion2, String estaDestruido) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public void desactivarRecurso(Long pagina) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }
