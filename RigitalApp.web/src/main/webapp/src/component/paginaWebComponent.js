@@ -126,58 +126,57 @@ define(['component/_paginaWebComponent'], function() {
                 self.componentController.setVisibility(params);
             });
             
-this.toolbarComponent.addButton({
-name: 'exec-search',
-displayName: 'Buscar',
-icon: 'glyphicon-search',
-show: false
-},
-this.execSearch,
-this);
-this.toolbarComponent.addButton({
-name: 'cancel-search',
-displayName: 'Cancelar',
-icon: 'glyphicon-remove-sign',
-show: false
-},
-function(){
-    this.toolbarComponent.showButton('desactivar');
-this.toolbarComponent.showButton('create');
-this.toolbarComponent.showButton('refresh');
-this.toolbarComponent.showButton('search');
-this.toolbarComponent.hideButton('cancel-search');
-this.toolbarComponent.hideButton('exec-search');
-this.toolbarComponent.render();
-this.componentController.list(null, this.list, this);
-},
-this);
+            this.toolbarComponent.addButton({
+            name: 'exec-search',
+            displayName: 'Buscar',
+            icon: 'glyphicon-search',
+            show: false
+            },
+            this.execSearch,
+            this);
+            this.toolbarComponent.addButton({
+            name: 'cancel-search',
+            displayName: 'Cancelar',
+            icon: 'glyphicon-remove-sign',
+            show: false
+            },
+            function(){
+                this.toolbarComponent.showButton('desactivar');
+            this.toolbarComponent.showButton('create');
+            this.toolbarComponent.showButton('refresh');
+            this.toolbarComponent.showButton('search');
+            this.toolbarComponent.hideButton('cancel-search');
+            this.toolbarComponent.hideButton('exec-search');
+            this.toolbarComponent.render();
+            this.componentController.list(null, this.list, this);
+            },
+            this);
                         
         },
-search: function(){
-                    var self = this;
-                    this.toolbarComponent.hideButton('desactivar');
-this.toolbarComponent.hideButton('create');
-this.toolbarComponent.hideButton('save');
-this.toolbarComponent.hideButton('cancel');
-this.toolbarComponent.hideButton('refresh');
-this.toolbarComponent.hideButton('search');
-this.toolbarComponent.showButton('exec-search');
-this.toolbarComponent.showButton('cancel-search');
-this.toolbarComponent.render();
-
-                        
-                        this.componentController.search();
-},
-execSearch: function(){
-    this.toolbarComponent.showButton('desactivar');
-this.toolbarComponent.showButton('create');
-this.toolbarComponent.showButton('refresh');
-this.toolbarComponent.showButton('search');
-this.toolbarComponent.hideButton('cancel-search');
-this.toolbarComponent.hideButton('exec-search');
-this.toolbarComponent.render();
-},
-//Funciones
+        search: function(){
+            var self = this;
+            this.toolbarComponent.hideButton('desactivar');
+            this.toolbarComponent.hideButton('create');
+            this.toolbarComponent.hideButton('save');
+            this.toolbarComponent.hideButton('cancel');
+            this.toolbarComponent.hideButton('refresh');
+            this.toolbarComponent.hideButton('search');
+            this.toolbarComponent.showButton('exec-search');
+            this.toolbarComponent.showButton('cancel-search');
+            this.toolbarComponent.render();           
+            this.componentController.search();
+        },
+        execSearch: function(){
+            this.toolbarComponent.showButton('desactivar');
+            this.toolbarComponent.showButton('create');
+            this.toolbarComponent.showButton('refresh');
+            this.toolbarComponent.showButton('search');
+            this.toolbarComponent.hideButton('cancel-search');
+            this.toolbarComponent.hideButton('exec-search');
+            this.componentController.paginawebsearch(this.list,this);
+            this.toolbarComponent.render();
+        },
+        //Funciones
         create: function() {
             this.toolbarComponent.hideButton('create');
             this.toolbarComponent.hideButton('search');

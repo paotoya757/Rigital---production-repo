@@ -75,6 +75,18 @@ postInit:function(){
                 this._render();
                 Backbone.trigger(this.componentId + '-' + 'post-paginaWeb-create', {view: this});
             }
+        },
+        paginawebsearch: function(callback,context){
+            var self = this;
+            var model = $('#' + this.componentId + '-paginaWebForm').serializeObject();
+            this.currentModel.set(model);
+            var delegate = new App.Delegate.PaginaWebDelegate();
+            delegate.search(self.currentModel, function (data) {
+                self.currentList.reset(data.records);
+                callback.call(context,{data: self.currentList, page: 1, pages: 1, totalRecords: self.currentList.lenght})
+            }, function (data) {
+                Backbone.trigger(self.componentId + '-' + 'error', {event: 'paginaWeb-search', view: self, id: '', data: data, error: 'Error in paginaWeb search'});
+            });
         }
         
     });

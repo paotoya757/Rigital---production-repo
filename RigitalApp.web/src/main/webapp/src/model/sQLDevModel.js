@@ -35,6 +35,9 @@ define(['model/_sQLDevModel'], function() {
                 fechaVencimiento2:''
             },
  		validate: function(attrs,options){
+                    
+                    if(!attrs.pgwebId.isNaN())
+                        validationMessage = "El id de la página web debe ser un número.";
             var validationMessage = "";
             if(!attrs.name){
                 validationMessage = "The name can't be empty.";
