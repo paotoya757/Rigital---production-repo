@@ -5,26 +5,38 @@
     <input type="hidden" name="id" value="<%= estudiante.id %>"/>
     <% }%>
 		<div class="form-group" >
-		<label for="name">Name</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= estudiante.get('name') %>"/>	
+		<label for="name">Nombre</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Ingrese un nombre" value="<%= estudiante.get('name') %>"/>	
 		</div>
 		<div class="form-group" >
 		<label for="login">Login</label>
-    	<input type="text" class="form-control" id="login" name="login" placeholder="Enter value" value="<%= estudiante.get('login') %>"/>	
+    	<input type="text" class="form-control" id="login" name="login" placeholder="Ingrese un login" value="<%= estudiante.get('login') %>"/>	
 		</div>
+        <div class="form-group" >
+                            <label for="permisoEscritura">Permiso de escritura
+                            <div class= "onoffswitch">
+                            <input id="permisoEscritura" name="permisoEscritura" value="true" type="checkbox" class= "onoffswitch-checkbox" <%= estudiante.get('permisoEscritura')?'checked':'' %>>
+                            <label class="onoffswitch-label" for="permisoEscritura">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                            </div>
+                            </label>
+                        </div>
+                <div class="form-group" >
+                            <label for="permisoLectura">Permiso de lectura
+                            <div class= "onoffswitch">
+                            <input id="permisoLectura" name="permisoLectura" value="true" type="checkbox" class= "onoffswitch-checkbox" <%= estudiante.get('permisoLectura')?'checked':'' %>>
+                            <label class="onoffswitch-label" for="permisoLectura">
+                                <span class="onoffswitch-inner"></span>
+                                <span class="onoffswitch-switch"></span>
+                            </label>
+                            </div>
+                            </label>
+                        </div>
 		<div class="form-group" >
-	    <label>
-    	  <input id="permisoEscritura" name="permisoEscritura" value="true" type="checkbox" <%= estudiante.get('permisoEscritura')?'checked':'' %>> Permiso Escritura
-    	</label>
-		</div>
-		<div class="form-group" >
-	    <label>
-    	  <input id="permisoLectura" name="permisoLectura" value="true" type="checkbox" <%= estudiante.get('permisoLectura')?'checked':'' %>> Permiso Lectura
-    	</label>
-		</div>
-		<div class="form-group" >
-		<label for="tipoAcceso">Tipo Acceso</label>
-    	<input type="text" class="form-control" id="tipoAcceso" name="tipoAcceso" placeholder="Enter value" value="<%= estudiante.get('tipoAcceso') %>"/>	
+		<label for="tipoAcceso">Tipo de acceso</label>
+    	<input type="text" class="form-control" id="tipoAcceso" name="tipoAcceso" placeholder="Ingrese el tipo de acceso" value="<%= estudiante.get('tipoAcceso') %>"/>	
 		</div>
     </form>
     </div>
