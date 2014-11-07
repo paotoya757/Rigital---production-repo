@@ -40,5 +40,9 @@ public class CMSMockLogicService extends _CMSMockLogicService implements ICMSLog
     public CMSPageDTO getCMSsByParameters(String name, String version) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public void desactivarRecurso(Long cms) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }
