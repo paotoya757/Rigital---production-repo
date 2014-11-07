@@ -44,7 +44,7 @@ define(['model/_wikiModel'], function() {
 //            }
 
             if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+                validationMessage = "El nombre no puede estar vacio";
             }
             if(validationMessage.length>0){
                return validationMessage;

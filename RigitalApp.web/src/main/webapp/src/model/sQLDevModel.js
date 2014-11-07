@@ -37,10 +37,10 @@ define(['model/_sQLDevModel'], function() {
  		validate: function(attrs,options){
                     
                     if(!attrs.pgwebId.isNaN())
-                        validationMessage = "El id de la página web debe ser un número.";
+                        validationMessage = "El id de la pagina web debe ser un numero.";
             var validationMessage = "";
             if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+                validationMessage = "El nombre no puede estar vacio";
             }
             if(validationMessage.length>0){
                return validationMessage;
