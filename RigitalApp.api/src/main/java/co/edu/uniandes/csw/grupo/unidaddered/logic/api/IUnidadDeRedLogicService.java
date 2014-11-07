@@ -35,4 +35,5 @@ import co.edu.uniandes.csw.grupo.unidaddered.logic.dto.UnidadDeRedPageDTO;
 public interface IUnidadDeRedLogicService extends _IUnidadDeRedLogicService {
 
     public UnidadDeRedPageDTO getUnidadesDeRedByParameters(String tipos ,String servidor ,String url ,String name ,String descripcion ,String proposito ,String caracteristicas ,String encargadoId,String fechaCreacion1,String fechaCreacion2,String estaDestruido);
+    public void desactivarRecurso(Long unidaddered);
 }
