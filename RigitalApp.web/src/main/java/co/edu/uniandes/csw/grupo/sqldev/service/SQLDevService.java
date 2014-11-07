@@ -70,8 +70,8 @@ public class SQLDevService extends _SQLDevService {
         System.out.println(queryParams.keySet());
         System.out.println(queryParams.values());
         
-        // Estos atributos podrán ser vacios o tener valores
-        // Si estan vacíos no se incluirán en la búsqueda
+        // Estos atributos podran ser vacios o tener valores
+        // Si estan vacios no se incluiran en la busqueda
         
         String servidor = queryParams.getFirst("servidor");
         String name = queryParams.getFirst("name");
@@ -81,7 +81,7 @@ public class SQLDevService extends _SQLDevService {
         String pgwebId = queryParams.getFirst("pgwebId");
         String encargadoId = queryParams.getFirst("encargadoId");        
        
-        // Estos atributos, en cambio, siempre poseeran valores estándar.
+        // Estos atributos, en cambio, siempre poseeran valores estandar.
         // Se debe aclarar eso en el manual de uso.
                        
         String fechaCreac1 = queryParams.getFirst("fechaCreacion");

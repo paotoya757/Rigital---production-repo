@@ -70,8 +70,8 @@ public class PaginaWebService extends _PaginaWebService {
         System.out.println(queryParams.keySet());
         System.out.println(queryParams.values());
         
-        // Estos atributos podrán ser vacios o tener valores
-        // Si estan vacíos no se incluirán en la búsqueda
+        // Estos atributos podran ser vacios o tener valores
+        // Si estan vacios no se incluiran en la busqueda
         
         String formato = queryParams.getFirst("formato");
         String url = queryParams.getFirst("url");
@@ -83,7 +83,7 @@ public class PaginaWebService extends _PaginaWebService {
         String cmsId = queryParams.getFirst("cmsId");
         String encargadoId = queryParams.getFirst("encargadoId");
        
-        // Estos atributos, en cambio, siempre poseeran valores estándar.
+        // Estos atributos, en cambio, siempre poseeran valores estandar.
         // Se debe aclarar eso en el manual de uso.
                        
         String fechaCreac1 = queryParams.getFirst("fechaCreacion");
