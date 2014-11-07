@@ -159,4 +159,10 @@ public class UnidadDeRedPersistence extends _UnidadDeRedPersistence  implements 
         
             
     }
+    
+      public void desactivarRecurso(Long unidaddered) {
+        Query query= entityManager.createQuery("UPDATE UnidadDeRedEntity u SET u.destruido='false' WHERE u.id = :unidaddered");
+        query.setParameter("unidaddered", unidaddered);
+        query.executeUpdate();
+    }
 }

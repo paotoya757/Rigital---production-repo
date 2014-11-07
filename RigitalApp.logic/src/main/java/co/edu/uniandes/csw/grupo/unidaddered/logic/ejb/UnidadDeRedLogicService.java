@@ -48,4 +48,7 @@ public class UnidadDeRedLogicService extends _UnidadDeRedLogicService implements
     public UnidadDeRedPageDTO getUnidadesDeRedByParameters(String tipos ,String servidor ,String url ,String name ,String descripcion ,String proposito ,String caracteristicas ,String encargadoId,String fechaCreacion1,String fechaCreacion2,String estaDestruido){
         return persistance.getUnidadesDeRedByParameters(tipos , servidor , url , name , descripcion , proposito , caracteristicas , encargadoId, fechaCreacion1, fechaCreacion2, estaDestruido);
     }
+    public void desactivarRecurso(Long unidaddered) {
+        persistance.desactivarRecurso(unidaddered);
+    }
 }
