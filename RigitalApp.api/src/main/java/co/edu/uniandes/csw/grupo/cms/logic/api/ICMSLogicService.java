@@ -36,4 +36,5 @@ public interface ICMSLogicService extends _ICMSLogicService {
     
     public CMSPageDTO getCMSsByParameters(String name,String version);
 
+    public void desactivarRecurso(Long cms);
 }
