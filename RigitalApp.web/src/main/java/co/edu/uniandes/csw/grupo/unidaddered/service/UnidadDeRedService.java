@@ -32,6 +32,7 @@ package co.edu.uniandes.csw.grupo.unidaddered.service;
 
 import co.edu.uniandes.csw.grupo.maquinavirtual.logic.dto.MaquinaVirtualPageDTO;
 import co.edu.uniandes.csw.grupo.unidaddered.logic.dto.UnidadDeRedPageDTO;
+import co.edu.uniandes.csw.grupo.wiki.logic.dto.WikiPageDTO;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -134,6 +135,21 @@ public class UnidadDeRedService extends _UnidadDeRedService {
         
         
         return unidadDeRedLogicService.getUnidadesDeRedByParameters(tipos , servidor , url , name , descripcion , proposito , caracteristicas , encargadoId, fechaCreacion1, fechaCreacion2, estaDestruido);
+    }
+    
+    @GET
+    @Path("/Desactivar")
+    public UnidadDeRedPageDTO desactivarUnidadesDeRed(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords)
+    {
+        MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
+        System.out.println(queryParams.keySet());
+        System.out.println(queryParams.values());
+        for(int i=0;i<queryParams.size()-2;i++)
+        {
+            Long id= Long.parseLong(queryParams.getFirst(i+""));
+            unidadDeRedLogicService.desactivarRecurso(id);   
+        }
+        return super.getUnidadDeReds(page, maxRecords);
     }
 
 }

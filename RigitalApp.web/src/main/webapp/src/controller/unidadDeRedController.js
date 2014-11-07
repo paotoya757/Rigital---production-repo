@@ -85,6 +85,33 @@ define(['controller/_unidadDeRedController','delegate/unidadDeRedDelegate'], fun
             }, function (data) {
                 Backbone.trigger(self.componentId + '-' + 'error', {event: 'unidadDeRed-search', view: self, id: '', data: data, error: 'Error in unidadDeRed search'});
             });
+        },
+        desactivar: function(context, data){
+            console.log("Entró a desactivar en el controller");
+            console.log(context);
+            var datadef= data.listComponent.listController.model.attributes.data;
+            console.log(datadef);
+            var self= this;
+            var modelo= [];
+            
+            for(var i=0;i<datadef.length;i++)
+            {
+                var temp= datadef[i].id;
+                console.log(temp);
+                if(context.hasOwnProperty(temp))
+                {
+                    this.agregarArr(modelo,temp);
+                }
+            }
+            console.log(modelo);
+            this.currentModel = new this.modelClass({componentId: this.componentId});
+            this.currentModel.set(modelo);
+            console.log("Estableció el modelo");
+            var delegate = new App.Delegate.UnidadDeRedDelegate();
+            delegate.desactivar(self.currentModel);
+        },
+        agregarArr: function(arr,id){
+            arr[arr.length]=id;
         }
     });
     return App.Controller.UnidadDeRedController;

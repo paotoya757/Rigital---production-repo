@@ -41,6 +41,16 @@ define(['delegate/_unidadDeRedDelegate'], function() {
              }, this)).error(_.bind(function(data) {
                  callbackError(data);
              }, this));
+         },
+         desactivar: function(user){
+             console.log("Entró en el desactivar del delegate");
+             $.ajax({
+                 url: '/RigitalApp.web/webresources/UnidadDeRed/Desactivar',
+                 type: 'GET',
+                 data: $.param(user.toJSON()),
+                 contentType: 'application/json'
+             });
+             console.log("Salió del desactivar del delegate");
          }
     });
 });
