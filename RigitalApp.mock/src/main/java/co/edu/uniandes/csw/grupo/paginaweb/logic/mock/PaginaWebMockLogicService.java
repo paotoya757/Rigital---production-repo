@@ -33,7 +33,12 @@ import javax.enterprise.inject.Alternative;
 import javax.inject.Singleton;
 
 import co.edu.uniandes.csw.grupo.paginaweb.logic.api.IPaginaWebLogicService;
+import co.edu.uniandes.csw.grupo.paginaweb.logic.dto.PaginaWebPageDTO;
 @Singleton
 public class PaginaWebMockLogicService extends _PaginaWebMockLogicService implements IPaginaWebLogicService {
+
+    public PaginaWebPageDTO getPaginasWebByParameters(String formato, String url, String alias, String name, String descripcion, String proposito, String caracteristicas, String cmsId, String encargadoId, String fechaCreacion1, String fechaCreacion2, String ultimaFechaModificacion1, String ultimaFechaModificacion2, String estaDestruido) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }
