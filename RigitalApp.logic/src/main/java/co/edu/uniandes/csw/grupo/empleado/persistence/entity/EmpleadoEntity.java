@@ -34,5 +34,14 @@ import javax.persistence.Entity;
 
 @Entity
 public class EmpleadoEntity extends _EmpleadoEntity {
+    private String role;
+    
+    public String getRole(){
+        return role;
+    }
+    
+    public void setRole(String role){
+        this.role=role;
+    }
  	
 }
