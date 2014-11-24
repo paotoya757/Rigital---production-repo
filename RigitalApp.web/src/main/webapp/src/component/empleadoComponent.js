@@ -31,6 +31,7 @@ define(['component/_empleadoComponent'], function() {
     App.Component.EmpleadoComponent = App.Component._EmpleadoComponent.extend({
         postInit: function(){
             var self = this; 
+            this.listComponent.addColumn('role', 'Rol');
             //Utilities
             this.toolbarComponent.removeMenu('utils');
             //Acciones
