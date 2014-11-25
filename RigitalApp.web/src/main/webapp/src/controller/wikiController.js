@@ -87,7 +87,7 @@ define(['controller/_wikiController','delegate/wikiDelegate'], function() {
             });
         },
         desactivar: function(context, data){
-            console.log("Entró a desactivar en el controller");
+            console.log("Entrï¿½ a desactivar en el controller");
             console.log(context);
             var datadef= data.listComponent.listController.model.attributes.data;
             console.log(datadef);
@@ -106,7 +106,7 @@ define(['controller/_wikiController','delegate/wikiDelegate'], function() {
             console.log(modelo);
             this.currentModel = new this.modelClass({componentId: this.componentId});
             this.currentModel.set(modelo);
-            console.log("Estableció el modelo");
+            console.log("Estableciï¿½ el modelo");
             var delegate = new App.Delegate.WikiDelegate();
             delegate.desactivar(self.currentModel);
         },
