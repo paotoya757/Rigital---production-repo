@@ -6,32 +6,133 @@
         Logout
     </title>
     <link rel="stylesheet" type="text/css" href="src/style.css" />
-</head>
-<body>
- 
-<div id="wrapper">
- 
-    <div id="login-form" class="login-form" >
- 
-        <div class="header">
-        <h1>Logged Out!</h1>
-        <span>You've securely logged out from this application.</span>
- 
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <style>
+        body{
+                margin: 0;
+                padding: 0;
+                background: #fff;
+
+                color: #fff;
+                font-family: 'Open Sans Condensed', sans-serif;
+                font-size: 20px;
+                text-align: center;
+        }
+
+        .body{
+                position: absolute;
+                top: -20px;
+                left: -20px;
+                right: -40px;
+                bottom: -40px;
+                width: auto;
+                height: auto;
+                background-image: url("./fondosinlogo.jpg");
+                background-size: cover;
+                -webkit-filter: blur(0px);
+                z-index: 0;
+        }
+
+        .grad{
+                position: absolute;
+                top: -20px;
+                left: -20px;
+                right: -40px;
+                bottom: -40px;
+                width: auto;
+                height: auto;
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
+                z-index: 1;
+                opacity: 0.5;
+        }
+
+        .header{
+                position: absolute;
+                top: calc(50% - 250px);
+                left: calc(50% - 165px);
+                z-index: 2;
+                
+        }
+
+        .header div{
+                float: left;
+                color: #fff;
+                font-family: 'Open Sans Condensed', sans-serif;
+                font-size: 35px;
+                font-weight: 300;
+                
+        }
+
+        .header div span{
+                color: #5379fa !important;
+        }
+
+        .login-form{
+                position: absolute;
+                top: calc(50% - 50px);
+                left: calc(50% - 170px);
+                height: 150px;
+                width: 350px;
+                padding: 10px;
+                z-index: 2;
+        }
+        
+        .footer input[type=submit]{
+                position: absolute;
+                top: calc(50% - 80px);
+                left: calc(50% - 165px);
+                width: 250px;
+                height: 35px;
+                background: #fff;
+                opacity: 0.3;
+                border: 1px solid #fff;
+                cursor: pointer;
+                border-radius: 2px;
+                color: #000000;
+                font-family: 'Open Sans Condensed', sans-serif;
+                font-size: 20px;
+                font-weight: 400;
+                padding: 0px;
+                margin-top: 10px;
+        }
+
+        .footer input[type=submit]:hover{
+                opacity: 0.8;
+                background: #00FDCB;
+                border: 1px solid #00FDCB;
+                color: #fff;
+        }
+
+        .footer input[type=submit]:active{
+                opacity: 0.6;
+        }
+
+        .footer input[type=submit]:focus{
+                outline: none;
+        }
+
+        ::-webkit-input-placeholder{
+           color: rgba(255,255,255,0.6);
+        }
+
+        ::-moz-input-placeholder{
+           color: rgba(255,255,255,0.6);
+        }
+    </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div class="body"></div> 
+            <div id="login-form" class="login-form" >
+                <div class="header">
+                    <h1>¡Adiós!</h1>
+                    <span>Su sesión ha sido cerrada exitosamente</span>
+                </div>
+                <div class="footer">
+                    <input type="submit" onclick="window.location='login.html';" value="Volver al inicio" class="register" />
+                </div>
+            </div>
         </div>
- 
- 
- 
-        <div class="footer">
-        <input type="submit" onclick="window.location='index.html';" value="Return to Index" class="register" />
- 
- 
-        </div>
- 
-    </div>
- 
-</div>
-<div class="gradient"></div>
- 
- 
-</body>
+        <div class="gradient"></div>
+    </body>
 </html>
