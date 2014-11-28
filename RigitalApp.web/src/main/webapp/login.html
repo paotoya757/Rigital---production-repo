@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/datepicker.css">
     <link rel="stylesheet" href="css/onoffswitch.css"/>
-    <link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>        <script src="./js/vendor/jquery-1.9.1.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
     <script src="./js/vendor/bootstrap.min.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -45,7 +44,7 @@
                 height: auto;
                 background-image: url("./fondosinlogo.jpg");
                 background-size: cover;
-                -webkit-filter: blur(5px);
+                -webkit-filter: blur(0px);
                 z-index: 0;
         }
 
@@ -59,7 +58,7 @@
                 height: auto;
                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
                 z-index: 1;
-                opacity: 0.7;
+                opacity: 0.5;
         }
 
         .header{
@@ -73,9 +72,9 @@
         .header div{
                 float: left;
                 color: #fff;
-                font-family: 'Exo', sans-serif;
+                font-family: 'Open Sans Condensed', sans-serif;
                 font-size: 35px;
-                font-weight: 200;
+                font-weight: 300;
                 
         }
 
@@ -86,7 +85,7 @@
         .login{
                 position: absolute;
                 top: calc(50% - 50px);
-                left: calc(50% - 165px);
+                left: calc(50% - 170px);
                 height: 150px;
                 width: 350px;
                 padding: 10px;
@@ -95,51 +94,58 @@
 
         .login input[type=text]{
                 width: 250px;
-                height: 30px;
+                height: 35px;
                 background: transparent;
                 border: 1px solid rgba(255,255,255,0.6);
                 border-radius: 2px;
                 color: #fff;
                 font-family: 'Open Sans Condensed', sans-serif;
-                font-size: 16px;
-                font-weight: 400;
+                font-size: 20px;
+                font-weight: 300;
                 padding: 4px;
         }
 
         .login input[type=password]{
                 width: 250px;
-                height: 30px;
+                height: 35px;
                 background: transparent;
                 border: 1px solid rgba(255,255,255,0.6);
                 border-radius: 2px;
                 color: #fff;
                 font-family: 'Open Sans Condensed', sans-serif;
-                font-size: 16px;
-                font-weight: 400;
+                font-size: 20px;
+                font-weight: 300;
                 padding: 4px;
                 margin-top: 10px;
         }
 
-        .login input[type=button]{
-                width: 260px;
+        .login input[type=submit]{
+                position: absolute;
+                top: calc(50% + 30px);
+                left: calc(50% - 165px);
+                width: 250px;
                 height: 35px;
                 background: #fff;
+                opacity: 0.3;
                 border: 1px solid #fff;
                 cursor: pointer;
                 border-radius: 2px;
-                color: #a18d6c;
+                color: #000000;
                 font-family: 'Open Sans Condensed', sans-serif;
-                font-size: 16px;
+                font-size: 20px;
                 font-weight: 400;
-                padding: 6px;
+                padding: 0px;
                 margin-top: 10px;
         }
 
-        .login input[type=button]:hover{
+        .login input[type=submit]:hover{
                 opacity: 0.8;
+                background: #00FDCB;
+                border: 1px solid #00FDCB;
+                color: #fff;
         }
 
-        .login input[type=button]:active{
+        .login input[type=submit]:active{
                 opacity: 0.6;
         }
 
@@ -153,7 +159,7 @@
                 border: 1px solid rgba(255,255,255,0.9);
         }
 
-        .login input[type=button]:focus{
+        .login input[type=submit]:focus{
                 outline: none;
         }
 
@@ -186,16 +192,9 @@
                     <!--El formulario tiene 2 inputs con el usuario y la contraseña. Cada uno de estos debe
                     tener los nombres clava "j_username" y "j_password" respectivamente -->
                     <input name="j_username" type="text" class="input username" placeholder="Usuario" />
-                    <div class="user-icon"></div>
                     <input name="j_password" type="password" class="input password" placeholder="Contraseña" />
-                    <div class="pass-icon"></div>
+                    <input type="submit" name="submit" value="Ingresar" class="button" />
                 </div>
-            </div>
- 
-            <div class="footer">
-                <a href="client.html" class="register"> Register </a>
-                <!-- el boton de submit es el común-->
-                <input type="submit" name="submit" value="Login" class="button" />
             </div>
         </form>
     </div>
