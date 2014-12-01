@@ -19,8 +19,7 @@ define([], function() {
             }).fail(function(error) {
                 callbackError(error);
             });
-        }
- 
+        },
     };
  
 });
