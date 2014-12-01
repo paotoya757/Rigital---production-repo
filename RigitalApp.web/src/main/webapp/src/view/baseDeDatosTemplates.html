@@ -6,19 +6,15 @@
     <% }%>
 		<div class="form-group" >
 		<label for="servidor">Servidor</label>
-    	<input type="text" class="form-control" id="servidor" name="servidor" placeholder="Enter value" value="<%= baseDeDatos.get('servidor') %>"/>	
+    	<input type="text" class="form-control" id="servidor" name="servidor" placeholder="Ej: sistemas.uniandes.edu.co" value="<%= baseDeDatos.get('servidor') %>"/>	
 		</div>
 		<div class="form-group" >
 		<label for="name">Name</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= baseDeDatos.get('name') %>"/>	
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Ej: Imagine" value="<%= baseDeDatos.get('name') %>"/>	
 		</div>
 		<div class="form-group" >
 		<label for="descripcion">Descripcion</label>
-    	<input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Enter value" value="<%= baseDeDatos.get('descripcion') %>"/>	
-		</div>
-		<div class="form-group" >
-		<label for="proposito">Proposito</label>
-    	<input type="text" class="form-control" id="proposito" name="proposito" placeholder="Enter value" value="<%= baseDeDatos.get('proposito') %>"/>	
+    	<input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ej: Base de Datos para el sitio Imagine" value="<%= baseDeDatos.get('descripcion') %>"/>	
 		</div>
 		<div class="form-group" >
 			<label for="fechaCreacion">Fecha Creacion</label>
@@ -32,10 +28,6 @@
 	    <label>
     	  <input id="destruido" name="destruido" value="true" type="checkbox" <%= baseDeDatos.get('destruido')?'checked':'' %>> Destruido
     	</label>
-		</div>
-		<div class="form-group" >
-		<label for="caracteristicas">Caracteristicas</label>
-    	<input type="text" class="form-control" id="caracteristicas" name="caracteristicas" placeholder="Enter value" value="<%= baseDeDatos.get('caracteristicas') %>"/>	
 		</div>
 		<div class="form-group" >
  
