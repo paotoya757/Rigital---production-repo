@@ -43,14 +43,14 @@ define(['component/_empleadoComponent'], function() {
             });
             //Agregar
             this.toolbarComponent.removeButton('create');
-            this.toolbarComponent.addButton({
+            /*this.toolbarComponent.addButton({
                 name: 'create',
                 icon: 'glyphicon-plus-sign',
                 displayName: 'Agregar',
                 show: true
             },
             this.create,
-            this);
+            this);*/
             //Guardar
             this.toolbarComponent.removeButton('save');
             this.toolbarComponent.addButton({
@@ -85,24 +85,29 @@ define(['component/_empleadoComponent'], function() {
             this.toolbarComponent.removeButton('print');
             //Editar
             this.listComponent.removeAction('edit');
-            this.listComponent.addAction({
+            /*this.listComponent.addAction({
                 name: 'edit',
                 icon: '',
                 displayName: 'Editar',
                 show: true
             },
             this.edit,
-            this);
+            this);*/
             //Eliminar
             this.listComponent.removeAction('delete');
-            this.listComponent.addAction({
+            /*this.listComponent.addAction({
                 name: 'delete',
                 icon: '',
                 displayName: 'Eliminar',
                 show: true
             },
             this.delete,
-            this);
+            this);*/
+            
+            self.componentController.checkUserRole(this);
+                
+           
+            
             //Start: searchRelated
             // Cambio - siguiente linea : '-<miComponente>-display-textfield"'
             Backbone.on(self.componentId + '-empleado-display-textfield', function(params) {
