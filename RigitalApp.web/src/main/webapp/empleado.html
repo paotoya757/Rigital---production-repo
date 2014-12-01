@@ -33,6 +33,15 @@
     </head>
     <body>
         <div class="container">
+            <div id="cavegol" class="alert alert-info" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <strong>Si eres administrador debes tener en cuenta lo siguiente :</strong>
+                <Ol>
+                    <li> Si haces click en "Refrescar", podras obtener privilegios para controlar las cuentas de tus empleados.</li>
+                    <li> El sistema tiene dos roles por defecto para manejar la seguridad. Estos son "Client" y "Admin". Tus empleados deben tener el rol "Client".</li>
+                </ol>
+                <script type="text/javascript"> setTimeout(function(d){ $('#cavegol').slideUp(); },20*1000);</script>
+            </div>
             <div id="main" ></div>
         </div>
     </body>
