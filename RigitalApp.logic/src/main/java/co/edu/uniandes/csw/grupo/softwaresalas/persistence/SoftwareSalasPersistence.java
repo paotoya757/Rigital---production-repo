@@ -43,6 +43,9 @@ import co.edu.uniandes.csw.grupo.softwaresalas.persistence.entity.SoftwareSalasE
 import co.edu.uniandes.csw.grupo.wiki.logic.dto.WikiDTO;
 import co.edu.uniandes.csw.grupo.wiki.persistence.converter.WikiConverter;
 import co.edu.uniandes.csw.grupo.wiki.persistence.entity.WikiEntity;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Date;
 import javax.ejb.LocalBean;
 import javax.persistence.Query;
@@ -179,5 +182,88 @@ public class SoftwareSalasPersistence extends _SoftwareSalasPersistence  impleme
         Query query= entityManager.createQuery("UPDATE SoftwareSalasEntity s SET s.destruido='false' WHERE s.id = :software");
         query.setParameter("software", software);
         query.executeUpdate();
+    }
+    
+    public void loadSoftwareSalasTuring()
+    {
+         try{  
+        String archivo = "\\Archivos csv\\software-labsisturingcsv.csv";
+        File file = new File(archivo);
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        reader.readLine();
+        
+        for(long i = 0; i < file.length();i++)
+        {
+            String actual = reader.readLine();
+            String[] act = actual.split(";");
+            SoftwareSalasEntity softSalas = new SoftwareSalasEntity();
+           softSalas.setSoftware(act[0]);
+           softSalas.setDescripcion(act[1]);
+           softSalas.setSolicitante(act[2]);
+           if(act[5].equals("") && act[4].equals(""))
+           {
+               softSalas.setVersion(act[3]);
+           }
+           else if(act[5].equals("") && !act[4].equals("")){
+               softSalas.setVersion(act[4]);
+           }
+           else{
+               softSalas.setVersion(act[5]);
+           }
+           softSalas.setCaracteristicas("Pertenece a la sala Turing.");
+           entityManager.persist(softSalas);
+        }
+            
+        }
+         catch(Exception e)
+         {
+             
+         }
+    }
+    public void loadSoftwareSalasWaira()
+    {
+         try{  
+        String archivo = "\\Archivos csv\\software-labsisturingcsv.csv";
+        File file = new File(archivo);
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        reader.readLine();
+        
+        for(long i = 0; i < file.length();i++)
+        {
+            String actual = reader.readLine();
+            String[] act = actual.split(";");
+            SoftwareSalasEntity softSalas = new SoftwareSalasEntity();
+           softSalas.setSoftware(act[0]);
+           if(!act[7].equals(""))
+           {
+               softSalas.setVersion(act[7]);
+           }
+           else if(!act[6].equals("")){
+               softSalas.setVersion(act[6]);
+           }
+           else if(!act[5].equals("")){
+               softSalas.setVersion(act[5]);
+           }
+           else if(!act[4].equals("")){
+               softSalas.setVersion(act[4]);
+           }
+           else if(!act[3].equals("")){
+               softSalas.setVersion(act[3]);
+           }
+           else if(!act[2].equals("")){
+               softSalas.setVersion(act[2]);
+           }
+           else{
+               softSalas.setVersion(act[1]);
+           }
+           softSalas.setCaracteristicas("Pertenece a la sala Waira.");
+           entityManager.persist(softSalas);
+        }
+            
+        }
+         catch(Exception e)
+         {
+             
+         }
     }
 }

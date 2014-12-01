@@ -40,4 +40,5 @@ public interface IContenedorWebPersistence extends _IContenedorWebPersistence {
     
     public void desactivarRecurso(Long contenedor);
 
+
 }

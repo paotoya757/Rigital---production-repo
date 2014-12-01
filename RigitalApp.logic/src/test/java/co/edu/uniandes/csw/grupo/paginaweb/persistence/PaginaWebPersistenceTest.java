@@ -272,19 +272,74 @@ Assert.assertEquals(parseDate(dto.getFechaCreacion()), resp.getFechaCreacion());
             Assert.assertTrue(found);
         }
 	}
-        
+	
         @Test
-        public void desactivarRecursoTest(){
-            for(int i=0;i<data.size();i++)
-            {
-                PaginaWebEntity pag= data.get(i);
-                if(pag.getDestruido())
-                {
-                    Long idPagina= pag.getId();
-                    paginaWebPersistence.desactivarRecurso(idPagina);
-                    Assert.assertFalse(pag.getDestruido());
-                }
+        public void getPaginasWebByParametersTest()
+        {
+             //Prueba buscar un elemento que no existe.
+            PaginaWebPageDTO dto = paginaWebPersistence.getPaginasWebByParameters("", "", "", "", "", "", "", "", "", "", "", "","", "0");
+            Assert.assertTrue(dto.getRecords().isEmpty());
+            
+            //Prueba buscar un elemento existente
+            PaginaWebEntity entity = data.get(0);
+            PaginaWebEntity entity2 = data.get(1);
+            PaginaWebPageDTO dtoNoVacio = paginaWebPersistence.getPaginasWebByParameters(entity.getFormato(),"","","","","","","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio.getRecords().isEmpty());
+            
+            PaginaWebPageDTO dtoNoVacio1 = paginaWebPersistence.getPaginasWebByParameters("",entity.getUrl(),"","","","","","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio1.getRecords().isEmpty());
+            
+            PaginaWebPageDTO dtoNoVacio2 = paginaWebPersistence.getPaginasWebByParameters("","",entity.getAlias(),"","","","","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio2.getRecords().isEmpty());
+            
+            PaginaWebPageDTO dtoNoVacio3 = paginaWebPersistence.getPaginasWebByParameters("","","",entity.getName(),"","","","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio3.getRecords().isEmpty());
+            
+            PaginaWebPageDTO dtoNoVacio4 = paginaWebPersistence.getPaginasWebByParameters("","","","",entity.getDescripcion(),"","","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio4.getRecords().isEmpty());
+            
+            PaginaWebPageDTO dtoNoVacio5 = paginaWebPersistence.getPaginasWebByParameters("","","","","",entity.getProposito(),"","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio5.getRecords().isEmpty());
+            
+            PaginaWebPageDTO dtoNoVacio6 = paginaWebPersistence.getPaginasWebByParameters("","","","","","",entity.getCaracteristicas(),"","","","","","","0");
+            Assert.assertFalse(dtoNoVacio6.getRecords().isEmpty());
+            
+            PaginaWebPageDTO dtoNoVacio7 = paginaWebPersistence.getPaginasWebByParameters("","","","","","","",String.valueOf(entity.getCmsId()),"","","","","","0");
+            Assert.assertFalse(dtoNoVacio7.getRecords().isEmpty());
+            
+            PaginaWebPageDTO dtoNoVacio12 = paginaWebPersistence.getPaginasWebByParameters("","","","","","","","",String.valueOf(entity.getEncargadoId()),"","","","","0");
+            Assert.assertFalse(dtoNoVacio12.getRecords().isEmpty());
+            
+            PaginaWebPageDTO dtoNoVacio8 = paginaWebPersistence.getPaginasWebByParameters("","","","","","","","","",entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),"","","0");
+            Assert.assertFalse(dtoNoVacio8.getRecords().isEmpty());
+            
+            PaginaWebPageDTO dtoNoVacio9 = paginaWebPersistence.getPaginasWebByParameters("","","","","","","","","","","",entity.getUltimaFechaModificacion().getYear() + "-" + entity.getUltimaFechaModificacion().getMonth() + "-" + entity.getUltimaFechaModificacion().getDay(),entity.getUltimaFechaModificacion().getYear() + "-" + entity.getUltimaFechaModificacion().getMonth() + "-" + entity.getUltimaFechaModificacion().getDay(),"0");
+            Assert.assertFalse(dtoNoVacio9.getRecords().isEmpty());
+            
+            entity.setDestruido(Boolean.TRUE);
+            PaginaWebPageDTO dtoNoVacio10 = paginaWebPersistence.getPaginasWebByParameters("","","","","","","","","","","","","","1");
+            Assert.assertFalse(dtoNoVacio10.getRecords().isEmpty());
+            entity.setDestruido(Boolean.FALSE);
+            
+            if(entity.getFechaCreacion().getYear() > entity2.getFechaCreacion().getYear()){
+                PaginaWebPageDTO dtoNoVacio11 = paginaWebPersistence.getPaginasWebByParameters("","","","","","","","","",entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),entity2.getFechaCreacion().getYear() + "-" + entity2.getFechaCreacion().getMonth() + "-" + entity2.getFechaCreacion().getDay(),"","","0");
+                Assert.assertFalse(dtoNoVacio11.getRecords().isEmpty());
+                Assert.assertEquals(2, dtoNoVacio11.getRecords().size());
+            }
+            else if(entity.getFechaCreacion().getYear() == entity2.getFechaCreacion().getYear() && entity.getFechaCreacion().getMonth() > entity2.getFechaCreacion().getMonth()){
+                PaginaWebPageDTO dtoNoVacio11 = paginaWebPersistence.getPaginasWebByParameters("","","","","","","","","",entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),entity2.getFechaCreacion().getYear() + "-" + entity2.getFechaCreacion().getMonth() + "-" + entity2.getFechaCreacion().getDay(),"","","0");
+                Assert.assertFalse(dtoNoVacio11.getRecords().isEmpty());
+                Assert.assertEquals(2, dtoNoVacio11.getRecords().size());
+            }
+            else if(entity.getFechaCreacion().getYear() == entity2.getFechaCreacion().getYear() && entity.getFechaCreacion().getMonth() == entity2.getFechaCreacion().getMonth() && entity.getFechaCreacion().getDay() > entity2.getFechaCreacion().getDay()){
+                PaginaWebPageDTO dtoNoVacio11 = paginaWebPersistence.getPaginasWebByParameters("","","","","","","","","",entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),entity2.getFechaCreacion().getYear() + "-" + entity2.getFechaCreacion().getMonth() + "-" + entity2.getFechaCreacion().getDay(),"","","0");
+                Assert.assertFalse(dtoNoVacio11.getRecords().isEmpty());
+                Assert.assertEquals(2, dtoNoVacio11.getRecords().size());
+            }
+            else{
+                PaginaWebPageDTO dtoNoVacio11 = paginaWebPersistence.getPaginasWebByParameters("","","","","","","","","",entity2.getFechaCreacion().getYear() + "-" + entity2.getFechaCreacion().getMonth() + "-" + entity2.getFechaCreacion().getDay(),entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),"","","0");
+                Assert.assertFalse(dtoNoVacio11.getRecords().isEmpty());
+                Assert.assertEquals(2, dtoNoVacio11.getRecords().size());
             }
         }
-	
 }

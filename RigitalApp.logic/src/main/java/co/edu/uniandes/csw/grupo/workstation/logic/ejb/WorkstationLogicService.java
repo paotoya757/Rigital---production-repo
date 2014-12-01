@@ -48,4 +48,9 @@ public class WorkstationLogicService extends _WorkstationLogicService implements
     public WorkstationPageDTO getWorkStationsByParameters(String name ,String duenio ,String destino , String sistemaOperativo ){
         return persistance.getWorkStationsByParameters(name , duenio , destino , sistemaOperativo );
     }
+
+    public void loadWorkstations() {
+        persistance.loadWorkstations();
+    }
+    
 }

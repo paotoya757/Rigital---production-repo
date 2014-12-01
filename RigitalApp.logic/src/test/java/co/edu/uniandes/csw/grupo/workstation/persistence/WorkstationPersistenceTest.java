@@ -227,4 +227,27 @@ public class WorkstationPersistenceTest {
         }
 	}
 	
+        @Test
+	public void getWorkstationsByParametersTest()
+        {
+            //Prueba buscar un elemento que no existe.
+            WorkstationPageDTO dto = workstationPersistence.getWorkStationsByParameters("", "", "", "");
+            Assert.assertTrue(dto.getRecords().isEmpty());
+            
+            //Prueba buscar un elemento existente
+            WorkstationEntity entity = data.get(0);
+                    
+            WorkstationPageDTO dtoNoVacio = workstationPersistence.getWorkStationsByParameters(entity.getName(),"","","");
+            Assert.assertFalse(dtoNoVacio.getRecords().isEmpty());
+            
+            WorkstationPageDTO dtoNoVacio1 = workstationPersistence.getWorkStationsByParameters("",entity.getDuenio(),"","");
+            Assert.assertFalse(dtoNoVacio1.getRecords().isEmpty());
+            
+            WorkstationPageDTO dtoNoVacio2 = workstationPersistence.getWorkStationsByParameters("","",entity.getDestino(),"");
+            Assert.assertFalse(dtoNoVacio2.getRecords().isEmpty());
+            
+            WorkstationPageDTO dtoNoVacio3 = workstationPersistence.getWorkStationsByParameters("","","",entity.getSistemaOperativo());
+            Assert.assertFalse(dtoNoVacio3.getRecords().isEmpty());
+            
+        }
 }

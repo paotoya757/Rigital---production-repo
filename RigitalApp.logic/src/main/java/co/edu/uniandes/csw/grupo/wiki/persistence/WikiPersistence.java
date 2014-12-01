@@ -36,6 +36,9 @@ import co.edu.uniandes.csw.grupo.wiki.logic.dto.WikiPageDTO;
 import co.edu.uniandes.csw.grupo.wiki.persistence.api.IWikiPersistence;
 import co.edu.uniandes.csw.grupo.wiki.persistence.converter.WikiConverter;
 import co.edu.uniandes.csw.grupo.wiki.persistence.entity.WikiEntity;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
@@ -184,6 +187,27 @@ public class WikiPersistence extends _WikiPersistence  implements IWikiPersisten
         query.executeUpdate();
     }
     
-    
-    
+    public void loadWikis()
+    {
+        try{  
+        String archivo = "\\Archivos csv\\wikiscsv.csv";
+        File file = new File(archivo);
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        reader.readLine();
+        
+        for(long i = 0; i < file.length();i++)
+        {
+            String actual = reader.readLine();
+            String[] act = actual.split(";");
+            WikiEntity wiki = new WikiEntity();
+            wiki.setRutaServidor(act[0]);
+            wiki.setName(act[1]);
+            wiki.setServidor_host(act[2]);
+            entityManager.persist(wiki);
+        }
+        }
+        catch(Exception e) {
+                
+                }
+    }
 }

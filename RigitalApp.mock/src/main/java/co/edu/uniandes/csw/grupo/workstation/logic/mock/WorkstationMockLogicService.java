@@ -40,5 +40,9 @@ public class WorkstationMockLogicService extends _WorkstationMockLogicService im
     public WorkstationPageDTO getWorkStationsByParameters(String name, String duenio, String destino, String sistemaOperativo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public void loadWorkstations() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 	
 }

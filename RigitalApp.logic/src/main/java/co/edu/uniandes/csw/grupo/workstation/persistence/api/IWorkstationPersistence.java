@@ -35,4 +35,6 @@ import co.edu.uniandes.csw.grupo.workstation.logic.dto.WorkstationPageDTO;
 public interface IWorkstationPersistence extends _IWorkstationPersistence {
 
     public WorkstationPageDTO getWorkStationsByParameters(String name ,String duenio ,String destino , String sistemaOperativo );
+
+    public void loadWorkstations();
 }
