@@ -36,6 +36,8 @@ public interface IContenedorWebPersistence extends _IContenedorWebPersistence {
     
     public ContenedorWebPageDTO getContenedoresWebByParameters(String puertos ,String servidor ,String url ,String name ,String descripcion ,String proposito ,String caracteristicas ,String encargadoId,String fechaCreacion1,String fechaCreacion2,String fechaVencimiento1,String fechaVencimiento2,String estaDestruido);
     
+    public String mensajeVencidos(); 
+    
     public void desactivarRecurso(Long contenedor);
 
 }

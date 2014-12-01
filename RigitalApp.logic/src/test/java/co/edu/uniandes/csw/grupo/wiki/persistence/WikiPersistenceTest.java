@@ -330,5 +330,45 @@ Assert.assertEquals(parseDate(dto.getFechaCreacion()), resp.getFechaCreacion());
             Assert.assertTrue(found);
         }
 	}
-	
+        
+        @Test
+        public void testBusquedasWiki1()
+        {
+                
+            WikiPageDTO wpdto = wikiPersistence.getWikisByParameters("", "", "", "", "", "", "", "", "", "1");
+            Assert.assertNotNull(wpdto);
+
+            List<WikiDTO> lista = wpdto.getRecords();
+            int cont = 0;
+            List<Integer> posiciones = new ArrayList<Integer>();
+            
+            for(int i = 0; i < data.size(); i++)
+            {
+                if(data.get(i).getDestruido())
+                {
+                    cont ++;
+                    posiciones.add(i);
+                }
+            }
+            
+            Assert.assertEquals(lista.size(), cont);
+            
+            for(int i = 0; i < cont; i++)
+            {
+                WikiEntity entityP=data.get(posiciones.get(i));
+                WikiDTO entity = WikiConverter.entity2PersistenceDTO(entityP);
+                WikiDTO primer = lista.get(i);            
+
+                Assert.assertEquals(entity.getServidor_host(),primer.getServidor_host());
+                Assert.assertEquals(entity.getCaracteristicas(),primer.getCaracteristicas());
+                Assert.assertEquals(entity.getDescripcion(),primer.getDescripcion());
+                Assert.assertEquals(entity.getDestruido(),primer.getDestruido());
+                Assert.assertEquals(entity.getEncargadoId(),primer.getEncargadoId());
+                Assert.assertEquals(entity.getFechaCreacion(),primer.getFechaCreacion());
+                // Faltaaaa
+
+            }
+		
+        }
+        
 }

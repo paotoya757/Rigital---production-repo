@@ -39,9 +39,22 @@ import javax.enterprise.inject.Default;
 import co.edu.uniandes.csw.grupo.maquinavirtual.persistence.api.IMaquinaVirtualPersistence;
 import co.edu.uniandes.csw.grupo.maquinavirtual.persistence.converter.MaquinaVirtualConverter;
 import co.edu.uniandes.csw.grupo.maquinavirtual.persistence.entity.MaquinaVirtualEntity;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Properties;
 import javax.ejb.LocalBean;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.persistence.Query;
+import javax.swing.Timer;
 
 @Default
 @Stateless 
@@ -164,6 +177,7 @@ public class MaquinaVirtualPersistence extends _MaquinaVirtualPersistence  imple
         if(!estaDestruido.isEmpty())
             q.setParameter("estaDestruido", destruido);
         
+        
         if(!fechaCreacion1.isEmpty() && !fechaCreacion2.isEmpty())
         {
             String[] a1 = fechaCreacion1.split("-");
@@ -188,6 +202,7 @@ public class MaquinaVirtualPersistence extends _MaquinaVirtualPersistence  imple
             q.setParameter("fechaVencimiento2", fecha2);            
         }
         
+        
         MaquinaVirtualPageDTO response = new MaquinaVirtualPageDTO();
         response.setTotalRecords(regCount);
         response.setRecords(MaquinaVirtualConverter.entity2PersistenceDTOList(q.getResultList()));
@@ -200,5 +215,65 @@ public class MaquinaVirtualPersistence extends _MaquinaVirtualPersistence  imple
         Query query= entityManager.createQuery("UPDATE MaquinaVirtualEntity m SET m.destruido='false' WHERE m.id = :maquina");
         query.setParameter("maquina", maquina);
         query.executeUpdate();
+    }
+    
+    
+    
+    public String mensajeVencidos(){
+        
+        String respuesta = "\n\n- MAQUINAS VIRTUALES:";
+        
+        ArrayList<MaquinaVirtualEntity> proximas = new ArrayList();
+        ArrayList<MaquinaVirtualEntity> vencidas = new ArrayList();
+        
+        List<MaquinaVirtualDTO> lista = getMaquinaVirtuals();
+        
+        for(int i = 0; i < lista.size(); i++)
+        {
+            MaquinaVirtualDTO actual = lista.get(i);
+            MaquinaVirtualEntity entidad = MaquinaVirtualConverter.persistenceDTO2Entity(actual);
+            
+            boolean estaDestruido = entidad.getDestruido();
+            
+            Date fechaActual = new Date(System.currentTimeMillis());
+            Date fechaVencimiento = entidad.getFechaVencimiento();
+            
+            System.out.println(fechaActual + " ---- " + fechaActual.getTime());
+            System.out.println(fechaVencimiento + " ---- " + fechaVencimiento.getTime());
+            
+            Long diferencia =  fechaVencimiento.getTime() - fechaActual.getTime();
+            
+            // 1 semana es equivalente a 604800000 milisegundos
+            
+            if(estaDestruido)
+            {
+                if(diferencia < 0)
+                    vencidas.add(entidad);
+                else if(diferencia < 604800000 && diferencia > 0)
+                    proximas.add(entidad);
+            }
+        }
+        
+        if(vencidas.size() > 0)
+            respuesta += "\n\n      - VENCIDAS:";
+        
+        for(int i = 0; i < vencidas.size(); i++)
+        {
+            respuesta += "\n            - " + (i+1) + ": NOMBRE: " + vencidas.get(i).getName() + " , FECHA DE VENCIMIENTO: " + vencidas.get(i).getFechaVencimiento().getDate() + "/" + vencidas.get(i).getFechaVencimiento().getMonth()+ "/" + vencidas.get(i).getFechaVencimiento().getYear();
+        }
+        
+        if(proximas.size() > 0)
+            respuesta += "\n\n      - PRÓXIMAS A VENCER:";
+        
+        for(int i = 0; i < proximas.size(); i++)
+        {
+            respuesta += "\n            - " + (i+1) + ": NOMBRE: " + proximas.get(i).getName() + " , FECHA DE VENCIMIENTO: " + proximas.get(i).getFechaVencimiento().getDate() + "/" + proximas.get(i).getFechaVencimiento().getMonth()+ "/" + proximas.get(i).getFechaVencimiento().getYear();
+        }
+        
+        if(respuesta.equals("\n\n- MAQUINAS VIRTUALES:"))
+            respuesta = "";
+        
+        return respuesta;
+                
     }
 }

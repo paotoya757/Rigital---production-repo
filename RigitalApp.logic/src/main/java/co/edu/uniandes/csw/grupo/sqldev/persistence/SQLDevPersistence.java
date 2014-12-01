@@ -41,7 +41,9 @@ import javax.enterprise.inject.Default;
 import co.edu.uniandes.csw.grupo.sqldev.persistence.api.ISQLDevPersistence;
 import co.edu.uniandes.csw.grupo.sqldev.persistence.converter.SQLDevConverter;
 import co.edu.uniandes.csw.grupo.sqldev.persistence.entity.SQLDevEntity;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.LocalBean;
 import javax.persistence.Query;
 
@@ -180,5 +182,63 @@ public class SQLDevPersistence extends _SQLDevPersistence  implements ISQLDevPer
         Query query= entityManager.createQuery("UPDATE SQLDevEntity s SET s.destruido='false' WHERE s.id = :sqldev");
         query.setParameter("sqldev", sqldev);
         query.executeUpdate();
+    }
+     
+     public String mensajeVencidos(){
+        
+        String respuesta = "\n\n- BASES DE DATOS SQL DEVELOPER:";
+        
+        ArrayList<SQLDevEntity> proximas = new ArrayList();
+        ArrayList<SQLDevEntity> vencidas = new ArrayList();
+        
+        List<SQLDevDTO> lista = getSQLDevs();
+        
+        for(int i = 0; i < lista.size(); i++)
+        {
+            SQLDevDTO actual = lista.get(i);
+            SQLDevEntity entidad = SQLDevConverter.persistenceDTO2Entity(actual);
+            
+            boolean estaDestruido = entidad.getDestruido();
+            
+            Date fechaActual = new Date(System.currentTimeMillis());
+            Date fechaVencimiento = entidad.getFechaVencimiento();
+            
+            System.out.println(fechaActual + " ---- " + fechaActual.getTime());
+            System.out.println(fechaVencimiento + " ---- " + fechaVencimiento.getTime());
+            
+            Long diferencia =  fechaVencimiento.getTime() - fechaActual.getTime();
+            
+            // 1 semana es equivalente a 604800000 milisegundos
+            
+            if(estaDestruido)
+            {
+                if(diferencia < 0)
+                    vencidas.add(entidad);
+                else if(diferencia < 604800000 && diferencia > 0)
+                    proximas.add(entidad);
+            }
+        }
+        
+        if(vencidas.size() > 0)
+            respuesta += "\n\n      - VENCIDAS:";
+        
+        for(int i = 0; i < vencidas.size(); i++)
+        {
+            respuesta += "\n            - " + (i+1) + ": NOMBRE: " + vencidas.get(i).getName() + " , FECHA DE VENCIMIENTO: " + vencidas.get(i).getFechaVencimiento().getDate() + "/" + vencidas.get(i).getFechaVencimiento().getMonth()+ "/" + vencidas.get(i).getFechaVencimiento().getYear();
+        }
+        
+        if(proximas.size() > 0)
+            respuesta += "\n\n      - PRÓXIMAS A VENCER:";
+        
+        for(int i = 0; i < proximas.size(); i++)
+        {
+            respuesta += "\n            - " + (i+1) + ": NOMBRE: " + proximas.get(i).getName() + " , FECHA DE VENCIMIENTO: " + proximas.get(i).getFechaVencimiento().getDate() + "/" + proximas.get(i).getFechaVencimiento().getMonth()+ "/" + proximas.get(i).getFechaVencimiento().getYear();
+        }
+        
+        if(respuesta.equals("\n\n- BASES DE DATOS SQL DEVELOPER:"))
+            respuesta = "";
+        
+        return respuesta;
+                
     }
 }

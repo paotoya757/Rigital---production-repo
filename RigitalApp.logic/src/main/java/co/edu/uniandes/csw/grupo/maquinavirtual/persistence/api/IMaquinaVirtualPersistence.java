@@ -36,5 +36,7 @@ public interface IMaquinaVirtualPersistence extends _IMaquinaVirtualPersistence 
 
     public MaquinaVirtualPageDTO getMaquinasVirtualesByParameters(String ips ,String serviciosAsociados ,String version ,String sistemaOperativo ,String numDiscos ,String capacidadDiscos ,String ram ,String numCores ,String name ,String descripcion ,String proposito ,String caracteristicas ,String encargadoId ,String fechaCreacion1,String fechaCreacion2,String fechaVencimiento1,String fechaVencimiento2,String estaDestruido);
     
+    public String mensajeVencidos();    
+    
     public void desactivarRecurso(Long maquina);
 }

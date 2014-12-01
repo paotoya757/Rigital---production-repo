@@ -37,9 +37,18 @@ import co.edu.uniandes.csw.grupo.wiki.persistence.api.IWikiPersistence;
 import co.edu.uniandes.csw.grupo.wiki.persistence.converter.WikiConverter;
 import co.edu.uniandes.csw.grupo.wiki.persistence.entity.WikiEntity;
 import java.util.Date;
+import java.util.List;
+import java.util.Properties;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Default;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.persistence.Query;
 
 @Default
@@ -161,8 +170,6 @@ public class WikiPersistence extends _WikiPersistence  implements IWikiPersisten
         if(!estaDestruido.isEmpty())
             q.setParameter("estaDestruido",  destruido);
         
-        
-        
         WikiPageDTO response = new WikiPageDTO();
         response.setTotalRecords(regCount);
         response.setRecords(WikiConverter.entity2PersistenceDTOList(q.getResultList()));
@@ -176,4 +183,7 @@ public class WikiPersistence extends _WikiPersistence  implements IWikiPersisten
         query.setParameter("wiki", wiki);
         query.executeUpdate();
     }
+    
+    
+    
 }
