@@ -143,10 +143,10 @@ public class SQLDevService extends _SQLDevService {
 
         }
         
-        if(destruido == null)       
-            estaDestruido = "0";
+        if(destruido.isEmpty())       
+            estaDestruido = "1";
         else
-            estaDestruido = "1";   
+            estaDestruido = "0";   
         
         
         return sQLDevLogicService.getSQLDevsByParameters(servidor , name , descripcion , proposito , caracteristicas , pgwebId , encargadoId , fechaCreacion1, fechaCreacion2, fechaVencimiento1, fechaVencimiento2, estaDestruido);

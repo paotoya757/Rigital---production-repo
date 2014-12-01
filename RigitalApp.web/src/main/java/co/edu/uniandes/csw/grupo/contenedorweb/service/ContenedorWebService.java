@@ -147,10 +147,10 @@ public class ContenedorWebService extends _ContenedorWebService {
 
         }
         
-        if(destruido == null)       
-            estaDestruido = "0";
+        if(destruido.isEmpty())       
+            estaDestruido = "1";
         else
-            estaDestruido = "1";   
+            estaDestruido = "0";   
         
         
         return contenedorWebLogicService.getContenedoresWebByParameters(puertos , servidor , url , name , descripcion , proposito , caracteristicas , encargadoId, fechaCreacion1, fechaCreacion2, fechaVencimiento1, fechaVencimiento2, estaDestruido);

@@ -128,10 +128,10 @@ public class UnidadDeRedService extends _UnidadDeRedService {
 
         }
                 
-        if(destruido == null)       
-            estaDestruido = "0";
+        if(destruido.isEmpty())       
+            estaDestruido = "1";
         else
-            estaDestruido = "1";   
+            estaDestruido = "0";   
         
         
         return unidadDeRedLogicService.getUnidadesDeRedByParameters(tipos , servidor , url , name , descripcion , proposito , caracteristicas , encargadoId, fechaCreacion1, fechaCreacion2, estaDestruido);

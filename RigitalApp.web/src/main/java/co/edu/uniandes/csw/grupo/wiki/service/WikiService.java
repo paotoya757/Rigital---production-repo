@@ -114,10 +114,10 @@ public class WikiService extends _WikiService {
 
         }       
         
-        if(destruido == null)       
-            estaDestruido = "0";
+        if(destruido.isEmpty())       
+            estaDestruido = "1";
         else
-            estaDestruido = "1";       
+            estaDestruido = "0";       
         
         return wikiLogicService.getWikisByParameters(servidoHost, rutaServidor, name, descripcion, proposito, caracteristicas, encargadoId, fechaCreacion1, fechaCreacion2, estaDestruido);
     }

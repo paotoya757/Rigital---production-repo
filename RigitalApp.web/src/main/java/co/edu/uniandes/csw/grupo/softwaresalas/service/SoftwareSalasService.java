@@ -133,7 +133,7 @@ public class SoftwareSalasService extends _SoftwareSalasService {
 
         }
         
-        if(destruido == null)       
+        if(destruido.isEmpty())       
             estaDestruido = "0";
         else
             estaDestruido = "1";   

@@ -149,10 +149,10 @@ public class PaginaWebService extends _PaginaWebService {
 
         }
         
-        if(destruido == null)       
-            estaDestruido = "0";
+        if(destruido.isEmpty())       
+            estaDestruido = "1";
         else
-            estaDestruido = "1";   
+            estaDestruido = "0";   
         
         
         return paginaWebLogicService.getPaginasWebByParameters(formato , url , alias , name , descripcion , proposito , caracteristicas , cmsId , encargadoId , fechaCreacion1, fechaCreacion2, ultimaFechaModificacion1, ultimaFechaModificacion2, estaDestruido);

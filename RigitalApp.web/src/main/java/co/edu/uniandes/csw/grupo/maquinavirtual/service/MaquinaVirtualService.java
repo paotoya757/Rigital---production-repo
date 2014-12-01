@@ -162,10 +162,10 @@ public class MaquinaVirtualService extends _MaquinaVirtualService {
 
         }
         
-        if(destruido == null)       
-            estaDestruido = "0";
+        if(destruido.isEmpty())       
+            estaDestruido = "1";
         else
-            estaDestruido = "1";   
+            estaDestruido = "0";   
         
         
         return maquinaVirtualLogicService.getMaquinasVirtualesByParameters(ips , serviciosAsociados , version , sistemaOperativo , numDiscos , capacidadDiscos , ram , numCores , name , descripcion , proposito , caracteristicas , encargadoId , fechaCreacion1, fechaCreacion2, fechaVencimiento1, fechaVencimiento2, estaDestruido);

@@ -157,10 +157,10 @@ public class RepositorioService extends _RepositorioService {
 
         }
         
-        if(destruido == null)       
-            estaDestruido = "0";
+        if(destruido.isEmpty())       
+            estaDestruido = "1";
         else
-            estaDestruido = "1";   
+            estaDestruido = "0";   
         
         
         return repositorioLogicService.getRepositoriosByParameters(tipo , servidor , destino , tipoAcceso , ubicacionDelServidor , url , name , descripcion , proposito , caracteristicas , encargadoId , fechaCreacion1, fechaCreacion2, fechaVencimiento1, fechaVencimiento2, estaDestruido);
