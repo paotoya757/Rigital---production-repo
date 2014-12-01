@@ -33,6 +33,41 @@ define(['controller/_empleadoController','delegate/empleadoDelegate'], function(
             // Agregar - siguiente linea - "this.currentTemplate" EN EL postInit existente
             this.currentTemplate;
         },
+        checkUserRole:function(s){
+            App.Delegate.EmpleadoDelegate.prototype.getLoggedUser("", function(data){
+                    App.Delegate.EmpleadoDelegate.prototype.getEmpleadoByName(data,function(empleado){
+                        if(empleado.role == "Admin"){
+                            
+                            s.toolbarComponent.addButton({
+                                name: 'create',
+                                icon: 'glyphicon-plus-sign',
+                                displayName: 'Agregar',
+                                show: true
+                            },s.create,s);
+                            
+                            s.listComponent.addAction({
+                                name: 'edit',
+                                icon: '',
+                                displayName: 'Editar',
+                                show: true
+                            },s.edit,s);
+                            
+                            s.listComponent.addAction({
+                                name: 'delete',
+                                icon: '',
+                                displayName: 'Eliminar',
+                                show: true
+                            },s.delete,s);
+                            
+                        }
+                        
+                    },function(data3){
+
+                    });
+                }, function(data4){
+
+                });
+        },
         // start : searchRelated
         setCurrentTemplate:function(templateName){
             var self = this;
