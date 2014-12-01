@@ -272,5 +272,19 @@ Assert.assertEquals(parseDate(dto.getFechaCreacion()), resp.getFechaCreacion());
             Assert.assertTrue(found);
         }
 	}
+        
+        @Test
+        public void desactivarRecursoTest(){
+            for(int i=0;i<data.size();i++)
+            {
+                PaginaWebEntity pag= data.get(i);
+                if(pag.getDestruido())
+                {
+                    Long idPagina= pag.getId();
+                    paginaWebPersistence.desactivarRecurso(idPagina);
+                    Assert.assertFalse(pag.getDestruido());
+                }
+            }
+        }
 	
 }

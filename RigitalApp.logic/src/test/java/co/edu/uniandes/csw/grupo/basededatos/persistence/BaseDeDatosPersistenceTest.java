@@ -200,7 +200,6 @@ dto.setFechaCreacion(generateRandomDate());
 		dto.setCaracteristicas(generateRandom(String.class));
 		dto.setPgwebId(generateRandom(Long.class));
 		
-		
 		baseDeDatosPersistence.updateBaseDeDatos(dto);
 		
 		
