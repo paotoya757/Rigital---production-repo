@@ -90,12 +90,12 @@ public class WorkstationService extends _WorkstationService {
         return workstationLogicService.getWorkStationsByParameters(name , duenio , destino , sistemaOperativo );
     }
     
-    @GET
-    @Path("/Load")
-    public void loadElements()
-    {
-      System.out.println("Si llega!!!!!!");
-        workstationLogicService.loadWorkstations();
-    }
+//    @GET
+//    @Path("/Load")
+//    public void loadElements()
+//    {
+//      System.out.println("Si llega!!!!!!");
+//        workstationLogicService.loadWorkstations();
+//    }
 
 }
