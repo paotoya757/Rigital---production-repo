@@ -103,11 +103,10 @@ public class EmpleadoPersistence extends _EmpleadoPersistence  implements IEmple
             
     }
     
-        @Override
+    @Override
     public EmpleadoDTO createEmpleado(EmpleadoDTO empleado) {
         try
         {
-        //Se encripta la contraseña del DTO
             empleado.setPassword(MD5(empleado.getPassword()));
         }
         catch (Exception e)
