@@ -41,6 +41,31 @@ define(['delegate/_empleadoDelegate'], function() {
              }, this)).error(_.bind(function(data) {
                  callbackError(data);
              }, this));
-         }
+         },
+         getEmpleadoByName:function(sdata,callback,callbackError){
+             $.ajax({
+                 url:'/RigitalApp.web/webresources/Empleado/servicejson/'+sdata,
+                 method:'GET',
+                 dataType:"json",
+                 contentType:"application/json"
+             }).done(function(data){
+                 callback(data);
+             }).fail(function(error){
+                 callback(error);
+             });
+         },getLoggedUser: function(sdata, callback, callbackError) {
+            $.ajax({
+                url: '/RigitalApp.web/webresources/Empleado/session/user',
+                method: 'GET',
+                dataType: "html",
+                contentType: "application/json"
+            }).done(function(data) {
+                callback(data);
+            }).fail(function(error) {
+                callbackError(error);
+            });
+        },
+         
     });
+    
 });
