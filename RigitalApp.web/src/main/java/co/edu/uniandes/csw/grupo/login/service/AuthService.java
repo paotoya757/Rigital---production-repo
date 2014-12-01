@@ -66,5 +66,5 @@ public class AuthService {
     public String getLogedUser(@Context HttpServletRequest req) {
         return req.getRemoteUser();
     }
- 
+  
 }
