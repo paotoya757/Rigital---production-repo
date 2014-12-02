@@ -73,7 +73,7 @@ public class MySQLPersistence extends _MySQLPersistence  implements IMySQLPersis
     @SuppressWarnings("unchecked")
     public MySQLPageDTO getMySQLsByParameters(String descripcionDestino ,String servidor ,String name ,String descripcion ,String proposito ,String caracteristicas ,String pgwebId ,String paginawebId, String encargadoId  ,String fechaCreacion1,String fechaCreacion2,String estaDestruido)
     {
-        Query count = entityManager.createQuery("select count(u) from MaquinaVirtualEntity u");
+        Query count = entityManager.createQuery("select count(u) from MySQLEntity u");
         Long regCount = 0L;
         regCount = Long.parseLong(count.getSingleResult().toString());
                 
