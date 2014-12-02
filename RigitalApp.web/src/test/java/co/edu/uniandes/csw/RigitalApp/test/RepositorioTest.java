@@ -161,16 +161,27 @@ public class RepositorioTest {
  
         Thread.sleep(2000);
  
-        driver.findElement(By.id("btn_name")).click();
+        driver.findElement(By.id("btn_tableDestruido")).click();
         
         Thread.sleep(2000);
         
-        driver.findElement(By.id("name")).clear();
+        driver.findElement(By.id("destruido")).click();
         
-        driver.findElement(By.id("name")).sendKeys("Imagine");
+        Thread.sleep(2000);
+        
+        driver.findElement(By.id("btn_fechasTable")).click();
         
         Thread.sleep(2000);
  
+        driver.findElement(By.id("fechaCreacion")).clear();
+        driver.findElement(By.id("fechaCreacion")).sendKeys("20/11/2014");
+        
+        Thread.sleep(2000);
+        
+        driver.findElement(By.id("fechaCreacion2")).clear();
+        driver.findElement(By.id("fechaCreacion2")).sendKeys("23/11/2014");
+        
+        Thread.sleep(2000);
         
         driver.findElement(By.xpath("//button[contains(@id,'button-exec-search')]")).click();
  

@@ -136,13 +136,20 @@ public class MySQLTest {
  
         Thread.sleep(2000);
  
-        driver.findElement(By.id("btn_name")).click();
+        driver.findElement(By.id("btn_tableDestruido")).click();
         
         Thread.sleep(2000);
         
-        driver.findElement(By.id("name")).clear();
+        driver.findElement(By.id("destruido")).click();
         
-        driver.findElement(By.id("name")).sendKeys("Imagine");
+        Thread.sleep(2000);
+        
+        driver.findElement(By.id("btn_servidor")).click();
+        
+        Thread.sleep(2000);
+        
+        driver.findElement(By.id("servidor")).clear();
+        driver.findElement(By.id("servidor")).sendKeys("edu");
         
         Thread.sleep(2000);
  

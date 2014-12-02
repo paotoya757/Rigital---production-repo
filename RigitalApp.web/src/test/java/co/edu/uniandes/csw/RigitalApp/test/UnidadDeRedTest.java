@@ -141,6 +141,14 @@ public class UnidadDeRedTest {
         driver.findElement(By.xpath("//button[contains(@id,'button-search')]")).click();
  
         Thread.sleep(2000);
+        
+        driver.findElement(By.id("btn_tableDestruido")).click();
+        
+        Thread.sleep(2000);
+        
+        driver.findElement(By.id("destruido")).click();
+        
+        Thread.sleep(2000);
  
         driver.findElement(By.id("btn_name")).click();
         

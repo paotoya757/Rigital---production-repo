@@ -171,13 +171,20 @@ public class MaquinaVirtualTest {
  
         Thread.sleep(2000);
  
-        driver.findElement(By.id("btn_name")).click();
+        driver.findElement(By.id("btn_tableDestruido")).click();
         
         Thread.sleep(2000);
         
-        driver.findElement(By.id("name")).clear();
+        driver.findElement(By.id("destruido")).click();
         
-        driver.findElement(By.id("name")).sendKeys("virtual");
+        Thread.sleep(2000);
+        
+        driver.findElement(By.id("btn_ips")).click();
+        
+        Thread.sleep(2000);
+        
+        driver.findElement(By.id("ips")).clear();
+        driver.findElement(By.id("ips")).sendKeys("24.99");
         
         Thread.sleep(2000);
  

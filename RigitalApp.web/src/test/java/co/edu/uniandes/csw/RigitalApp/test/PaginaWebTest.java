@@ -150,13 +150,21 @@ public class PaginaWebTest {
  
         Thread.sleep(2000);
  
-        driver.findElement(By.id("btn_name")).click();
+        driver.findElement(By.id("btn_tableDestruido")).click();
         
         Thread.sleep(2000);
         
-        driver.findElement(By.id("name")).clear();
+        driver.findElement(By.id("destruido")).click();
         
-        driver.findElement(By.id("name")).sendKeys("Eventos");
+        Thread.sleep(2000);
+        
+        driver.findElement(By.id("btn_alias")).click();
+        
+        Thread.sleep(2000);
+        
+        driver.findElement(By.id("alias")).clear();
+        
+        driver.findElement(By.id("alias")).sendKeys("tosuni");
         
         Thread.sleep(2000);
  
