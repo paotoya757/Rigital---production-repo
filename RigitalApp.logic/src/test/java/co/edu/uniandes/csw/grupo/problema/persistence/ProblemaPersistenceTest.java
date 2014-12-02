@@ -52,6 +52,10 @@ import co.edu.uniandes.csw.grupo.problema.persistence.api.IProblemaPersistence;
 import co.edu.uniandes.csw.grupo.problema.persistence.entity.ProblemaEntity;
 import co.edu.uniandes.csw.grupo.problema.persistence.converter.ProblemaConverter;
 import static co.edu.uniandes.csw.grupo.util._TestUtil.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import javax.swing.text.DateFormatter;
+import org.glassfish.grizzly.http.util.Header;
 
 @RunWith(Arquillian.class)
 public class ProblemaPersistenceTest {
@@ -104,11 +108,12 @@ public class ProblemaPersistenceTest {
 	private List<ProblemaEntity> data=new ArrayList<ProblemaEntity>();
 
 	private void insertData() {
-		for(int i=0;i<3;i++){
+                Long current = System.currentTimeMillis();
+		for(int i=0;i<10;i++){
 			ProblemaEntity entity=new ProblemaEntity();
 			entity.setName(generateRandom(String.class));
 			entity.setDescripcion(generateRandom(String.class));
-			entity.setFechaDeOcurrencia(generateRandom(Date.class));
+			entity.setFechaDeOcurrencia( generateRandom(Date.class) );
 			entity.setEmpleadoId(generateRandom(Long.class));
 			entity.setSqldevId(generateRandom(Long.class));
 			entity.setMysqlId(generateRandom(Long.class));
@@ -119,11 +124,24 @@ public class ProblemaPersistenceTest {
 			entity.setRepositorioId(generateRandom(Long.class));
 			entity.setContenedorwebId(generateRandom(Long.class));
 			entity.setSoftwaresalasId(generateRandom(Long.class));
+                        entity.setFechaDeOcurrencia( new Date( current + i*24*3600/1000 ) );
 			em.persist(entity);
 			data.add(entity);
 		}
 	}
 	
+        public void getProblemasByParametersTest(){
+                ProblemaDTO  pDTOexp = ProblemaConverter.entity2PersistenceDTO( em.find(ProblemaEntity.class,data.get(1)) );
+                ProblemaDTO  pDTOreal = problemaPersistence.getProblemasByParameters(data.get(1).getName(), "", "", "", "", "", "", "", "", "", "", "", "", "").getRecords().get(0);
+                Assert.assertEquals( pDTOexp.getId(), pDTOreal.getId() );
+                
+                DateFormat df = new SimpleDateFormat("dd/mm/yyyy");
+                List<ProblemaDTO> set1 = problemaPersistence.getProblemasByParameters("", "", "", "","", "", "", "", "", "", "", "", 
+                        df.format( data.get(4).getFechaDeOcurrencia() ) , df.format( data.get(7).getFechaDeOcurrencia() ) ).getRecords() ;
+                Assert.assertEquals( 4 ,set1.size() );
+        }
+        
+        
 	@Test
 	public void createProblemaTest(){
 		ProblemaDTO dto=new ProblemaDTO();
