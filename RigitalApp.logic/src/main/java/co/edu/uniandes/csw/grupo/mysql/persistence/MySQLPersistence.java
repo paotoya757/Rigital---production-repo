@@ -77,7 +77,7 @@ public class MySQLPersistence extends _MySQLPersistence  implements IMySQLPersis
         Long regCount = 0L;
         regCount = Long.parseLong(count.getSingleResult().toString());
                 
-        String sql = "SELECT u FROM MaquinaVirtualEntity u WHERE";
+        String sql = "SELECT u FROM MySQLEntity u WHERE";
         if(!descripcionDestino.isEmpty())
             sql += " AND u.descripcionDestino like :descripcionDestino";
         if(!servidor.isEmpty())
