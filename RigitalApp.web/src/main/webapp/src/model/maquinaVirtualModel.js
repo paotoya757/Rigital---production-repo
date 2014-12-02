@@ -41,6 +41,12 @@ define(['model/_maquinaVirtualModel'], function() {
             if(!attrs.name){
                 validationMessage = "El nombre no puede estar vacio";
             }
+            if(isNaN(attrs.numDiscos)){
+                validationMessage = "El valor ingresado debe ser solo numerico";
+            }
+            if(isNaN(attrs.numCores)){
+                validationMessage = "El valor ingresado debe ser solo numerico";
+            }
             if(validationMessage.length>0){
                return validationMessage;
             }
