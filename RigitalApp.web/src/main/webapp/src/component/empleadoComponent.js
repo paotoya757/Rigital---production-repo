@@ -195,6 +195,13 @@ define(['component/_empleadoComponent'], function() {
             var messagesController = new App.Controller.MessageController({el: '#' + this.messageDomId});
             messagesController.showMessage('info', 'Informacion actualizada', true, 3);
         },
+        refreshToolbar:function(params){
+            this.componentController.setPage(1);
+            this.toolbarComponent.hideButton('save');
+            this.toolbarComponent.hideButton('cancel');
+            this.toolbarComponent.render();
+            this.componentController.list(params, this.list, this);
+        },
         edit: function(params) {
             this.toolbarComponent.hideButton('create');
             this.toolbarComponent.hideButton('search');
