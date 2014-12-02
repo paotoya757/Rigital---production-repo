@@ -59,8 +59,8 @@ define(['controller/_empleadoController','delegate/empleadoDelegate'], function(
                                 show: true
                             },s.delete,s);
                             
-                            s.toolbarComponent.render();
                         }
+                        s.refreshToolbar();
                         
                     },function(data3){
 
