@@ -42,11 +42,14 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import java.util.*;
 
 
 import co.edu.uniandes.csw.grupo.cms.logic.dto.CMSPageDTO;
+import org.junit.runner.RunWith;
+import java.util.*;
+import javax.persistence.Query;
+import java.util.Collections;
+
 import co.edu.uniandes.csw.grupo.cms.logic.dto.CMSDTO;
 import co.edu.uniandes.csw.grupo.cms.persistence.api.ICMSPersistence;
 import co.edu.uniandes.csw.grupo.cms.persistence.entity.CMSEntity;
@@ -111,8 +114,37 @@ public class CMSPersistenceTest {
 			em.persist(entity);
 			data.add(entity);
 		}
+                
+                    CMSEntity entity = new CMSEntity();
+                    entity.setName("testEntity");
+                    entity.setVersion( data.get(0).getVersion() ); // Estas dos ultimas entidades comparten la version con data[0].
+                
 	}
 	
+        
+        public void getCMSsByParameterTest(){
+            // hay dos con la misma version...
+            String sql = "SELECT u FROM CMSENTITY u WHERE u.version like :"+data.get(0).getVersion();
+            Query q1 = em.createQuery(sql);
+            List<CMSDTO> l1 = CMSConverter.entity2PersistenceDTOList(q1.getResultList());
+            List<CMSDTO> l2 = ( this.cMSPersistence.getCMSsByParameters( "" ,""+data.get(0).getVersion()) ).getRecords()  ;
+            Assert.assertEquals(2,l1.size());
+            Assert.assertEquals(l1.size(),l2.size());
+            
+            //Hay uno con id unico.
+            CMSDTO expected = CMSConverter.entity2PersistenceDTO( em.find(CMSEntity.class,data.get(0)) );
+            CMSDTO real = this.cMSPersistence.getCMSsByParameters(data.get(0).getName(),"").getRecords().get(0);
+            Assert.assertEquals(expected.getId(),real.getId());
+            
+            // No hay ninguno 
+            sql = "SELECT u FROM CMSENTITY u";
+            q1 = em.createQuery(sql);
+            List<CMSDTO> looked = this.cMSPersistence.getCMSsByParameters(data.get(0).getName(),"").getRecords() ;
+            Assert.assertEquals(q1.getMaxResults(),looked.size());
+        }
+        
+        
+        
 	@Test
 	public void createCMSTest(){
 		CMSDTO dto=new CMSDTO();
