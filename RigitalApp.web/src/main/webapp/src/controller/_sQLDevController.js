@@ -155,6 +155,7 @@ define(['model/sQLDevModel'], function(sQLDevModel) {
         },
         save: function() {
             var self = this;
+            console.log("Interesante....");
             var model = $('#' + this.componentId + '-sQLDevForm').serializeObject();
  
 			 if(!model.destruido){
@@ -162,15 +163,19 @@ define(['model/sQLDevModel'], function(sQLDevModel) {
 			 } 
             if (App.Utils.eventExists(this.componentId + '-' +'instead-sQLDev-save')) {
                 Backbone.trigger(this.componentId + '-' + 'instead-sQLDev-save', {view: this, model : model});
+                console.log(".. Pero discutible");
             } else {
                 Backbone.trigger(this.componentId + '-' + 'pre-sQLDev-save', {view: this, model : model});
                 this.currentModel.set(model);
+                console.log("(Else) pero discutible")
                 this.currentModel.save({},
                         {
                             success: function(model) {
+                                console.log("Exito: " + model);
                                 Backbone.trigger(self.componentId + '-' + 'post-sQLDev-save', {model: self.currentModel});
                             },
                             error: function(model,response,options) {
+                                console.log("Error: " + response + " Modelo: " + model);
                                 Backbone.trigger(self.componentId + '-' + 'error', {event: 'sQLDev-save', view: self, error: response});
                             }
                         });

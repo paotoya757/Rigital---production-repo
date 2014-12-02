@@ -58,7 +58,6 @@ public class SQLDevService extends _SQLDevService {
     @GET
     @Override
     public SQLDevPageDTO getSQLDevs(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords){
-        System.out.println("Acceso!!!!!!!!!!!!!!!!!!");
 		return super.getSQLDevs(page, maxRecords);
     }
     
@@ -110,6 +109,8 @@ public class SQLDevService extends _SQLDevService {
             pgwebId = "";
         if(encargadoId == null)
             encargadoId = "";
+        if(destruido == null)
+            destruido = "";
                        
         String fechaCreacion1 = "";
         String fechaCreacion2 = "";

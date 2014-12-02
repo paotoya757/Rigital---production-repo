@@ -88,6 +88,7 @@ public class WikiService extends _WikiService {
             proposito = "";
         
         
+        
         // Estos atributos, en cambio, siempre poseeran valores estándar.
         // Se debe aclarar eso en el manual de uso.
                        
@@ -113,6 +114,9 @@ public class WikiService extends _WikiService {
             fechaCreacion2 = date2[2] + "-" + date2[1] + "-" + date2[0];
 
         }       
+        
+        if(destruido == null)
+            destruido = "";
         
         if(destruido.isEmpty())       
             estaDestruido = "1";

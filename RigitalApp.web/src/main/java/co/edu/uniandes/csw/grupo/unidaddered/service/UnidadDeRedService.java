@@ -58,7 +58,6 @@ public class UnidadDeRedService extends _UnidadDeRedService {
     @GET
     @Override
     public UnidadDeRedPageDTO getUnidadDeReds(@QueryParam("page") Integer page, @QueryParam("maxRecords") Integer maxRecords){
-        System.out.println("Acceso!!!!!!!!!!!!!!!!!!");
 		return super.getUnidadDeReds(page, maxRecords);
     }
     
@@ -110,6 +109,8 @@ public class UnidadDeRedService extends _UnidadDeRedService {
             caracteristicas = "";
         if(encargadoId == null)
             encargadoId = "";
+        if(destruido == null)
+            destruido = "";
         
                
         String fechaCreacion1 = "";

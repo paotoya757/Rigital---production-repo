@@ -116,6 +116,8 @@ public class MySQLService extends _MySQLService {
             paginawebId = "";
         if(encargadoId == null)
             encargadoId = "";
+        if(destruido == null)
+            destruido = "";
                
         String fechaCreacion1 = "";
         String fechaCreacion2 = "";

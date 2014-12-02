@@ -188,6 +188,7 @@ define(['component/_sQLDevComponent'], function() {
             this.componentController.create();
         },
         save: function(params) {
+            console.log("Guardando...");
             this.componentController.save();
             this.toolbarComponent.showButton('create');
             this.toolbarComponent.showButton('search');

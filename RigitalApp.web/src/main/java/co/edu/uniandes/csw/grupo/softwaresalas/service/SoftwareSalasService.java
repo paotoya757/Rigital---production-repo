@@ -116,6 +116,8 @@ public class SoftwareSalasService extends _SoftwareSalasService {
             caracteristicas = "";
         if(workstationId == null)
             workstationId = "";
+        if(destruido == null)
+            destruido = "";
                
         String fechaCreacion1 = "";
         String fechaCreacion2 = "";
