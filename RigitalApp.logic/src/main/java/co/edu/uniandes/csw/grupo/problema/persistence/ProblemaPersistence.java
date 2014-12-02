@@ -58,25 +58,25 @@ public class ProblemaPersistence extends _ProblemaPersistence  implements IProbl
         if(!descripcion.isEmpty())
             sql += " AND u.descripcion like :descripcion";
         if(!empleadoId.isEmpty())
-            sql += " AND u.empleadoId like :empleadoId";
+            sql += " AND u.empleadoId = :empleadoId";
         if(!sqldevId.isEmpty())
-            sql  += " AND u.sqldevId like :sqldevId";
+            sql  += " AND u.sqldevId = :sqldevId";
         if(!mysqlId.isEmpty())
-            sql += " AND u.mysqlId like :mysqlId";
+            sql += " AND u.mysqlId = :mysqlId";
         if(!paginawebId.isEmpty())
-            sql += " AND  u.paginawebId like :paginawebId";
+            sql += " AND  u.paginawebId = :paginawebId";
         if(!wikiId.isEmpty())
-            sql += " AND  u.wikiId like :wikiId";
+            sql += " AND  u.wikiId = :wikiId";
         if(!maquinavirtualId.isEmpty())
-            sql += " AND  u.maquinavirtualId like :maquinavirtualId";
+            sql += " AND  u.maquinavirtualId = :maquinavirtualId";
         if(!unidadderedId.isEmpty())
-            sql += " AND  u.unidadderedId like :unidadderedId";
+            sql += " AND  u.unidadderedId = :unidadderedId";
         if(!repositorioId.isEmpty())
-            sql += " AND  u.repositorioId like :repositorioId";
+            sql += " AND  u.repositorioId = :repositorioId";
         if(!contenedorwebId.isEmpty())
-            sql += " AND  u.paginawebId like :contenedorwebId";
+            sql += " AND  u.paginawebId = :contenedorwebId";
         if(!softwaresalasId.isEmpty())
-            sql += " AND  u.softwaresalasId like :softwaresalasId";
+            sql += " AND  u.softwaresalasId = :softwaresalasId";
         
         if(!fechaDeOcurrencia1.isEmpty() && !fechaOcurrencia2.isEmpty())
             sql += " AND u.fechaDeOcurrencia BETWEEN :fechaDeOcurrencia1 and :fechaOcurrencia2";
@@ -98,25 +98,25 @@ public class ProblemaPersistence extends _ProblemaPersistence  implements IProbl
         if(!descripcion.isEmpty())
             q.setParameter("descripcion", "%"+descripcion+"%");
         if(!empleadoId.isEmpty())
-            q.setParameter("empleadoId", "%"+empleadoId+"%");
+            q.setParameter("empleadoId", Long.parseLong(empleadoId));
         if(!sqldevId.isEmpty())
-            q.setParameter("sqldevId", "%"+sqldevId+"%");
+            q.setParameter("sqldevId", Long.parseLong(sqldevId));
         if(!mysqlId.isEmpty())
-            q.setParameter("mysqlId", "%"+mysqlId+"%");
+            q.setParameter("mysqlId", Long.parseLong(mysqlId));
         if(!paginawebId.isEmpty())
-            q.setParameter("paginawebId", "%"+paginawebId+"%");
+            q.setParameter("paginawebId", Long.parseLong(paginawebId));
         if(!wikiId.isEmpty())
-            q.setParameter("wikiId", "%"+wikiId+"%");
+            q.setParameter("wikiId", Long.parseLong(wikiId));
         if(!maquinavirtualId.isEmpty())
-            q.setParameter("maquinavirtualId", "%"+maquinavirtualId+"%");
+            q.setParameter("maquinavirtualId", Long.parseLong(maquinavirtualId));
         if(!unidadderedId.isEmpty())
-            q.setParameter("unidadderedId", "%"+unidadderedId+"%");
+            q.setParameter("unidadderedId", Long.parseLong(unidadderedId));
         if(!repositorioId.isEmpty())
-            q.setParameter("repositorioId", "%"+repositorioId+"%");
+            q.setParameter("repositorioId", Long.parseLong(repositorioId));
         if(!contenedorwebId.isEmpty())
-            q.setParameter("contenedorwebId", "%"+contenedorwebId+"%");
+            q.setParameter("contenedorwebId", Long.parseLong(contenedorwebId));
         if(!softwaresalasId.isEmpty())
-            q.setParameter("softwaresalasId", "%"+softwaresalasId+"%");
+            q.setParameter("softwaresalasId", Long.parseLong(softwaresalasId));
         
         if(!fechaDeOcurrencia1.isEmpty() && !fechaOcurrencia2.isEmpty())
         {
