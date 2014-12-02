@@ -412,4 +412,74 @@ Assert.assertEquals(parseDate(dto.getFechaCreacion()), resp.getFechaCreacion());
                 Assert.assertNull(encargado1);
                 Assert.assertNull(encargado2);
         }
+        
+        @Test
+        public void busquedasTest()
+        {
+            // Primero se prueba que se pueda buscar por activos e inactivos
+                
+            MaquinaVirtualPageDTO wpdto = maquinaVirtualPersistence.getMaquinasVirtualesByParameters("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "1");
+            Assert.assertNotNull(wpdto);
+
+            List<MaquinaVirtualDTO> lista = wpdto.getRecords();
+            int contActivos = 0;
+            List<Integer> posicionesActivos = new ArrayList<Integer>();
+            List<Integer> posicionesInactivos = new ArrayList<Integer>();
+            
+            for(int i = 0; i < data.size(); i++)
+            {
+                if(!data.get(i).getDestruido())
+                {
+                    posicionesActivos.add(i);
+                    contActivos++;
+                }
+                else
+                    posicionesInactivos.add(i);
+            }
+            
+            Assert.assertEquals(lista.size(), contActivos);
+            
+            for(int i = 0; i < contActivos; i++)
+            {
+                MaquinaVirtualEntity entityP=data.get(posicionesActivos.get(i));
+                MaquinaVirtualDTO entity = MaquinaVirtualConverter.entity2PersistenceDTO(entityP);
+                MaquinaVirtualDTO primer = lista.get(i);            
+
+                Assert.assertEquals(entity.getIps(),primer.getIps());
+                Assert.assertEquals(entity.getServiciosAsociados(), primer.getServiciosAsociados());
+                Assert.assertEquals(entity.getVersion(), primer.getVersion());
+                Assert.assertEquals(entity.getSistemaOperativo(),primer.getSistemaOperativo());
+                Assert.assertEquals(entity.getNumDiscos(),primer.getNumDiscos());
+                Assert.assertEquals(entity.getCapacidadDiscos(), primer.getCapacidadDiscos());
+                Assert.assertEquals(entity.getRam(),primer.getRam());
+                Assert.assertEquals(entity.getNumCores(),primer.getNumCores());
+                Assert.assertEquals(entity.getName(),primer.getName());
+                Assert.assertEquals(entity.getDescripcion(),primer.getDescripcion());
+                Assert.assertEquals(entity.getProposito(),primer.getProposito());
+                Assert.assertEquals(entity.getCaracteristicas(),primer.getCaracteristicas());
+                Assert.assertEquals(entity.getEncargadoId(),primer.getEncargadoId());
+                Assert.assertEquals(entity.getDestruido(),primer.getDestruido());
+                Assert.assertEquals(entity.getFechaCreacion(),primer.getFechaCreacion());
+                Assert.assertEquals(entity.getFechaVencimiento(),primer.getFechaVencimiento());
+
+                
+            }
+            
+            String fechaC1 = (data.get(0).getFechaCreacion().getDate()) + "-" + (data.get(0).getFechaCreacion().getMonth()+1) + "-" + (data.get(0).getFechaCreacion().getYear()+1900-1);
+            String fechaC2 = (data.get(0).getFechaCreacion().getDate()) + "-" + (data.get(0).getFechaCreacion().getMonth()+1) + "-" + (data.get(0).getFechaCreacion().getYear()+1900+1);
+            
+            String fechaV1 = (data.get(0).getFechaVencimiento().getDate()) + "-" + (data.get(0).getFechaVencimiento().getMonth()+1) + "-" + (data.get(0).getFechaVencimiento().getYear()+1900-1);
+            String fechaV2 = (data.get(0).getFechaVencimiento().getDate()) + "-" + (data.get(0).getFechaVencimiento().getMonth()+1) + "-" + (data.get(0).getFechaVencimiento().getYear()+1900+1);
+            
+            wpdto = maquinaVirtualPersistence.getMaquinasVirtualesByParameters(data.get(0).getIps(), data.get(0).getServiciosAsociados(), data.get(0).getVersion(), data.get(0).getSistemaOperativo()
+                    , "" + data.get(0).getNumDiscos(), "" + data.get(0).getCapacidadDiscos(), "" + data.get(0).getRam(), "" + data.get(0).getNumCores(), data.get(0).getName(), data.get(0).getDescripcion(), data.get(0).getProposito()
+                    , data.get(0).getCaracteristicas(), "" + data.get(0).getEncargadoId(), fechaC1, fechaC2, fechaV1, fechaV2, (data.get(0).getDestruido())?"0":"1");
+
+            lista = wpdto.getRecords();
+            
+            Assert.assertEquals(lista.size(), 1);
+            
+            Assert.assertEquals(lista.get(0).getName(), data.get(0).getName());
+            
+        }
 }

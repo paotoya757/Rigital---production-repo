@@ -200,8 +200,8 @@ Assert.assertEquals(parseDate(dto.getFechaCreacion()), entity.getFechaCreacion()
 		dto.setRutaServidor(generateRandom(String.class));
 		dto.setName(generateRandom(String.class));
 		dto.setDescripcion(generateRandom(String.class));
-		dto.setProposito(generateRandom(String.class));
-dto.setFechaCreacion(generateRandomDate());
+                dto.setProposito(generateRandom(String.class));
+                dto.setFechaCreacion(generateRandomDate());
 		dto.setDestruido(generateRandom(Boolean.class));
 		dto.setCaracteristicas(generateRandom(String.class));
 		dto.setEncargadoId(generateRandom(Long.class));
@@ -217,7 +217,7 @@ dto.setFechaCreacion(generateRandomDate());
 		Assert.assertEquals(dto.getName(), resp.getName());	
 		Assert.assertEquals(dto.getDescripcion(), resp.getDescripcion());	
 		Assert.assertEquals(dto.getProposito(), resp.getProposito());	
-Assert.assertEquals(parseDate(dto.getFechaCreacion()), resp.getFechaCreacion());
+                Assert.assertEquals(parseDate(dto.getFechaCreacion()), resp.getFechaCreacion());
 		Assert.assertEquals(dto.getDestruido(), resp.getDestruido());	
 		Assert.assertEquals(dto.getCaracteristicas(), resp.getCaracteristicas());	
 		Assert.assertEquals(dto.getEncargadoId(), resp.getEncargadoId());	
@@ -270,44 +270,67 @@ Assert.assertEquals(parseDate(dto.getFechaCreacion()), resp.getFechaCreacion());
                 }
             }
         }
+        
+        /**
+         * Mio
+         */
         @Test
-        public void testBusquedasWiki1()
+        public void busquedasTest()
         {
+            // Primero se prueba que se pueda buscar por activos e inactivos
                 
             WikiPageDTO wpdto = wikiPersistence.getWikisByParameters("", "", "", "", "", "", "", "", "", "1");
             Assert.assertNotNull(wpdto);
 
             List<WikiDTO> lista = wpdto.getRecords();
-            int cont = 0;
-            List<Integer> posiciones = new ArrayList<Integer>();
+            int contActivos = 0;
+            List<Integer> posicionesActivos = new ArrayList<Integer>();
+            List<Integer> posicionesInactivos = new ArrayList<Integer>();
             
             for(int i = 0; i < data.size(); i++)
             {
-                if(data.get(i).getDestruido())
+                if(!data.get(i).getDestruido())
                 {
-                    cont ++;
-                    posiciones.add(i);
+                    posicionesActivos.add(i);
+                    contActivos++;
                 }
+                else
+                    posicionesInactivos.add(i);
             }
             
-            Assert.assertEquals(lista.size(), cont);
+            Assert.assertEquals(lista.size(), contActivos);
             
-            for(int i = 0; i < cont; i++)
+            for(int i = 0; i < contActivos; i++)
             {
-                WikiEntity entityP=data.get(posiciones.get(i));
+                WikiEntity entityP=data.get(posicionesActivos.get(i));
                 WikiDTO entity = WikiConverter.entity2PersistenceDTO(entityP);
                 WikiDTO primer = lista.get(i);            
 
                 Assert.assertEquals(entity.getServidor_host(),primer.getServidor_host());
+                Assert.assertEquals(entity.getRutaServidor(), primer.getRutaServidor());
+                Assert.assertEquals(entity.getName(), primer.getName());
                 Assert.assertEquals(entity.getCaracteristicas(),primer.getCaracteristicas());
                 Assert.assertEquals(entity.getDescripcion(),primer.getDescripcion());
+                Assert.assertEquals(entity.getProposito(), primer.getProposito());
                 Assert.assertEquals(entity.getDestruido(),primer.getDestruido());
                 Assert.assertEquals(entity.getEncargadoId(),primer.getEncargadoId());
                 Assert.assertEquals(entity.getFechaCreacion(),primer.getFechaCreacion());
-                // Faltaaaa
-
             }
+            
+            String fecha1 = (data.get(0).getFechaCreacion().getDate()) + "-" + (data.get(0).getFechaCreacion().getMonth()+1) + "-" + (data.get(0).getFechaCreacion().getYear()+1900-1);
+            String fecha2 = (data.get(0).getFechaCreacion().getDate()) + "-" + (data.get(0).getFechaCreacion().getMonth()+1) + "-" + (data.get(0).getFechaCreacion().getYear()+1900+1);
+            
+            wpdto = wikiPersistence.getWikisByParameters(data.get(0).getServidor_host(), data.get(0).getRutaServidor(), data.get(0).getName(), data.get(0).getDescripcion(), data.get(0).getProposito(), data.get(0).getCaracteristicas(), "" + data.get(0).getEncargadoId(), fecha1, fecha2, (data.get(0).getDestruido())?"0":"1");
+
+            lista = wpdto.getRecords();
+            
+            Assert.assertEquals(lista.size(), 1);
+            
+            Assert.assertEquals(lista.get(0).getName(), data.get(0).getName());
+            
         }
+        
+        
         @Test
         public void agregarEncargadoWikiTest1(){
             WikiDTO dto=new WikiDTO();

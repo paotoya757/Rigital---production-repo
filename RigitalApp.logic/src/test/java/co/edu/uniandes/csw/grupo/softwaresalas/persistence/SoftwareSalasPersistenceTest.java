@@ -288,4 +288,64 @@ Assert.assertEquals(parseDate(dto.getFechaCreacion()), resp.getFechaCreacion());
                 }
             }
         }
+        
+        @Test
+        public void busquedasTest()
+        {
+            // Primero se prueba que se pueda buscar por activos e inactivos
+                
+            SoftwareSalasPageDTO wpdto = softwareSalasPersistence.getSoftwareSalasByParameters("", "", "", "", "", "", "", "", "", "", "", "", "1");
+            Assert.assertNotNull(wpdto);
+
+            List<SoftwareSalasDTO> lista = wpdto.getRecords();
+            int contActivos = 0;
+            List<Integer> posicionesActivos = new ArrayList<Integer>();
+            List<Integer> posicionesInactivos = new ArrayList<Integer>();
+            
+            for(int i = 0; i < data.size(); i++)
+            {
+                if(!data.get(i).getDestruido())
+                {
+                    posicionesActivos.add(i);
+                    contActivos++;
+                }
+                else
+                    posicionesInactivos.add(i);
+            }
+            
+            Assert.assertEquals(lista.size(), contActivos);
+            
+            for(int i = 0; i < contActivos; i++)
+            {
+                SoftwareSalasEntity entityP=data.get(posicionesActivos.get(i));
+                SoftwareSalasDTO entity = SoftwareSalasConverter.entity2PersistenceDTO(entityP);
+                SoftwareSalasDTO primer = lista.get(i);            
+
+                Assert.assertEquals(entity.getTipoMaquina(),primer.getTipoMaquina());
+                Assert.assertEquals(entity.getSoftware(), primer.getSoftware());
+                Assert.assertEquals(entity.getVersion(), primer.getVersion());
+                Assert.assertEquals(entity.getSolicitante(),primer.getSolicitante());
+                Assert.assertEquals(entity.getNumeroMaquina(),primer.getNumeroMaquina());
+                Assert.assertEquals(entity.getName(), primer.getName());
+                Assert.assertEquals(entity.getDescripcion(), primer.getDescripcion());
+                Assert.assertEquals(entity.getProposito(), primer.getProposito());
+                Assert.assertEquals(entity.getCaracteristicas(), primer.getCaracteristicas());
+                Assert.assertEquals(entity.getWorkstationId(), primer.getWorkstationId());
+                Assert.assertEquals(entity.getDestruido(),primer.getDestruido());
+                Assert.assertEquals(entity.getFechaCreacion(),primer.getFechaCreacion());
+            }
+            
+            String fecha1 = (data.get(0).getFechaCreacion().getDate()) + "-" + (data.get(0).getFechaCreacion().getMonth()+1) + "-" + (data.get(0).getFechaCreacion().getYear()+1900-1);
+            String fecha2 = (data.get(0).getFechaCreacion().getDate()) + "-" + (data.get(0).getFechaCreacion().getMonth()+1) + "-" + (data.get(0).getFechaCreacion().getYear()+1900+1);
+            
+            wpdto = softwareSalasPersistence.getSoftwareSalasByParameters(data.get(0).getTipoMaquina(), data.get(0).getSoftware(), data.get(0).getVersion(), data.get(0).getSolicitante(), data.get(0).getNumeroMaquina()
+                    , data.get(0).getName(), data.get(0).getDescripcion(), data.get(0).getProposito(), data.get(0).getCaracteristicas(), "" + data.get(0).getWorkstationId(), fecha1, fecha2, (data.get(0).getDestruido())?"0":"1");
+
+            lista = wpdto.getRecords();
+            
+            Assert.assertEquals(lista.size(), 1);
+            
+            Assert.assertEquals(lista.get(0).getName(), data.get(0).getName());
+            
+        }
 }

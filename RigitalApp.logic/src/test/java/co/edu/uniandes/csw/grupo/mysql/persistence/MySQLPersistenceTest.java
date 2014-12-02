@@ -325,6 +325,7 @@ Assert.assertEquals(parseDate(dto.getFechaCreacion()), resp.getFechaCreacion());
         
         @Test
         public void agregarEncargadoMySQLTest2(){
+            
             MySQLDTO dto=new MySQLDTO();
             dto.setDescripcionDestino(generateRandom(String.class));
             dto.setServidor(generateRandom(String.class));
@@ -362,5 +363,63 @@ Assert.assertEquals(parseDate(dto.getFechaCreacion()), resp.getFechaCreacion());
             
             Assert.assertNull(encargado1);
             Assert.assertNull(encargado2);
+        }
+        
+        @Test
+        public void busquedasTest()
+        {
+            // Primero se prueba que se pueda buscar por activos e inactivos
+                
+            MySQLPageDTO wpdto = mySQLPersistence.getMySQLsByParameters("", "", "", "", "", "", "", "", "", "", "", "1");
+            Assert.assertNotNull(wpdto);
+
+            List<MySQLDTO> lista = wpdto.getRecords();
+            int contActivos = 0;
+            List<Integer> posicionesActivos = new ArrayList<Integer>();
+            List<Integer> posicionesInactivos = new ArrayList<Integer>();
+            
+            for(int i = 0; i < data.size(); i++)
+            {
+                if(!data.get(i).getDestruido())
+                {
+                    posicionesActivos.add(i);
+                    contActivos++;
+                }
+                else
+                    posicionesInactivos.add(i);
+            }
+            
+            Assert.assertEquals(lista.size(), contActivos);
+            
+            for(int i = 0; i < contActivos; i++)
+            {
+                MySQLEntity entityP=data.get(posicionesActivos.get(i));
+                MySQLDTO entity = MySQLConverter.entity2PersistenceDTO(entityP);
+                MySQLDTO primer = lista.get(i);            
+
+                Assert.assertEquals(entity.getDescripcionDestino(),primer.getDescripcionDestino());
+                Assert.assertEquals(entity.getServidor(), primer.getServidor());
+                Assert.assertEquals(entity.getName(), primer.getName());
+                Assert.assertEquals(entity.getCaracteristicas(),primer.getCaracteristicas());
+                Assert.assertEquals(entity.getDescripcion(),primer.getDescripcion());
+                Assert.assertEquals(entity.getProposito(),primer.getProposito());
+                Assert.assertEquals(entity.getPgwebId(),primer.getPgwebId());                
+                Assert.assertEquals(entity.getPaginawebId(), primer.getPaginawebId());
+                Assert.assertEquals(entity.getDestruido(),primer.getDestruido());
+                Assert.assertEquals(entity.getEncargadoId(),primer.getEncargadoId());
+                Assert.assertEquals(entity.getFechaCreacion(),primer.getFechaCreacion());
+            }
+            
+            String fecha1 = (data.get(0).getFechaCreacion().getDate()) + "-" + (data.get(0).getFechaCreacion().getMonth()+1) + "-" + (data.get(0).getFechaCreacion().getYear()+1900-1);
+            String fecha2 = (data.get(0).getFechaCreacion().getDate()) + "-" + (data.get(0).getFechaCreacion().getMonth()+1) + "-" + (data.get(0).getFechaCreacion().getYear()+1900+1);
+            
+            wpdto = mySQLPersistence.getMySQLsByParameters(data.get(0).getDescripcionDestino(), data.get(0).getServidor(), data.get(0).getName(), data.get(0).getDescripcion(), data.get(0).getProposito(), data.get(0).getCaracteristicas(), "" + data.get(0).getPgwebId(), "" + data.get(0).getPaginawebId(), "" + data.get(0).getEncargadoId(), fecha1, fecha2, (data.get(0).getDestruido())?"0":"1");
+
+            lista = wpdto.getRecords();
+            
+            Assert.assertEquals(lista.size(), 1);
+            
+            Assert.assertEquals(lista.get(0).getName(), data.get(0).getName());
+            
         }
 }
