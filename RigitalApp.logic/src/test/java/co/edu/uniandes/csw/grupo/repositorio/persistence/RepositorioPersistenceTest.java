@@ -380,5 +380,80 @@ Assert.assertEquals(parseDate(dto.getFechaCreacion()), resp.getFechaCreacion());
             Assert.assertTrue(found);
         }
 	}
+        
+        @Test
+        public void getRepositoriosByParametersTest(){
+              //Prueba buscar un elemento que no existe.
+            RepositorioPageDTO dto = repositorioPersistence.getRepositoriosByParameters("", "", "", "", "", "", "", "", "", "", "", "","","","", "0");
+            Assert.assertTrue(dto.getRecords().isEmpty());
+            
+            //Prueba buscar un elemento existente
+            RepositorioEntity entity = data.get(0);
+            RepositorioEntity entity2 = data.get(1);
+            RepositorioPageDTO dtoNoVacio = repositorioPersistence.getRepositoriosByParameters(entity.getTipo(),"","","","","","","","","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio.getRecords().isEmpty());
+            
+            RepositorioPageDTO dtoNoVacio1 = repositorioPersistence.getRepositoriosByParameters("",entity.getServidor(),"","","","","","","","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio1.getRecords().isEmpty());
+            
+            RepositorioPageDTO dtoNoVacio2 = repositorioPersistence.getRepositoriosByParameters("","",entity.getDestino(),"","","","","","","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio2.getRecords().isEmpty());
+            
+            RepositorioPageDTO dtoNoVacio3 = repositorioPersistence.getRepositoriosByParameters("","","",entity.getTipoAcceso(),"","","","","","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio3.getRecords().isEmpty());
+            
+            RepositorioPageDTO dtoNoVacio4 = repositorioPersistence.getRepositoriosByParameters("","","","",entity.getUbicacionDelServidor(),"","","","","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio4.getRecords().isEmpty());
+            
+            RepositorioPageDTO dtoNoVacio5 = repositorioPersistence.getRepositoriosByParameters("","","","","",entity.getUrl(),"","","","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio5.getRecords().isEmpty());
+            
+            RepositorioPageDTO dtoNoVacio6 = repositorioPersistence.getRepositoriosByParameters("","","","","","",entity.getName(),"","","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio6.getRecords().isEmpty());
+            
+            RepositorioPageDTO dtoNoVacio7 = repositorioPersistence.getRepositoriosByParameters("","","","","","","",entity.getDescripcion(),"","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio7.getRecords().isEmpty());
+            
+            RepositorioPageDTO dtoNoVacio12 = repositorioPersistence.getRepositoriosByParameters("","","","","","","","",entity.getProposito(),"","","","","","","0");
+            Assert.assertFalse(dtoNoVacio12.getRecords().isEmpty());
+            
+            RepositorioPageDTO dtoNoVacio13 = repositorioPersistence.getRepositoriosByParameters("","","","","","","","","",entity.getCaracteristicas(),"","","","","","0");
+            Assert.assertFalse(dtoNoVacio13.getRecords().isEmpty());
+            
+            RepositorioPageDTO dtoNoVacio14 = repositorioPersistence.getRepositoriosByParameters("","","","","","","","","","",String.valueOf(entity.getEncargadoId()),"","","","","0");
+            Assert.assertFalse(dtoNoVacio14.getRecords().isEmpty());
+            
+            RepositorioPageDTO dtoNoVacio8 = repositorioPersistence.getRepositoriosByParameters("","","","","","","","","","","",entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),"","","0");
+            Assert.assertFalse(dtoNoVacio8.getRecords().isEmpty());
+            
+            RepositorioPageDTO dtoNoVacio9 = repositorioPersistence.getRepositoriosByParameters("","","","","","","","","","","","","",entity.getFechaVencimiento().getYear() + "-" + entity.getFechaVencimiento().getMonth() + "-" + entity.getFechaVencimiento().getDay(),entity.getFechaVencimiento().getYear() + "-" + entity.getFechaVencimiento().getMonth() + "-" + entity.getFechaVencimiento().getDay(),"0");
+            Assert.assertFalse(dtoNoVacio9.getRecords().isEmpty());
+            
+            entity.setDestruido(Boolean.TRUE);
+            RepositorioPageDTO dtoNoVacio10 = repositorioPersistence.getRepositoriosByParameters("","","","","","","","","","","","","","","","1");
+            Assert.assertFalse(dtoNoVacio10.getRecords().isEmpty());
+            entity.setDestruido(Boolean.FALSE);
+            
+            if(entity.getFechaCreacion().getYear() > entity2.getFechaCreacion().getYear()){
+                RepositorioPageDTO dtoNoVacio11 = repositorioPersistence.getRepositoriosByParameters("","","","","","","","","","","",entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),entity2.getFechaCreacion().getYear() + "-" + entity2.getFechaCreacion().getMonth() + "-" + entity2.getFechaCreacion().getDay(),"","","0");
+                Assert.assertFalse(dtoNoVacio11.getRecords().isEmpty());
+                Assert.assertEquals(2, dtoNoVacio11.getRecords().size());
+            }
+            else if(entity.getFechaCreacion().getYear() == entity2.getFechaCreacion().getYear() && entity.getFechaCreacion().getMonth() > entity2.getFechaCreacion().getMonth()){
+                RepositorioPageDTO dtoNoVacio11 = repositorioPersistence.getRepositoriosByParameters("","","","","","","","","","","",entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),entity2.getFechaCreacion().getYear() + "-" + entity2.getFechaCreacion().getMonth() + "-" + entity2.getFechaCreacion().getDay(),"","","0");
+                Assert.assertFalse(dtoNoVacio11.getRecords().isEmpty());
+                Assert.assertEquals(2, dtoNoVacio11.getRecords().size());
+            }
+            else if(entity.getFechaCreacion().getYear() == entity2.getFechaCreacion().getYear() && entity.getFechaCreacion().getMonth() == entity2.getFechaCreacion().getMonth() && entity.getFechaCreacion().getDay() > entity2.getFechaCreacion().getDay()){
+                RepositorioPageDTO dtoNoVacio11 = repositorioPersistence.getRepositoriosByParameters("","","","","","","","","","","",entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),entity2.getFechaCreacion().getYear() + "-" + entity2.getFechaCreacion().getMonth() + "-" + entity2.getFechaCreacion().getDay(),"","","0");
+                Assert.assertFalse(dtoNoVacio11.getRecords().isEmpty());
+                Assert.assertEquals(2, dtoNoVacio11.getRecords().size());
+            }
+            else{
+                RepositorioPageDTO dtoNoVacio11 = repositorioPersistence.getRepositoriosByParameters("","","","","","","","","","","",entity2.getFechaCreacion().getYear() + "-" + entity2.getFechaCreacion().getMonth() + "-" + entity2.getFechaCreacion().getDay(),entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),"","","0");
+                Assert.assertFalse(dtoNoVacio11.getRecords().isEmpty());
+                Assert.assertEquals(2, dtoNoVacio11.getRecords().size());
+            }
         }
+}
 	

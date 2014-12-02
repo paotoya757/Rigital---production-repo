@@ -42,15 +42,15 @@ define(['component/_empleadoComponent'], function() {
                 show: true
             });
             //Agregar
-            this.toolbarComponent.removeButton('create');
-            /*this.toolbarComponent.addButton({
-                name: 'create',
-                icon: 'glyphicon-plus-sign',
-                displayName: 'Agregar',
-                show: true
-            },
-            this.create,
-            this);*/
+//            this.toolbarComponent.removeButton('create');
+//            this.toolbarComponent.addButton({
+//                name: 'create',
+//                icon: 'glyphicon-plus-sign',
+//                displayName: 'Agregar',
+//                show: true
+//            },
+//            this.create,
+//            this);
             //Guardar
             this.toolbarComponent.removeButton('save');
             this.toolbarComponent.addButton({
@@ -85,24 +85,24 @@ define(['component/_empleadoComponent'], function() {
             this.toolbarComponent.removeButton('print');
             //Editar
             this.listComponent.removeAction('edit');
-            /*this.listComponent.addAction({
-                name: 'edit',
-                icon: '',
-                displayName: 'Editar',
-                show: true
-            },
-            this.edit,
-            this);*/
+//            this.listComponent.addAction({
+//                name: 'edit',
+//                icon: '',
+//                displayName: 'Editar',
+//                show: true
+//            },
+//            this.edit,
+//            this);
             //Eliminar
             this.listComponent.removeAction('delete');
-            /*this.listComponent.addAction({
-                name: 'delete',
-                icon: '',
-                displayName: 'Eliminar',
-                show: true
-            },
-            this.delete,
-            this);*/
+//            this.listComponent.addAction({
+//                name: 'delete',
+//                icon: '',
+//                displayName: 'Eliminar',
+//                show: true
+//            },
+//            this.delete,
+//            this);
             
             self.componentController.checkUserRole(this);
                 

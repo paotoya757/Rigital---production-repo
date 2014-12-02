@@ -5,6 +5,19 @@
             30
         </session-timeout>
     </session-config>
+    <security-constraint>
+        <display-name>Constraint1</display-name>
+        <web-resource-collection>
+            <web-resource-name>index</web-resource-name>
+            <description/>
+            <url-pattern>/index.html</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>Client</role-name>
+            <role-name>Admin</role-name>
+        </auth-constraint>
+    </security-constraint>
     <login-config>
         <auth-method>FORM</auth-method>
         <realm-name>RigitalAuth</realm-name>

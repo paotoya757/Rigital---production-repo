@@ -352,4 +352,67 @@ Assert.assertEquals(parseDate(dto.getFechaCreacion()), resp.getFechaCreacion());
                 Assert.assertNull(encargado1);
                 Assert.assertNull(encargado2);
 	}
+        
+        @Test
+        public void getSQLDevsByParametersTest(){
+      //Prueba buscar un elemento que no existe.
+            SQLDevPageDTO dto = sQLDevPersistence.getSQLDevsByParameters("", "", "", "", "", "", "", "", "", "", "", "0");
+            Assert.assertTrue(dto.getRecords().isEmpty());
+            
+            //Prueba buscar un elemento existente
+            SQLDevEntity entity = data.get(0);
+            SQLDevEntity entity2 = data.get(1);
+            SQLDevPageDTO dtoNoVacio = sQLDevPersistence.getSQLDevsByParameters(entity.getServidor(),"","","","","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio.getRecords().isEmpty());
+            
+            SQLDevPageDTO dtoNoVacio1 = sQLDevPersistence.getSQLDevsByParameters("",entity.getName(),"","","","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio1.getRecords().isEmpty());
+            
+            SQLDevPageDTO dtoNoVacio2 = sQLDevPersistence.getSQLDevsByParameters("","",entity.getDescripcion(),"","","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio2.getRecords().isEmpty());
+            
+            SQLDevPageDTO dtoNoVacio3 = sQLDevPersistence.getSQLDevsByParameters("","","",entity.getProposito(),"","","","","","","","0");
+            Assert.assertFalse(dtoNoVacio3.getRecords().isEmpty());
+            
+            SQLDevPageDTO dtoNoVacio4 = sQLDevPersistence.getSQLDevsByParameters("","","","",entity.getCaracteristicas(),"","","","","","","0");
+            Assert.assertFalse(dtoNoVacio4.getRecords().isEmpty());
+            
+            SQLDevPageDTO dtoNoVacio5 = sQLDevPersistence.getSQLDevsByParameters("","","","","",String.valueOf(entity.getPgwebId()),"","","","","","0");
+            Assert.assertFalse(dtoNoVacio5.getRecords().isEmpty());
+            
+            SQLDevPageDTO dtoNoVacio6 = sQLDevPersistence.getSQLDevsByParameters("","","","","","",String.valueOf(entity.getEncargadoId()),"","","","","0");
+            Assert.assertFalse(dtoNoVacio6.getRecords().isEmpty());
+            
+            SQLDevPageDTO dtoNoVacio8 = sQLDevPersistence.getSQLDevsByParameters("","","","","","","",entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),"","","0");
+            Assert.assertFalse(dtoNoVacio8.getRecords().isEmpty());
+            
+            SQLDevPageDTO dtoNoVacio9 = sQLDevPersistence.getSQLDevsByParameters("","","","","","","","","",entity.getFechaVencimiento().getYear() + "-" + entity.getFechaVencimiento().getMonth() + "-" + entity.getFechaVencimiento().getDay(),entity.getFechaVencimiento().getYear() + "-" + entity.getFechaVencimiento().getMonth() + "-" + entity.getFechaVencimiento().getDay(),"0");
+            Assert.assertFalse(dtoNoVacio9.getRecords().isEmpty());
+            
+            entity.setDestruido(Boolean.TRUE);
+            SQLDevPageDTO dtoNoVacio10 = sQLDevPersistence.getSQLDevsByParameters("","","","","","","","","","","","1");
+            Assert.assertFalse(dtoNoVacio10.getRecords().isEmpty());
+            entity.setDestruido(Boolean.FALSE);
+            
+            if(entity.getFechaCreacion().getYear() > entity2.getFechaCreacion().getYear()){
+                SQLDevPageDTO dtoNoVacio11 = sQLDevPersistence.getSQLDevsByParameters("","","","","","","",entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),entity2.getFechaCreacion().getYear() + "-" + entity2.getFechaCreacion().getMonth() + "-" + entity2.getFechaCreacion().getDay(),"","","0");
+                Assert.assertFalse(dtoNoVacio11.getRecords().isEmpty());
+                Assert.assertEquals(2, dtoNoVacio11.getRecords().size());
+            }
+            else if(entity.getFechaCreacion().getYear() == entity2.getFechaCreacion().getYear() && entity.getFechaCreacion().getMonth() > entity2.getFechaCreacion().getMonth()){
+                SQLDevPageDTO dtoNoVacio11 = sQLDevPersistence.getSQLDevsByParameters("","","","","","","",entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),entity2.getFechaCreacion().getYear() + "-" + entity2.getFechaCreacion().getMonth() + "-" + entity2.getFechaCreacion().getDay(),"","","0");
+                Assert.assertFalse(dtoNoVacio11.getRecords().isEmpty());
+                Assert.assertEquals(2, dtoNoVacio11.getRecords().size());
+            }
+            else if(entity.getFechaCreacion().getYear() == entity2.getFechaCreacion().getYear() && entity.getFechaCreacion().getMonth() == entity2.getFechaCreacion().getMonth() && entity.getFechaCreacion().getDay() > entity2.getFechaCreacion().getDay()){
+                SQLDevPageDTO dtoNoVacio11 = sQLDevPersistence.getSQLDevsByParameters("","","","","","","",entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),entity2.getFechaCreacion().getYear() + "-" + entity2.getFechaCreacion().getMonth() + "-" + entity2.getFechaCreacion().getDay(),"","","0");
+                Assert.assertFalse(dtoNoVacio11.getRecords().isEmpty());
+                Assert.assertEquals(2, dtoNoVacio11.getRecords().size());
+            }
+            else{
+                SQLDevPageDTO dtoNoVacio11 = sQLDevPersistence.getSQLDevsByParameters("","","","","","","",entity2.getFechaCreacion().getYear() + "-" + entity2.getFechaCreacion().getMonth() + "-" + entity2.getFechaCreacion().getDay(),entity.getFechaCreacion().getYear() + "-" + entity.getFechaCreacion().getMonth() + "-" + entity.getFechaCreacion().getDay(),"","","0");
+                Assert.assertFalse(dtoNoVacio11.getRecords().isEmpty());
+                Assert.assertEquals(2, dtoNoVacio11.getRecords().size());
+            }
+}
 }
